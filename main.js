@@ -38,3 +38,74 @@ result = 61000
 function past(h, m, s){
     return ( (h * 3600) + (m * 60) + s ) * 1000
 }
+
+
+/*
+If the sperm contains the X chromosome, return "Congratulations! You're going to have a daughter."; If the sperm contains the Y chromosome, return "Congratulations! You're going to have a son.";
+*/
+
+function chromosomeCheck(sperm) {
+    return (sperm.includes("XX")) ? "Congratulations! You're going to have a daughter."
+    : "Congratulations! You're going to have a son."
+}
+
+
+/*
+Complete the function that receives as input a string, and produces outputs according to the following table:
+
+Input	                Output
+"Jabroni"	        "Patron Tequila"
+"School Counselor"	"Anything with Alcohol"
+"Programmer"    	"Hipster Craft Beer"
+"Bike Gang Member"	"Moonshine"
+"Politician"    	"Your tax dollars"
+"Rapper"	        "Cristal"
+anything else	    "Beer"
+*/
+
+function getDrinkByProfession(param){
+    param = param.toLowerCase()
+    return (param === "jabroni") ? "Patron Tequila"
+    : (param === "school counselor") ? "Anything with Alcohol"
+    : (param === "programmer") ? "Hipster Craft Beer"
+    : (param === "bike gang member") ? "Moonshine"
+    : (param === "politician") ?	"Your tax dollars"
+    : (param === "rapper") ?	"Cristal"
+    : "Beer"
+}
+
+
+/*
+Grasshopper - Function syntax debugging
+A student was working on a function and made some syntax mistakes while coding. Help them find their mistakes and fix them.
+
+function main [verb, noun]
+  return verb + noun
+}
+*/
+
+let main = (verb, noun) => verb + noun
+
+
+/*
+You are given an odd-length array of integers, in which all of them are the same, except for one single number.
+
+Complete the method which accepts such an array, and returns that single different number.
+
+The input array will always be valid! (odd-length >= 3)
+
+Examples
+[1, 1, 2] ==> 2
+[17, 17, 3, 17, 17, 17, 17] ==> 3
+*/
+
+function stray(numbers) {
+    numbers.sort((a,b) => a - b)
+    return (numbers[0] === numbers[1]) ? numbers[numbers.length-1]
+    : numbers[0]
+}
+
+
+/*
+
+*/
