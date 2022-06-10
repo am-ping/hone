@@ -155,5 +155,25 @@ function stringClean(s){
 }
 
 /*
+Write a function that always returns 5. You can't use any of the following characters: 0123456789*+-/
+*/
+
+function unusualFive() {
+    return "ookie".length
+}
+
+
+/*
+Write a function that returns the total surface area and volume of a box as an array: [area, volume]
+*/
+
+function getSize(l, w, h) {
+    let area = 2 * (l*w + l*h + w*h)
+    let volume = l * w * h
+    let arr = [area, volume]
+    return arr
+}
+
+/*
 
 */
