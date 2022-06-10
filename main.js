@@ -1,7 +1,7 @@
 /*
 Warn the sheep in front of the wolf that it is about to be eaten. Remember that you are standing at the front of the queue which is at the end of the array:
 
-[sheep, sheep, sheep, sheep, sheep, wolf, sheep, sheep]      (YOU ARE HERE AT THE FRONT OF THE QUEUE)
+[sheep, sheep, sheep, sheep, sheep, wolf, sheep, sheep]      (YOU ARE HERE- FRONT OF THE QUEUE)
    7      6      5      4      3            2      1
 If the wolf is the closest animal to you, return "Pls go away and stop eating my sheep". Otherwise, return "Oi! Sheep number N! You are about to be eaten by a wolf!" where N is the sheep's position in the queue.
 
@@ -120,5 +120,40 @@ Examples:(Input --> Output)
 
 function findNextSquare(sq) {
     let intCheck = Number.isInteger(Math.sqrt(sq))
-    return (intCheck === true) ? (Math.sqrt(sq) + 1) ** 2 : -1
+    return (intCheck) ? (Math.sqrt(sq) + 1) ** 2 : -1
 }
+
+
+/*
+Given an integral number, determine if it's a square number:
+
+In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
+
+The tests will always use some integral number, so don't worry about that in dynamic typed languages.
+
+Examples
+-1  =>  false
+ 0  =>  true
+ 3  =>  false
+*/
+
+let isSquare = function(n){
+    return Math.sqrt(n) % 1 === 0
+}
+
+
+/*
+Your program will take in a string and clean out all numeric characters, and return a string with spacing and special characters ~#$%^&!@*():;"'.,? all intact.
+Examples (input -> output)
+'! !'                 -> '! !'
+'123456789'           -> ''
+'This looks5 grea8t!' -> 'This looks great!'
+*/
+
+function stringClean(s){
+    return s.toString().replace(/\d/g,"") // the \d stands for digits
+}
+
+/*
+
+*/
