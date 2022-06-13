@@ -202,5 +202,21 @@ function smallEnough(a, limit){
 }
 
 /*
+Kids under 14 old drink toddy.
+Teens under 18 old drink coke.
+Young under 21 old drink beer.
+Adults 21 or more drink whisky.
+
+Make a function that receive age, and return what they drink.
+*/
+
+function peopleWithAgeDrink(old) {
+    return (old < 14) ? "drink toddy"
+    : (old < 18) ? "drink coke"
+    : (old < 21) ? "drink beer"
+    : "drink whisky"
+};
+
+/*
 
 */
