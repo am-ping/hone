@@ -271,3 +271,29 @@ function factorial(n){
     }
     return arr.reduce((a,b)=> a * b, 1)
 }
+
+/*
+Remove an exclamation mark from the end of a string. For a beginner kata, you can assume that the input data is always a string, no need to verify it.
+
+Examples
+remove("Hi!") === "Hi"
+remove("Hi!!!") === "Hi!!"
+*/
+
+const remove = string => string.replace(/!$/, '');
+
+/*
+Find the total sum of internal angles (in degrees) in an n-sided simple polygon. N will be greater than 2.
+*/
+
+let angle = (n) => (n - 2) * 180
+
+/*
+Find the mean (average) of a list of numbers in an array.
+*/
+
+let findAverage = (nums) => nums.reduce((a,b) => a + b) / nums.length
+
+/*
+
+*/
