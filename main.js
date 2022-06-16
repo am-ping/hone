@@ -352,3 +352,62 @@ function firstNonConsecutive (arr) {
     return null
 }
 
+/*
+Write a function named sumDigits which takes a number as input and returns the sum of the absolute value of each of the number's decimal digits.
+
+For example: (Input --> Output)
+
+10 --> 1
+99 --> 18
+-32 --> 5
+*/
+
+function sumDigits(number) {
+    return number.toString().replace("-","").split("").reduce((a,b) => +a + +b, 0)
+}
+
+/*
+Write a function that gets you from 1 to n (inclusive) in an array
+*/
+
+function preFizz(n) {
+    let arr = []
+    for (let i = 1; i <= n; i++) {
+      arr.push(i)
+    }
+    return arr
+}
+
+
+/*
+Input: Array of elements
+["h","o","l","a"]
+
+Output: String with comma delimited elements of the array in th same order.
+"h,o,l,a"
+*/
+
+let printArray = (array) => array.join(",")
+
+
+/*
+Create a method that accepts a list and an item, and returns true if the item belongs to the list, otherwise false.
+*/
+
+let include = (arr, item) => arr.includes(item)
+
+/*
+Remove n exclamation marks in the sentence from left to right. n is positive integer.
+
+Examples
+remove("Hi!",1) === "Hi"
+remove("Hi!",100) === "Hi"
+remove("Hi!!!",1) === "Hi!!"
+*/
+
+function remove(s,n){
+    for (let i = 1; i <= n; i++) {
+      s = s.replace("!","")
+    }
+    return s
+}
