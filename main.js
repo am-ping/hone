@@ -295,5 +295,60 @@ Find the mean (average) of a list of numbers in an array.
 let findAverage = (nums) => nums.reduce((a,b) => a + b) / nums.length
 
 /*
-
+Your goal is to return multiplication table for number that is always an integer from 1 to 10.
+For example, a multiplication table (string) for number == 5 looks like below:
+1 * 5 = 5
+2 * 5 = 10
+3 * 5 = 15
+4 * 5 = 20
+5 * 5 = 25
+6 * 5 = 30
+7 * 5 = 35
+8 * 5 = 40
+9 * 5 = 45
+10 * 5 = 50
 */
+
+function multiTable(number) {
+    let table = '';
+    
+    for(let i = 1; i <= 10; i++) {
+      table += `${i} * ${number} = ${i * number}${i < 10 ? '\n' : ''}`; 
+    }
+    return table;
+}
+
+/*
+Write a function that takes a list of strings as an argument and returns a filtered list containing the same elements but with the 'geese' removed.
+
+The geese are any strings in the following array, which is pre-populated in your solution:
+["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
+
+For example, if this array were passed as an argument:
+["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]
+
+Your function would return the following array:
+["Mallard", "Hook Bill", "Crested", "Blue Swedish"]
+*/
+
+function gooseFilter (birds) {
+    var geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+    return birds.filter(b => !geese.includes(b));
+};
+
+/*
+Your task is to find the first element of an array that is not consecutive.By not consecutive we mean not exactly 1 larger than the previous element of the array.
+E.g. If we have an array [1,2,3,4,6,7,8] then 1 then 2 then 3 then 4 are all consecutive but 6 is not, so that's the first non-consecutive number.
+If the whole array is consecutive then return null.
+The array will always have at least 2 elements and all elements will be numbers. The numbers will also all be unique and in ascending order. The numbers could be positive or negative and the first non-consecutive could be either too!
+*/
+
+function firstNonConsecutive (arr) {
+    for (let i = 0; i < arr.length - 1; ++i) {
+      if (arr[i] + 1 !== arr[i + 1]) {
+        return arr[i + 1]
+      }
+    }
+    return null
+}
+
