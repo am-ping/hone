@@ -411,3 +411,38 @@ function remove(s,n){
     }
     return s
 }
+
+/*
+Given a string of digits, you should replace any digit below 5 with '0' and any digit 5 and above with '1'. Return the resulting string.
+*/
+
+let fakeBin = (x) => x.replace(/[0-4]/g,"0").replace(/[5-9]/g,"1")
+
+/*
+Given a string, capitalize the letters that occupy even indexes and odd indexes separately, and return as shown below. Index 0 will be considered even.
+
+For example, capitalize("abcdef") = ['AbCdEf', 'aBcDeF']. See test cases for more examples.
+
+The input will be a lowercase string with no spaces.
+*/
+
+function capitalize(s){
+    let arr = []
+    let even = s.split("").map((item,i)=> {
+      if (i % 2 === 0) {
+        return item.toUpperCase()
+      } else {
+        return item
+      }
+      }).join("")
+      arr.push(even)
+    let odd = s.split("").map((item,i)=> {
+      if (i % 2 !== 0) {
+        return item.toUpperCase()
+      } else {
+        return item
+      }
+      }).join('')
+      arr.push(odd)
+    return arr
+}
