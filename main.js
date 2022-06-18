@@ -427,22 +427,60 @@ The input will be a lowercase string with no spaces.
 */
 
 function capitalize(s){
-    let arr = []
-    let even = s.split("").map((item,i)=> {
-      if (i % 2 === 0) {
-        return item.toUpperCase()
-      } else {
-        return item
-      }
-      }).join("")
-      arr.push(even)
-    let odd = s.split("").map((item,i)=> {
-      if (i % 2 !== 0) {
-        return item.toUpperCase()
-      } else {
-        return item
-      }
-      }).join('')
-      arr.push(odd)
-    return arr
+    let even = s.split("").map((item,i)=> (i % 2 === 0) ? item.toUpperCase() : item).join("")
+    let odd = s.split("").map((item,i)=> (i % 2 !== 0) ? item.toUpperCase() : item).join('')
+    return [even, odd]
 }
+
+/*
+Complete the function/method so that it returns the url with anything after the anchor (#) removed.
+
+Examples
+"www.codewars.com#about" --> "www.codewars.com"
+"www.codewars.com?page=1" -->"www.codewars.com?page=1"
+*/
+
+let removeUrlAnchor = (url) => url.split("#")[0]
+
+/*
+Your function should multiply the two numbers, and then subtract 1 from the exponent. Then, it has to print out an expression (like 28x^7). "^1" should not be truncated when exponent = 2.
+
+For example:
+derive(7, 8) --> this should output "56x^7" 
+derive(5, 9) --> this should output "45x^8"
+*/
+
+let derive = (coefficient,exponent) => `${coefficient * exponent}x^${exponent-1}`
+
+
+/*
+If　a = 1, b = 2, c = 3 ... z = 26
+Then l + o + v + e = 54
+The input will always be in lowercase and never be empty.
+*/
+
+function wordsToMarks(string){
+    let arr = []
+    for (let i = 0; i < string.length; i++) {
+      arr.push(string.charCodeAt(i))
+    }
+    return arr.map(item => +item - 96).reduce((a,b)=> a+b)
+}
+
+/*
+Multiply each parameter by itself.
+Add them all together.
+Take the square root of the result.
+Divide by two.
+Example
+predictAge(65, 60, 75, 55, 60, 63, 64, 45) === 86
+*/
+
+function predictAge(age1,age2,age3,age4,age5,age6,age7,age8){
+    let sum = (age1*age1) + (age2*age2) + (age3*age3) + (age4*age4) + (age5*age5) + (age6*age6) + (age7*age7) + (age8*age8)
+    return Math.floor(Math.sqrt(sum) / 2)
+}
+
+/*
+
+*/
