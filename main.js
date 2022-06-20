@@ -477,9 +477,39 @@ predictAge(65, 60, 75, 55, 60, 63, 64, 45) === 86
 */
 
 function predictAge(age1,age2,age3,age4,age5,age6,age7,age8){
-    let sum = (age1*age1) + (age2*age2) + (age3*age3) + (age4*age4) + (age5*age5) + (age6*age6) + (age7*age7) + (age8*age8)
-    return Math.floor(Math.sqrt(sum) / 2)
+    let arr = [age1, age2, age3, age4, age5, age6, age7, age8]
+    return Math.floor(Math.sqrt(arr.map(a => a * a).reduce((b,c) => b + c)) / 2)
 }
+
+/*
+Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b.
+
+Note: a and b are not ordered!
+
+Examples (a, b) --> output (explanation)
+(1, 0) --> 1 (1 + 0 = 1)
+(1, 2) --> 3 (1 + 2 = 3)
+(0, 1) --> 1 (0 + 1 = 1)
+(1, 1) --> 1 (1 since both are same)
+(-1, 0) --> -1 (-1 + 0 = -1)
+(-1, 2) --> 2 (-1 + 0 + 1 + 2 = 2)
+*/
+
+const GetSum = (a, b) => {
+    let min = Math.min(a, b),
+        max = Math.max(a, b);
+    return (max - min + 1) * (min + max) / 2;
+}
+
+/*
+Create a function that converts US dollars (USD) to Chinese Yuan (CNY) . The input is the amount of USD as an integer, and the output should be a string that states the amount of Yuan followed by 'Chinese Yuan'
+
+Examples (Input -> Output)
+15  -> '101.25 Chinese Yuan'
+465 -> '3138.75 Chinese Yuan'
+*/
+
+let usdcny = (usd) => `${(usd*6.75).toFixed(2)} Chinese Yuan`
 
 /*
 
