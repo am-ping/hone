@@ -566,3 +566,59 @@ function rowWeights(array){
     array.forEach((item,i) => (i % 2 === 0) ? team1 += item : team2 += item)
     return [team1, team2]
 }
+
+
+/*
+Suzuki is a monk who climbs a large staircase to the monastery as part of a ritual. Some days he climbs more stairs than others depending on the number of students he must train in the morning. He is curious how many stairs might be climbed over the next 20 years and has spent a year marking down his daily progress.
+
+The sum of all the stairs logged in a year will be used for estimating the number he might climb in 20.
+
+20_year_estimate = one_year_total * 20
+
+You will receive the following data structure representing the stairs Suzuki logged in a year. You will have all data for the entire year so regardless of how it is logged the problem should be simple to solve.
+
+stairs = [sunday,monday,tuesday,wednesday,thursday,friday,saturday]
+Make sure your solution takes into account all of the nesting within the stairs array.
+
+Each weekday in the stairs array is an array.
+
+sunday = [6737, 7244, 5776, 9826, 7057, 9247, 5842, 5484, 6543, 5153, 6832...]
+*/
+
+function stairsIn20(s){
+    return 20 * s.reduce((total, item) => total + item.reduce((total, item) => total + item, 0), 0);
+}
+
+/*
+Your function will accept three arguments:
+The first and second argument should be numbers.
+The third argument should represent a sign indicating the operation to perform on these two numbers.
+
+if the variables are not numbers or the sign does not belong to the list above a message "unknown value" must be returned.
+*/
+
+function calculator(a,b,sign){
+    return (sign === "+") ? a + b 
+    : (sign === "-") ? a - b
+    : (sign === "/") ? a / b
+    : (sign === "%") ? a % b
+    : (sign === "*") ? a * b
+    : "unknown value"
+}
+
+
+/*
+In this kata you are required to, given a string, replace every letter with its position in the alphabet.
+
+If anything in the text isn't a letter, ignore it and don't return it.
+
+"a" = 1, "b" = 2, etc.
+
+Example
+alphabetPosition("The sunset sets at twelve o' clock.")
+Should return "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11" ( as a string )
+*/
+
+function alphabetPosition(text) {
+    return text.replace(/[^a-zA-Z]/g,"").split("").map(item => item.toLowerCase().charCodeAt() - 96).join(" ")
+}
