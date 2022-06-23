@@ -221,9 +221,7 @@ function peopleWithAgeDrink(old) {
 Complete the function which converts a binary number (given as a string) to a decimal number.
 */
 
-function binToDec(bin){
-    return parseInt(bin, 2)
-}
+let binToDec = (bin) => parseInt(bin, 2)
 
 /*
 In this kata you will create a function that takes in a list and returns a list with the reverse order.
@@ -522,4 +520,49 @@ Length should be between 4 and 16 characters (both included).
 
 function validateUsr(username) {
     return /^[0-9a-z_]{4,16}$/.test(username)
+}
+
+
+/*
+Your task is to write function findSum.
+
+Upto and including n, this function will return the sum of all multiples of 3 and 5.
+
+For example:
+
+findSum(5) should return 8 (3 + 5)
+
+findSum(10) should return 33 (3 + 5 + 6 + 9 + 10)
+*/
+
+function findSum(n) {
+    let sum = 0
+    for (let i = 3; i <= n; i++) {
+      if (i % 3 === 0 || i % 5 === 0) sum += i
+    }
+    return sum
+}
+
+
+/*
+Scenario
+Several people are standing in a row divided into two teams.
+The first person goes into team 1, the second goes into team 2, the third goes into team 1, and so on.
+
+Task
+Given an array of positive integers (the weights of the people), return a new array/tuple of two integers, where the first one is the total weight of team 1, and the second one is the total weight of team 2.
+Notes
+Array size is at least 1.
+All numbers will be positive.
+
+Input >> Output Examples
+rowWeights([13, 27, 49])  ==>  return (62, 27)
+rowWeights([80])  ==>  return (80, 0)
+*/
+
+function rowWeights(array){
+    let team1 = 0
+    let team2 = 0
+    array.forEach((item,i) => (i % 2 === 0) ? team1 += item : team2 += item)
+    return [team1, team2]
 }
