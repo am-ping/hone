@@ -622,3 +622,41 @@ Should return "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 1
 function alphabetPosition(text) {
     return text.replace(/[^a-zA-Z]/g,"").split("").map(item => item.toLowerCase().charCodeAt() - 96).join(" ")
 }
+
+/*
+Create a function, called randomMovies, that takes in an array of movie strings and returns one of those movies randomly
+
+var rockySeries = ["Rocky", "Rocky II", "Rocky III", "Rocky IV"];
+randomMovies(rockySeries) // => "Rocky"
+*/
+
+function randomMovies(movies){
+    return movies[Math.floor(Math.random() * movies.length)]
+}
+
+
+/*
+Write a function that returns the length of the third side (the hypotenuse - it's the side facing the right angle and not connected to it by either end).
+*/
+
+let pythagorean = (sideA, sideB) => Math.sqrt(sideA*sideA + sideB*sideB)
+
+
+/*
+Create a function that converts British Pounds (GBP) to Swiss Franks (CHF) . The input is the amount of GBP as an integer, and the output should be a string that states the amount of Franks followed by 'Swiss Franks.'
+
+Conversion rate you should use is 1.31 CHF for every 1 GBP. All numbers shold be reounded to the nearest hundreth (e.g. 13.00 NOT 13.0 or 13)
+*/
+
+let gbpchf = (gbp) => `${(gbp * 1.31).toFixed(2)} Swiss Franks`
+
+
+/*
+Implement a function that adds two numbers together and returns their sum in binary as a string. The conversion can be done before, or after the addition.
+
+Examples:(Input1, Input2 --> Output (explanation)))
+1, 1 --> "10" (1 + 1 = 2 in decimal or 10 in binary)
+5, 9 --> "1110" (5 + 9 = 14 in decimal or 1110 in binary)
+*/
+
+let addBinary = (a,b) => (a + b).toString(2)
