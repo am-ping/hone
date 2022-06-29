@@ -660,3 +660,55 @@ Examples:(Input1, Input2 --> Output (explanation)))
 */
 
 let addBinary = (a,b) => (a + b).toString(2)
+
+
+/*
+Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n ( inclusive ).
+Examples
+n = 0  ==> [1]        # [2^0]
+n = 1  ==> [1, 2]     # [2^0, 2^1]
+n = 2  ==> [1, 2, 4]  # [2^0, 2^1, 2^2]
+*/
+
+function powersOfTwo(n){
+    let arr = []
+    for (let i = 0; i <= n; i++) {
+      arr.push(2**i)
+    }
+    return arr
+}
+
+/*
+ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits.
+
+If the function is passed a valid PIN string, return true, else return false.
+
+Examples (Input --> Output)
+"1234"   -->  true
+"12345"  -->  false
+"a234"   -->  false
+*/
+
+function validatePIN (pin) {
+    return /^(\d{4}|\d{6})$/.test(pin)
+}
+
+
+/*
+Take 2 strings s1 and s2 including only letters from ato z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
+
+Examples:
+a = "xyaabbbccccdefww"
+b = "xxxxyyyyabklmopq"
+longest(a, b) -> "abcdefklmopqwxy"
+
+a = "abcdefghijklmnopqrstuvwxyz"
+longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
+*/
+
+let longest = (s1, s2) => [...new Set(s1+s2)].sort().join('')
+
+
+/*
+
+*/
