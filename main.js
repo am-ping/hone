@@ -781,3 +781,34 @@ const tastiest = (recipes) => {
 }
 
 
+/*
+You will be given an array of numbers. Calculate the mean of these numbers, but only if all of them are divisible by three. If there is at least one number not divisible by three, return null.
+
+Example:
+mean3([3,6,6,9,21,3])  // 8
+mean3([3,6,8,9,21,3])  // null
+*/
+
+const mean3 = numbers => {
+    return (numbers.every(item => item % 3 === 0) && numbers.length > 0) ? numbers.reduce((a,b)=> a + b, 0) / numbers.length
+    : null
+}
+
+
+/*
+Rövarspråket ("the Robber") is a Swedish language game. The rules of the game are thus:
+
+Pick any word.
+double every consonant, and then put an "o" between them.
+leave all vowels intact.
+speak the new word.
+And, yes, this really is an actual game ;).
+
+The purpose of this exercise is to create a computerized version that will take any word as an input and return a Rövarspråket'ed word.
+
+Make sure input is sanitized to lowercase and for special characters (i.e. $,#,%,&, etc.). Tests will include converting uppercase to lowercase. Function should return false if numbers are present
+*/
+
+function rovarspraket(text) {
+    return !/\d/.test(text)&&text.toLowerCase().replace(/\W/g,'').replace(/[^aoeui]/g,'$&o$&')
+}
