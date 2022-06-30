@@ -710,5 +710,74 @@ let longest = (s1, s2) => [...new Set(s1+s2)].sort().join('')
 
 
 /*
+espresso = 1 shot
+double espresso = 2 shots
+flat white = 2 shots
+latte = 1 shot
+mocha = 2 shots
+decaf = 0 shot
 
+Challenge:
+
+Create a function that returns the following:
+If Andy has consumed no shots return "You haven't even had coffee today!"
+If Andy has had less than 4 shots return "The doctor won't be worried yet!"
+If Andy has had 4 shots return "You can have 2 more shots then no more!"
+If Andy has had 5 shots return "You can only have an espresso, latte or a decaf now"
+If Andy has had 6 or more shots return "Only decaf for you now!"
 */
+
+const caffeine = (coffee, number) => {
+    const shots = {
+      'espresso': 1,
+      'double espresso': 2,
+      'flat white': 2,
+      'latte': 1,
+      'mocha': 2,
+      'decaf': 0
+    };
+    
+    const consumed = shots[coffee] * number;
+    
+    return consumed < 1 ? "You haven't even had coffee today!" :
+           consumed < 4 ? "The doctor won't be worried yet!" :
+           consumed < 5 ? "You can have 2 more shots then no more!" :
+           consumed < 6 ? "You can only have an espresso, latte or a decaf now" :
+                          "Only decaf for you now!"
+}
+
+
+/*
+In this kata, you have two input numbers, number and upTo.
+
+For example, let's assume number is 3 and upTo is 5,
+Then you need to calculate "3^1 + 3^2 + 3^3 + 3^4 + 3^5"
+So it equals to "3 + 9 + 27 + 81 + 243" and it is "363"
+    
+TASK:
+Calculate the result.
+*/
+
+function powersUp(number, upTo) {
+    let sum = 0
+    for (let i = 1; i <= upTo; i++) {
+      sum += number ** i
+    }
+    return sum
+}
+
+/*
+You will be given an array of objects, each of which contains a key of veg and a value which is an array of vegetables. For example, [{veg: ["carrots","butternut squash"]},{veg: ["sweet potato","courgette"]}].
+
+Your job is to find out which recipe has the most vegetables and is therefore the tastiest.
+
+Return the statement "The recipe at index _ is the tastiest!!!"
+*/
+
+const tastiest = (recipes) => {
+    let arr = recipes.map((item) => item.veg.length)
+    let max = Math.max(...arr)
+    return `The recipe at index ${arr.indexOf(max)} is the tastiest!!!`
+}
+
+
