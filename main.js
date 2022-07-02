@@ -812,3 +812,45 @@ Make sure input is sanitized to lowercase and for special characters (i.e. $,#,%
 function rovarspraket(text) {
     return !/\d/.test(text)&&text.toLowerCase().replace(/\W/g,'').replace(/[^aoeui]/g,'$&o$&')
 }
+
+
+/*
+A number increased by 7 equals 22. Write a function that return A number's value. Return null if initial_value or final_value is not a number and when final_value is less than initial_value.
+*/
+
+function increaseNumber(i, f) {
+    return ( i < f && Number.isFinite(i) && Number.isFinite(f) ) ? f - i : null
+}
+
+
+/*
+All Star Code Challenge #26
+
+All of Raj's once loner friends are now happily in a relationship. Even Sheldon!
+Raj has hired you to manually change his group status to "In a relationship," so he can show it to his friends!
+Create a function called missionImpossible() that takes a Group object as input that changes the "Raj" key, if it exists, to "In a relationship". The, now altered, object should be returned.
+
+var wholeGroup = { Leonard: 'Married',
+  Penny: 'Married',
+  Howard: 'Married',
+  Bernadette: 'Married',
+  Sheldon: 'In a relationship',
+  Amy: 'In a relationship',
+  Raj: 'Single' }
+missionImpossible(wholeGroup);
+// =>
+// { Leonard: 'Married',
+//  Penny: 'Married',
+//  Howard: 'Married',
+//  Bernadette: 'Married',
+//  Sheldon: 'In a relationship',
+//  Amy: 'In a relationship',
+//  Raj: 'In a relationship' }
+Note: If Raj is not part of the input group, he should NOT be added to it.
+*/
+
+function missionImpossible(obj){
+    if (obj.Raj) obj.Raj = "In a relationship"
+    return obj
+}
+
