@@ -854,3 +854,72 @@ function missionImpossible(obj){
     return obj
 }
 
+
+/*
+Aliens have landed on earth. They speak an Alien version of English. So you can communicate with them, write a function which translates an English sentence to the language of the Aliens using these rules:
+
+Double all vowels (a,e,i,o,u)
+Reverse the order of the letters in each word
+All characters must be in lowercase
+*/
+
+function translateToAlienLanguage(str) {
+    return str.toLowerCase().replace(/([aeiou])/g,'$1$1').split` `
+      .map(item=>item.split``.reverse().join``)
+      .join` `
+}
+
+
+/*
+Up till now, my daughter is able to count up to n. However, there is a problem with her counting: she always forgets even numbers. Your task in this kata is to be able to count like her. For convenience let's put the numbers she is able to count in an array. When 0 is passed in, return [].
+
+Example:
+kidoCount(10) => should return [1,3,5,7,9]
+kidoCount(9) => should return [1,3,5,7,9]
+kidoCount(0) => should return []
+*/
+
+function  kidoCount(n){
+    let arr = []
+    for (let i = 1; i <= n; i++) {
+      if (i % 2 !== 0) arr.push(i)
+    }
+    return arr
+}
+
+
+/*
+You will receive an array of numbers representing the amount of money each person deposits with your bank. Each number is a deposit amount except zeroes and ones (0 and 1). A zero (0) means that your bank has been robbed and all money are lost while one (1), on the other hand, indicates that the police has caught the robbers and the money stolen are returned to the bank’s vault.
+
+Your task is to write a program that returns the amount of money left in the bank after the last number in the array.
+
+Note: There will only be a maximum of one robbery and one police action in each array to keep things simple and you don't have to worry about these.
+*/
+
+function bankRobbery(deposits) {
+    if (deposits.includes(0) && deposits.includes(1)) {
+      return deposits.reduce((a,b) => +a + +b, 0) - 1
+    } else if (deposits.includes(0)) {
+      return deposits.join(" ").split(" 0 ")[1].split(" ").reduce((a,b) => +a + +b, 0)
+    } else {
+      return deposits.reduce((a,b) => a + b, 0)
+    }
+}
+
+
+/*
+You are going to be given a list of people. Their properties are name (string), gender (male/female), and age (int). Your job is to return the average age of all females in the list.
+
+#Examples:
+sortArray([{name:'Sarah', gender:'female', age:25}, {name:'Tom', gender:'male', age:18}, {name:'Tim', gender:'male', age:65}, {name:'Kim', gender:'female', age:58}]) 
+should return 41.5
+*/
+
+function averageFemale(list){
+    return list.filter(item=> item.gender === 'female').map(item=>item.age).reduce((a,b,i,arr)=> a+b/arr.length,0)
+}
+
+
+/*
+
+*/
