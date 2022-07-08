@@ -921,5 +921,105 @@ function averageFemale(list){
 
 
 /*
+Given the following html:
+<p>Hello</p>
+Modify the HTML trough CSS so it can print the classic phrase Hello world!
 
+IMPORTANT NOTE: since this code is based on Javascript you should end your CSS code with `
 */
+
+// p::after {
+//     content: ' world!'
+// }
+
+
+
+/*
+Tidy up and de-bug this ugly code. Return the remaining elements in the initial "arr" after removing "howMany" elements from the head. Code must not exceed 4 lines.
+
+function deHead(arr, howMany) {  
+  if (howMany <=> 0) {
+    return arr;
+  } else if (howMany <= 1) {
+    arr.shift(0);
+  } if (howMany <= 2) {
+    arr.shift(0);
+  } else if (howMany <= 3) {
+    arr.shift(0);
+  } if (howMany <= 4) {
+    arr.shift(0);
+  } if (howMany <= 5) {
+    arr.shift(0);
+  } if (howMany <= 6) {
+    arr.shift(0);
+  } if (howMany <= 7) {
+    arr.shift(0);
+  } if (howMany <= 9) {
+    arr.shift(0);
+  } if (howMany <= 9) {
+    arr.shift(0);
+  }
+  return arr;
+}
+*/
+
+function deHead(arr, howMany) {
+    return arr.slice(howMany)
+}
+
+
+/*
+Some cats are normal or wicked, and some of them are the likes of ^(~_~)^ aka holy cats. Can you help me separate the holy cats from the rest? In case there are no holy cats in the group, return an empty array.
+*/
+
+function holycats(input){
+    return input.filter(item => !item.match(/(normal|wicked)/g))
+}
+
+
+/*
+Who remembers back to their time in the schoolyard, when girls would take a flower and tear its petals, saying each of the following phrases each time a petal was torn:
+I love you
+a little
+a lot
+passionately
+madly
+not at all
+When the last petal was torn there were cries of excitement, dreams, surging thoughts and emotions.
+
+Your goal in this kata is to determine which phrase the girls would say for a flower of a given number of petals, where nb_petals > 0.
+*/
+
+let howMuchILoveYou = n => {
+    return ['not at all','I love you','a little','a lot','passionately','madly'][n % 6]
+}
+
+
+/*
+Your job is to return the amount of metal needed to build the train. You are given a string. The string will look something like this:
+str = 'A________'
+Where the 'A' is a type of a locomotive and "_ " is a coach after the train.
+RULES:
+A = 15 pieces of metal
+B = 10 pieces of metal
+C = 7 pieces of metal
+D = 8 pieces of metal
+The coaches take 5 pieces of metal to make(for each).
+
+###EXAMPLE###
+train('A_') = 20, 15 for A type, and 5 for coach
+The value is supposed to be an integer
+Another example:
+train('B__') = 20, 10 for B type, and 10 for coaches(2 coaches, 5 pieces of metal each)
+*/
+
+function train(s) {
+    const metalcosts = {
+      A: 15,
+      B: 10,
+      C: 7,
+      D: 8,
+      _: 5
+    }    
+    return [...s].reduce((acc, cur) => acc + metalcosts[cur], 0)
+}
