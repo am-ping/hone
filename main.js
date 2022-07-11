@@ -1023,3 +1023,20 @@ function train(s) {
     }    
     return [...s].reduce((acc, cur) => acc + metalcosts[cur], 0)
 }
+
+/*
+Given an array of numbers, find the smallest pair sum in the array.
+
+For example
+
+[10,14,2,23,19] should return 12 (i.e. sum of 10,2)
+*/
+
+function smallestPairSum(numbers) {
+    return numbers.sort((a,b)=> a - b).splice(0,2).reduce((a,b) => a + b)
+}
+
+
+/*
+
+*/
