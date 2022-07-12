@@ -1038,5 +1038,11 @@ function smallestPairSum(numbers) {
 
 
 /*
-
+Square
+Given an array of positive integers, find if the sum of the integers in the array is a perfect square. If it is a perfect square, return the square root, otherwise return the sum. If an empty array is passed, return 0.
 */
+
+function squareRoot(numbers){
+    let sum = numbers.reduce((a,b) => a + b, 0)
+    return (Number.isSafeInteger(Math.sqrt(sum))) ? Math.sqrt(sum) : sum
+}
