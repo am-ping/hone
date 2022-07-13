@@ -1046,3 +1046,14 @@ function squareRoot(numbers){
     let sum = numbers.reduce((a,b) => a + b, 0)
     return (Number.isSafeInteger(Math.sqrt(sum))) ? Math.sqrt(sum) : sum
 }
+
+
+/*
+You will be given a string of letters. The string must be returned in alphabetical order.
+*/
+
+function alphabetti(str) {
+    return str.split("").sort((a,b) => {
+      return a.toLowerCase().localeCompare(b.toLowerCase())
+      }).join("")
+}
