@@ -1053,7 +1053,31 @@ You will be given a string of letters. The string must be returned in alphabetic
 */
 
 function alphabetti(str) {
-    return str.split("").sort((a,b) => {
-      return a.toLowerCase().localeCompare(b.toLowerCase())
-      }).join("")
+    return str.split("").sort((a,b) => a.localeCompare(b)).join("")
 }
+
+/*
+Twice of a number(2*a number) added to 4 gives 20. Write a function that return a number's value.
+
+Return null if added_value or total_value is not a string/number.
+*/
+
+function twiceOfANumber(added, total) {
+    return (parseInt(total) - parseInt(added)) / 2 || null
+}
+
+
+/*
+An Armstrong number is a number such that the sum of its digits raised to the third power is equal to the number itself. For example, 371 is an Armstrong number, since 3^3 + 7^3 + 1^3 = 371. It should return false if empty string or string is passed. It should return false for negative numbers as well.
+
+When you pass 0 or 1 , it should return true.
+*/
+
+function armstrong(num){
+    return num === num.toString().split("").map(itm=>itm**3).reduce((a,b)=>a+b, 0)
+}
+
+
+/*
+
+*/
