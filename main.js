@@ -1079,5 +1079,27 @@ function armstrong(num){
 
 
 /*
-
+Convert decimal numbers to binary. Enjoy! No cheating. No toString
 */
+
+function decToBin(d) {
+    if (d === 1) {return '1'}
+    if (d === 0) {return '0'}
+    return decToBin(Math.floor(d / 2)) + (d % 2);
+}
+
+/*
+One day when I was laying on a beach I thought: "How far is it to the visible horizon?" When we go up to the mountains we can see a lot more. Let's make a function to figure out the distance. With this function we can calculate that distance to horizon even on other planets. Amazing ).
+
+Input for function will be:
+h - height of eyes of the observer above sea level (in meters);
+r - radius of the planet (in meters).
+Expected output:
+Distance to the visible horizon (in meters). Tests check results with delta of 0.005 to expected.
+*/
+
+const horizonDistance = (h, r) => {
+    let b = r //side 1
+    let c = h + r //hypotenuse
+    return Math.sqrt(c**2 - b**2) //side 2
+}
