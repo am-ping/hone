@@ -1,4 +1,66 @@
 /*
+Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.
+*/
+
+let even_or_odd = (num) => (num % 2 === 0) ? "Even" : "Odd"
+
+
+/*
+Complete the solution so that it reverses the string passed into it.
+
+'world'  =>  'dlrow'
+'word'   =>  'drow'
+*/
+
+let solution = (str) => str.split("").reverse().join("")
+
+
+/*
+Convert number to reversed array of digits
+Given a random non-negative number, you have to return the digits of this number within an array in reverse order.
+
+Example(Input => Output):
+348597 => [7,9,5,8,4,3]
+0 => [0]
+*/
+
+let digitize = (n) => Array.from(String(n), Number).reverse()
+
+
+/*
+Write function bmi that calculates body mass index (bmi = weight / height2).
+if bmi <= 18.5 return "Underweight"
+if bmi <= 25.0 return "Normal"
+if bmi <= 30.0 return "Overweight"
+if bmi > 30 return "Obese"
+*/
+
+function bmi(weight, height) {
+    let calc = weight/height**2
+    return (calc <= 18.5) ? "Underweight" : (calc <= 25) ? "Normal" : (calc <= 30) ? "Overweight" : "Obese"
+}
+
+/*
+Rock Paper Scissors
+Let's play! You have to return which player won! In case of a draw return Draw!.
+
+Examples(Input1, Input2 --> Output):
+
+"scissors", "paper" --> "Player 1 won!"
+"scissors", "rock" --> "Player 2 won!"
+"paper", "paper" --> "Draw!"
+*/
+
+const rps = (p1, p2) => {
+    let s = 'scissors'
+    let p = 'paper'
+    let r = 'rock'
+    return (p1 === s && p2 === r || p1 === r && p2 === p || p1 === p && p2 === s) ? "Player 2 won!"
+      : (p1 === s && p2 === p || p1 === p && p2 === r || p1 === r && p2 === s) ? "Player 1 won!"
+      : "Draw!"
+}
+
+/*
 Warn the sheep in front of the wolf that it is about to be eaten. Remember that you are standing at the front of the queue which is at the end of the array:
 
 [sheep, sheep, sheep, sheep, sheep, wolf, sheep, sheep]      (YOU ARE HERE- FRONT OF THE QUEUE)
