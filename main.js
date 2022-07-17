@@ -60,6 +60,37 @@ const rps = (p1, p2) => {
       : "Draw!"
 }
 
+
+/*
+Given an array of integers as strings and numbers, return the sum of the array values as if all were numbers. Return your answer as a number.
+*/
+
+let sumMix = (x) => x.reduce((a,b) => a + +b, 0)
+
+
+/*
+In this simple assignment you are given a number and have to make it negative. But maybe the number is already negative?
+Examples
+makeNegative(1);    // return -1
+makeNegative(-5);   // return -5
+makeNegative(0);    // return 0
+makeNegative(0.12); // return -0.12
+*/
+
+let makeNegative = (num) => (num > 0) ? -num : (num === 0) ? 0 : num
+
+
+/*
+Given a string, you have to return a string in which each character (case-sensitive) is repeated once.
+Examples (Input -> Output):
+* "String"      -> "SSttrriinngg"
+* "Hello World" -> "HHeelllloo  WWoorrlldd"
+* "1234!_ "     -> "11223344!!__  "
+*/
+
+let doubleChar = (str) => str.split("").map(itm => itm + itm).join("")
+
+
 /*
 Warn the sheep in front of the wolf that it is about to be eaten. Remember that you are standing at the front of the queue which is at the end of the array:
 
