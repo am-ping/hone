@@ -92,6 +92,41 @@ let doubleChar = (str) => str.split("").map(itm => itm + itm).join("")
 
 
 /*
+Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
+Examples:
+solution('abc', 'bc') // returns true
+solution('abc', 'd') // returns false
+*/
+
+let solution = (str, ending) => str.endsWith(ending)
+
+
+/*
+Write a function that accepts an integer n and a string s as parameters, and returns a string of s repeated exactly n times.
+
+Examples (input -> output)
+6, "I"     -> "IIIIII"
+5, "Hello" -> "HelloHelloHelloHelloHello"
+*/
+
+let repeatStr = (n, s) => s.repeat(n)
+
+
+/*
+Complete the square sum function so that it squares each number passed into it and then sums the results together.
+
+For example, for [1, 2, 2] it should return 9 because 1^2 + 2^2 + 2^2 = 9.
+*/
+
+let squareSum = (nums) => nums.reduce((a,b)=> a + (b ** 2),0)
+
+
+/*
+
+*/
+
+
+/*
 Warn the sheep in front of the wolf that it is about to be eaten. Remember that you are standing at the front of the queue which is at the end of the array:
 
 [sheep, sheep, sheep, sheep, sheep, wolf, sheep, sheep]      (YOU ARE HERE- FRONT OF THE QUEUE)
@@ -117,14 +152,11 @@ function warnTheSheep(queue) {
 
 /*
 Clock shows h hours, m minutes and s seconds after midnight.
-
 Your task is to write a function which returns the time since midnight in milliseconds.
-
 Example:
 h = 0
 m = 1
 s = 1
-
 result = 61000
 */
 
