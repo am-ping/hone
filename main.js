@@ -134,6 +134,15 @@ function betterThanAverage(classPoints, yourPoints) {
 
 
 /*
+When provided with a number between 0-9, return it in words.
+Input :: 1
+Output :: "One".
+*/
+
+switchItUp=n=>["Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"][n]
+
+
+/*
 Warn the sheep in front of the wolf that it is about to be eaten. Remember that you are standing at the front of the queue which is at the end of the array:
 
 [sheep, sheep, sheep, sheep, sheep, wolf, sheep, sheep]      (YOU ARE HERE- FRONT OF THE QUEUE)
