@@ -1291,3 +1291,51 @@ function count (str) {
   });
   return count;
 }
+
+
+/*
+Write a function that takes a single string (word) as argument. The function must return an ordered list containing the indexes of all capital letters in the string.
+
+Example
+Test.assertSimilar( capitals('CodEWaRs'), [0,3,4,6] );
+*/
+
+let capitals = (word) => {
+	return word.split("").map((item, i)=> item === item.toUpperCase() ? i : item).filter(item => typeof item === 'number')
+}
+
+
+/*
+Numbers are lost somewhere in the arrays, help them find each other!
+In this kata you'll be given 2 n-deep arrays with one number somewhere in there (or no number, just empty n-deep array). Write a function, that finds those numbers and return their sum
+
+example
+findAndSumm([[[[[2]]]]], [[[5]]]) / -> 7
+findAndSumm([[[6]]], [[[[[3]]]]]) / -> 9
+*/
+
+const findAndSumm = (arr1, arr2) => +arr1 + +arr2
+
+
+/*
+Maximum Solution Length *** 26 Characters ***
+You will be given an array (a) and a value (x). All you need to do is check whether the provided array contains the value, without using a loop.
+Array can contain numbers or strings. X can be either. Return true if the array contains the value, false if not. With strings you will need to account for case.
+*/
+
+check=(a,x)=>a.includes(x)
+
+
+/*
+Maximum Solution Length *** 34 Characters ***
+You will be given an array (a) and a limit value (limit). You must check that all values in the array are below or equal to the limit value. If they are, return true. Else, return false.
+You can assume all values in the array are numbers.
+Do not use loops. Do not modify input array.
+*/
+
+smallEnough=(a,b)=>!a.some(i=>b<i)
+
+
+/*
+
+*/
