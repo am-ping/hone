@@ -1352,5 +1352,20 @@ function main (input) {
 
 
 /*
+Create a function sortAndSum(), the function should return an array.
+The array should contain letters in the arguments sorted alphabetically with the last index of the aray containing the sum of all of the numbers in the arguments.
+Ex:
+sortAndSum(1, 3, "a", 4, "f", "e", 5, "c");
+returns ["a", "c", "e", "f", 13];
+*/
+
+function sortAndSum(...arr) {
+  let num = arr.filter(item=> typeof item == 'number').reduce((a,b)=> a + b,0)
+  let w = arr.filter(item => typeof item == 'string').sort()
+  w.push(num)
+  return w
+}
+
+/*
 
 */
