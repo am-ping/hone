@@ -1367,5 +1367,14 @@ function sortAndSum(...arr) {
 }
 
 /*
-
+Your task is to create a function (buildPyramidTime) that returns the number of years it will take to build, (strength) + (skill)
+Once you know the total number of years via the (buildPyramidTime) function, you must then figure out and (return) what your bonus will be.
+The terms of the deal with Pharaoh Khufu are as follows:
+If you build the Great Pyramid in more than 15 years, your function will return "receive 3000 gold coins". If you build the Great Pyramid in 10-15 years , your function will return "receive 5000 gold coins". If you build the Great Pyramid in less than 10 years, your function will return "receive 10000 gold coins".
 */
+
+function buildPyramidTime(strength, skill) {
+  return strength + skill > 15 ? "receive 3000 gold coins"
+  : strength + skill >= 10 ? "receive 5000 gold coins"
+  : "receive 10000 gold coins"
+}
