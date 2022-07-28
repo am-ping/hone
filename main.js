@@ -1136,7 +1136,7 @@ let howMuchILoveYou = n => {
 }
 
 
-/*
+/*HARD
 Your job is to return the amount of metal needed to build the train. You are given a string. The string will look something like this:
 str = 'A________'
 Where the 'A' is a type of a locomotive and "_ " is a coach after the train.
@@ -1317,7 +1317,7 @@ findAndSumm([[[6]]], [[[[[3]]]]]) / -> 9
 const findAndSumm = (arr1, arr2) => +arr1 + +arr2
 
 
-/*
+/*HARD
 Maximum Solution Length *** 26 Characters ***
 You will be given an array (a) and a value (x). All you need to do is check whether the provided array contains the value, without using a loop.
 Array can contain numbers or strings. X can be either. Return true if the array contains the value, false if not. With strings you will need to account for case.
@@ -1377,4 +1377,37 @@ function buildPyramidTime(strength, skill) {
   return strength + skill > 15 ? "receive 3000 gold coins"
   : strength + skill >= 10 ? "receive 5000 gold coins"
   : "receive 10000 gold coins"
+}
+
+
+/*HARD
+Sue loves to send words in a cryptic fashion. Can you decode the message that she has sent.
+
+Example cryptic message
+    reVert([13,15,"O",10,9,"L",11,12,"L",5,3,"H",4,6,"E",11], 3)   ===>  'HELLO';
+Clues
+Sue has hidden her word in an array ......which includes:
+Unordered letters - these letters form the word
+Numbers - random numbers as well as not so random numbers
+Not all numbers are random!
+Sue loves times tables and she will specify which table she is using as the second parameter, which means that those numbers in the array are important! Make sure you don't remove them :) - Any other number is a red herring and needs to be removed.
+
+What next
+Once you have removed all the red herrings, the other numbers left in the array correspond to the order that the letters need to be arranged into to make the word - Find a way to decode the message from the numbers left.
+
+Return
+Return the word back as string when you have decoded her message.
+
+Helpful Hints:
+Assume the array will always contain letters and numbers. Sue will not pass you an empty array
+Important numbers will not be repeated in the array
+*/
+
+function reVert(array,timesTable){
+  return array.filter(i => i.big || i%timesTable==0 )
+              .reduce((chars,v,i,arr) => {
+                if( i%2==0 ) chars[v] = arr[i+1];
+                return chars;
+              }, [])
+              .join('');
 }
