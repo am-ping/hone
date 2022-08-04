@@ -1475,5 +1475,55 @@ function factorial(n){
 
 
 /*
-
+In this simple exercise, you will build a program that takes a value, integer , and returns a list of its multiples up to another value, limit . If limit is a multiple of integer, it should be included as well. There will only ever be positive integers passed into the function, not consisting of 0. The limit will always be higher than the base.
+For example, if the parameters passed are (2, 6), the function should return [2, 4, 6] as 2, 4, and 6 are the multiples of 2 up to 6.
+If you can, try writing it in only one line of code.
 */
+
+function findMultiples(integer, limit) {
+  let array = []
+  for (let i = integer; i <= limit; i+=integer) array.push(i)
+  return array
+}
+
+
+/*
+The first input array is the key to the correct answers to an exam, like ["a", "a", "b", "d"]. The second one contains a student's submitted answers.
+The two arrays are not empty and are the same length. Return the score for this array of answers, giving +4 for each correct answer, -1 for each incorrect answer, and +0 for each blank answer, represented as an empty string (in C the space character is used).
+If the score < 0, return 0.
+For example:
+checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]) → 6
+checkExam(["a", "a", "c", "b"], ["a", "a", "b",  ""]) → 7
+checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]) → 16
+checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
+*/
+
+function checkExam(array1, array2) {
+  let score = 0
+  for(let i = 0; i < array1.length; i++) {
+    if (array1[i] === array2[i]) {
+      score += 4
+    } else if (array2[i] == "") {
+      score += 0
+    } else {
+      score--
+    }
+  }
+  return score < 0 ? 0 : score
+}
+
+
+/*
+To be a senior, a member must be at least 55 years old and have a handicap greater than 7. In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
+Input
+Input will consist of a list of pairs. Each pair contains information for a single potential member. Information consists of an integer for the person's age and an integer for the person's handicap.
+Output
+Output will consist of a list of string values (in Haskell and C: Open or Senior) stating whether the respective member is to be placed in the senior or open category.
+Example
+input =  [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
+output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]
+*/
+
+function openOrSenior(data){
+  return data.map(item => item[0] >= 55 && item[1] > 7 ? "Senior" : "Open")
+}
