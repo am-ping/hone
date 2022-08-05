@@ -1613,3 +1613,123 @@ gimme([5, 10, 14]) => 1
 let gimme = (arr) => {
   return arr.indexOf([...arr].sort((a, b) => a - b)[1]);
 }
+
+
+/*
+You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+#Examples:
+Kata.getMiddle("test") should return "es"
+Kata.getMiddle("testing") should return "t"
+Kata.getMiddle("middle") should return "dd"
+Kata.getMiddle("A") should return "A"
+#Input
+A word (string) of length 0 < str < 1000
+#Output
+The middle character(s) of the word represented as a string.
+*/
+
+function getMiddle(s) {
+  return (s.length % 2 === 0) ? s[s.length/2 - 1] + s[s.length/2] : s[Math.floor(s.length/2)]
+}
+
+
+/*
+if x squared is more than 1000, return It's hotter than the sun!!, else, return Help yourself to a honeycomb Yorkie for the glovebox.
+Note: Input will either be a positive integer (or a string for untyped languages).
+*/
+
+function apple(x){
+  return x**2 > 1000 ? "It's hotter than the sun!!" : "Help yourself to a honeycomb Yorkie for the glovebox."
+}
+
+
+/*
+Define a function that removes duplicates from an array of numbers and returns it as a result.
+The order of the sequence has to stay the same.
+*/
+
+function distinct(a) {
+  return [...new Set(a)];
+}
+
+
+/*
+Your task is to sum the differences between consecutive pairs in the array in descending order.
+Example
+[2, 1, 10]  -->  9
+In descending order: [10, 2, 1]
+Sum: (10 - 2) + (2 - 1) = 8 + 1 = 9
+If the array is empty or the array has only one element the result should be 0 (Nothing in Haskell, None in Rust).
+*/
+
+/* alternate solution
+function sumOfDifferences(arr) {
+    return arr.length > 1 ? Math.max(...arr) - Math.min(...arr) : 0;
+}
+*/
+
+function sumOfDifferences(arr) {
+  let sum = 0
+  arr.sort((a,b) => b - a).forEach((item,i) => {
+    if (i <= arr.length - 2) sum += (item - arr[i+1])
+  })
+  return sum
+}
+
+
+/*
+We want to generate a function that computes the series starting from 0 and ending until the given number.
+Example:
+Input:
+> 6
+Output:
+0+1+2+3+4+5+6 = 21
+
+Input:
+> -15
+Output:
+-15<0
+
+Input:
+> 0
+Output:
+0=0
+*/
+
+var SequenceSum = (function() {
+  function SequenceSum() {}
+
+  SequenceSum.showSequence = function(count) {
+    let sum = 0
+    let arr = []
+    if (count === 0) return "0=0"
+    if (count < 0) return `${count}<0`
+    for(let i = 0; i <= count; i++) {
+      arr.push(i)
+      sum += i
+    }
+    return `${arr.join("+")} = ${sum}`
+  };
+
+  return SequenceSum;
+
+})();
+
+
+/*
+Create a class Ball. Ball objects should accept one argument for "ball type" when instantiated.
+If no arguments are given, ball objects should instantiate with a "ball type" of "regular."
+ball1 = new Ball();
+ball2 = new Ball("super");
+ball1.ballType     //=> "regular"
+ball2.ballType     //=> "super"
+*/
+
+let Ball = function(ballType) {
+  this.ballType = ballType || "regular"
+}
+
+
+/*
+
+*/
