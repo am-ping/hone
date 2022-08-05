@@ -1527,3 +1527,89 @@ output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]
 function openOrSenior(data){
   return data.map(item => item[0] >= 55 && item[1] > 7 ? "Senior" : "Open")
 }
+
+
+/*
+An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
+Example: (Input --> Output)
+"Dermatoglyphics" --> true
+"aba" --> false
+"moOse" --> false (ignore letter case)
+*/
+
+function isIsogram(str){
+  return !str.match(/(\w).*\1/i);
+}
+
+
+/*
+Given two arrays a and b write a function comp(a, b) (orcompSame(a, b)) that checks whether the two arrays have the "same" elements, with the same multiplicities (the multiplicity of a member is the number of times it appears). "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
+
+Examples
+Valid arrays
+a = [121, 144, 19, 161, 19, 144, 19, 11]  
+b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
+comp(a, b) returns true because in b 121 is the square of 11, 14641 is the square of 121, 20736 the square of 144, 361 the square of 19, 25921 the square of 161, and so on. It gets obvious if we write b's elements in terms of squares:
+a = [121, 144, 19, 161, 19, 144, 19, 11] 
+b = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19]
+
+Invalid arrays
+If, for example, we change the first number to something else, comp is not returning true anymore:
+a = [121, 144, 19, 161, 19, 144, 19, 11]  
+b = [132, 14641, 20736, 361, 25921, 361, 20736, 361]
+comp(a,b) returns false because in b 132 is not the square of any number of a.
+a = [121, 144, 19, 161, 19, 144, 19, 11]  
+b = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
+comp(a,b) returns false because in b 36100 is not the square of any number of a.
+
+Remarks
+a or b might be [] or {} (all languages except R, Shell).
+a or b might be nil or null or None or nothing (except in C++, COBOL, Crystal, D, Dart, Elixir, Fortran, F#, Haskell, Nim, OCaml, Pascal, Perl, PowerShell, Prolog, PureScript, R, Racket, Rust, Shell, Swift).
+If a or b are nil (or null or None, depending on the language), the problem doesn't make sense so return false.
+*/
+
+function comp(arr1, arr2){
+  if (arr1 === null || arr2 === null) return false
+  arr2 = arr2.map(item => Math.sqrt(item)).sort((a,b) => a - b)
+  arr1 = arr1.sort((a,b) => a - b)
+  return arr2.every((item,i) => arr2[i]===arr1[i])
+}
+
+
+/*
+Your mission:
+Write a function called checkCoupon which verifies that a coupon code is valid and not expired.
+A coupon is no more valid on the day AFTER the expiration date. All dates will be passed as strings in this format: "MONTH DATE, YEAR".
+Examples:
+checkCoupon("123", "123", "July 9, 2015", "July 9, 2015")  ===  true
+checkCoupon("123", "123", "July 9, 2015", "July 2, 2015")  ===  false
+*/
+
+function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
+  return (enteredCode === correctCode && Date.parse(currentDate) <= Date.parse(expirationDate))
+}
+
+
+/*
+When provided with a letter, return its position in the alphabet.
+Input :: "a"
+Ouput :: "Position of alphabet: 1"
+*/
+
+let position = (letter) => `Position of alphabet: ${letter.charCodeAt(0) - 96}`
+
+
+/*
+As a part of this Kata, you need to create a function that when provided with a triplet, returns the index of the numerical element that lies between the other two elements.
+The input to the function will be an array of three distinct numbers (Haskell: a tuple).
+For example:
+gimme([2, 3, 1]) => 0
+2 is the number that fits between 1 and 3 and the index of 2 in the input array is 0.
+Another example (just to make sure it is clear):
+gimme([5, 10, 14]) => 1
+10 is the number that fits between 5 and 14 and the index of 10 in the input array is 1.
+*/
+
+let gimme = (arr) => {
+  return arr.indexOf([...arr].sort((a, b) => a - b)[1]);
+}
