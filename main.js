@@ -1731,5 +1731,29 @@ let Ball = function(ballType) {
 
 
 /*
-
+Remove all exclamation marks from sentence but ensure a exclamation mark at the end of string. For a beginner kata, you can assume that the input data is always a non empty string, no need to verify it.
+Examples
+remove("Hi!") === "Hi!"
+remove("Hi!!!") === "Hi!"
+remove("!Hi") === "Hi!"
+remove("!Hi!") === "Hi!"
+remove("Hi! Hi!") === "Hi Hi!"
+remove("Hi") === "Hi!"
 */
+
+let remove = (str) => str.replace(/!/g,"") + "!"
+
+
+/*
+Find the number with the most digits.
+If two numbers in the argument array have the same number of digits, return the first one in the array.
+*/
+
+/* HARD alternate solution
+let findLongest = (arr) => arr.reduce((a,b) => (`${b}`.length > `${a}`.length) ? b : a)
+*/
+
+function findLongest(arr){
+  let b = Math.max(...arr.map(item => item.toString().length))
+  return arr.find(item => item.toString().length === b)
+}
