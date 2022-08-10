@@ -1286,7 +1286,7 @@ What if the string is empty? Then the result should be empty object literal, {}.
 
 function count (str) {  
   let count = {};
-  str.split('').forEach((item) => {
+  str.split('').forEach(item => {
      count[item] ? count[item]++ : count[item] = 1;
   });
   return count;
@@ -1756,4 +1756,172 @@ let findLongest = (arr) => arr.reduce((a,b) => (`${b}`.length > `${a}`.length) ?
 function findLongest(arr){
   let b = Math.max(...arr.map(item => item.toString().length))
   return arr.find(item => item.toString().length === b)
+}
+
+
+/*
+Clash Royale is a tower rush video game which pits players in games featuring two players in which the objective is to destroy the most opposing towers. Players build card decks in order to play. It's crucial to know the opponent's card deck and the opponent's current hand in order to play good. Let's help those who can't count the cards successfully.
+
+Current Hand Example
+Each deck in Clash Royale has 8 cards, and you can have 4 cards at any time during the game.
+
+After you play any card from your hand => this card goes to the end of the "queue" and goes back to your hand after you play another 4 cards. And so on.
+
+Task:
+Given an array of cards played in a certain order. You need to return the opponent's current hand (4 cards max) in any order.
+If you receive less than 8 cards as an argument => return as many cards as we could possibly know from this play.
+
+getCurrentHand(['Hog Rider','Earthquake','Archer Queen','Giant Skeleton','Fire Spirit','Cannon']) // => ['Hog Rider', 'Earthquake']
+Example:
+
+currentHand([
+  'Hog Rider',
+  'Earthquake',
+  'Archer Queen',
+  'Giant Skeleton',
+  'Fire Spirit',
+  'Cannon',
+  'Skeletons',
+  'Hog Rider',
+  'The Log',
+  'Fire Spirit',
+  'Earthquake',
+  'Giant Skeleton',
+  'Skeletons',
+  'Archer Queen',
+  'Fire Spirit',
+  'Cannon',
+  'Giant Skeleton',
+  'Skeletons',
+]); // => ['Archer Queen', 'Earthquake',  'The Log', 'Hog Rider']
+
+Explanation:
+The current hand definitely can't contain:
+'Fire Spirit', 'Cannon', 'Giant Skeleton', 'Skeletons'
+Because they're the last played cards withing the 4-card range.
+Archer Queen => definitely in the current hand (no Archer Queen in the last 4 cards played)
+Skeletons => not in the current hand (we can see Skeletons in the last 4 cards played)
+*/
+
+function getCurrentHand(arr) {
+  let not = arr.splice(-4)
+  return [...new Set (arr.filter(item => !not.includes(item))) ]
+}
+
+
+/*
+Given a list of digits, return the smallest number that could be formed from these digits, using the digits only once (ignore duplicates).
+Notes:
+Only positive integers will be passed to the function (> 0 ), no negatives or zeros.
+Input >> Output Examples
+minValue ({1, 3, 1})  ==> return (13)
+Explanation:
+(13) is the minimum number could be formed from {1, 3, 1} , Without duplications
+
+minValue({5, 7, 5, 9, 7})  ==> return (579)
+Explanation:
+(579) is the minimum number could be formed from {5, 7, 5, 9, 7} , Without duplications
+*/
+
+let minValue = (values) => +[...new Set(values)].sort((a,b) => a - b).join("")
+
+
+/*
+Given a sequence of numbers, find the largest pair sum in the sequence.
+For example
+[10, 14, 2, 23, 19] -->  42 (= 23 + 19)
+[99, 2, 2, 23, 19]  --> 122 (= 99 + 23)
+Input sequence contains minimum two elements and every element is an integer.
+*/
+
+let largestPairSum = (nums) => nums.sort((a,b) => b - a)[0] + nums[1]
+
+
+/*
+What if we need the length of the words separated by a space to be added at the end of that same word and have it returned as an array?
+Example(Input --> Output)
+"apple ban" --> ["apple 5", "ban 3"]
+"you will win" -->["you 3", "will 4", "win 3"]
+Your task is to write a function that takes a String and returns an Array/list with the length of each word added to each element .
+Note: String will have at least one element; words will always be separated by a space.
+*/
+
+let addLength = (str) => str.split(" ").map(item => `${item} ${item.length}`)
+
+
+/*
+John has invited some friends. His list is:
+s = "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill";
+Could you make a program that
+makes this string uppercase
+gives it sorted in alphabetical order by last name.
+When the last names are the same, sort them by first name. Last name and first name of a guest come in the result between parentheses separated by a comma.
+So the result of function meeting(s) will be:
+"(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
+It can happen that in two distinct families with the same family name two people have the same first name too.
+*/
+
+function meeting(s) {
+  return `(${s.toUpperCase().split(';').map(item => item.split(":").reverse().join(", ")).sort().join(")(")})`
+}
+
+/*
+Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+* url = "http://github.com/carbonfive/raygun" -> domain name = "github"
+* url = "http://www.zombie-bites.com"         -> domain name = "zombie-bites"
+* url = "https://www.cnet.com"                -> domain name = cnet"
+*/
+
+let domainName = (url) => url.replace(/(http:\/\/|https:\/\/|www.)/g, "").split(".")[0]
+
+
+/*
+Given an array of numbers, work out the Nth term of the sequence and return it as a String in the form an + b.
+Input
+All arrays provided will consist of 5 elements
+Every array will be a sequence
+All sequences provided will be linear
+All sequences will start with the first element being n = 1
+Examples
+[1, 3, 5, 7, 9] should return 2n + -1
+[1, 5, 9, 13, 17] should return 4n + -3
+[11, 16, 21, 26, 31] should return 5n + 6
+Note
+When returning the answer, ensure that it is in the form an + b - if b is negative then it should be an + -b and not an - b.
+*/
+
+function nthTermOf(sequence) {
+  let a = sequence[1]-sequence[0]
+  let b = sequence[0] - (a * 1)
+  return `${a}n + ${b}`
+}
+
+
+/*
+Given a string of words, you need to find the highest scoring word.
+Each letter of a word scores points according to its position in the alphabet: a = 1, b = 2, c = 3 etc.
+You need to return the highest scoring word as a string.
+If two words score the same, return the word that appears earliest in the original string.
+All letters will be lowercase and all inputs will be valid.
+*/
+
+function high(x){
+  let tally = x.split(" ").map(item => [...item].reduce((a,b) => a + b.charCodeAt(0) - 96, 0))
+  return x.split(" ")[tally.indexOf(Math.max(...tally))]
+}
+
+
+/*
+Design an algorithm that given an integer n returns an array [a,b] :
+a is obtained by reversing the digits in the n
+b is obtained by reversing the last two digits in a, or a if that reversal doesn't make a larger number than a
+Example :
+largestValue(95659512354) => [45321595659,45321595695]
+largestValue(19659512354) => [45321595691,45321595691]
+*/
+
+function largestValue(number){
+  let a = number.toString().split('').reverse()
+  let b = a.slice(0,-2).join('') + a.slice(-2).reverse().join("")
+  return (+b > +a.join("")) ? [+a.join(""), +b] : [+a.join(""), +a.join("")]
 }
