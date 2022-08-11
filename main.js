@@ -1925,3 +1925,81 @@ function largestValue(number){
   let b = a.slice(0,-2).join('') + a.slice(-2).reverse().join("")
   return (+b > +a.join("")) ? [+a.join(""), +b] : [+a.join(""), +a.join("")]
 }
+
+
+/*
+Write a function named numbers.
+function should return True if all parameters are of the Number type.
+The function should accept any number of parameters.
+Example usage:
+numbers(1, 4, 3, 2, 5); // true
+numbers(1, "a", 3); // false
+numbers(1, 3, NaN); // true
+*/
+
+let numbers = (...p) => p.every(item => typeof item === 'number')
+
+
+/*
+Simple, given a string of words, return the length of the shortest word(s).
+String will never be empty and you do not need to account for different data types.
+*/
+
+let findShort = (s) => Math.min(...s.split(" ").map(item => item.length))
+
+
+/*
+You need to write a function that will format a phone number by a template.
+Task
+You're given number and string.
+If there are more digits than needed, they should be ignored
+if there are less digits than needed, should return Invalid phone number
+Examples
+(79052479075, "+# ### ### ## ##") => "+7 905 247 90 75"
+(79052479075, "+# (###) ### ##-##") => "+7 (905) 247 90-75"
+(79052479075, "+# ### ### ## ##") => "+7 905 247 90 75"
+(81237068908090, "+## ### ### ## ##") => "+81 237 068 90 80"
+(8123706890, "+## ### ### ##-##") => "Invalid phone number"
+(911, "###") => "911"
+(112, "+ () -") => "+ () -"
+*/
+
+/* alternate
+function formatNumber(num, template) {
+  for ( let c of num.toString() ) template = template.replace('#', c)
+  return template.includes('#') && "Invalid phone number" || template
+}
+*/
+
+function formatNumber(num, template) {
+  num = [...""+num] // alternate way of number.toString().split('')
+  return template.replace(/[^#]/g, "").length > num.length ? "Invalid phone number" : template.replace(/#/g, x => num.shift())
+}
+
+
+/*
+Zephland, a high tech modern country, is accepting applications to become Zephlish resident. The immigration office will evaluate an applicant from several aspects:
+• test score of the Zephlish language: range from 0-100, 3% of the score goes to the overall score;
+• test score of Math: range from 0-100, 3% of the score goes to the overall score;
+• criminal history: deduct 3 points if one has committed any crime;
+• investment brought to Zephland: add 2 point if applicant brings over 1 million USD cash into the country;
+• whether you are a programmer: add 2 points if you are a programmer;
+
+Please write a function to check the overall score of an applicant. Return "Welcome to Zephland!", if score is over 6; "Sorry, your application is rejected." if score is 6 or under.
+*/
+
+function immigration(a) {
+  let score = 0
+  score += (a.Zephlish/100) * 3
+  score += (a.Math/100) * 3
+  if (a.crime) score -= 3
+  if (+a.investment.replace('USD','') > 1000000) score += 2
+  if (a.programmer) score += 2
+  
+  return (score > 6) ? "Welcome to Zephland!" : "Sorry, your application is rejected."
+}
+
+
+/*
+
+*/
