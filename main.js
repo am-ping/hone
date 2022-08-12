@@ -2001,5 +2001,71 @@ function immigration(a) {
 
 
 /*
+Mr. Scrooge has a sum of money 'P' that he wants to invest. Before he does, he wants to know how many years 'Y' this sum 'P' has to be kept in the bank in order for it to amount to a desired sum of money 'D'.
+The sum is kept for 'Y' years in the bank where interest 'I' is paid yearly. After paying taxes 'T' for the year the new sum is re-invested.
+Note to Tax: not the invested principal is taxed, but only the year's accrued interest
+Example:
+Let P be the Principal = 1000.00      
+Let I be the Interest Rate = 0.05      
+Let T be the Tax Rate = 0.18      
+Let D be the Desired Sum = 1100.00
+After 1st Year -->
+  P = 1041.00
+After 2nd Year -->
+  P = 1083.86
+After 3rd Year -->
+  P = 1128.30
+Thus Mr. Scrooge has to wait for 3 years for the initial principal to amount to the desired sum.
+
+Your task is to complete the method provided and return the number of years 'Y' as a whole in order for Mr. Scrooge to get the desired sum.
+
+Assumption: Assume that Desired Principal 'D' is always greater than the initial principal. However it is best to take into consideration that if Desired Principal 'D' is equal to Principal 'P' this should return 0 Years.
+*/
+
+function calculateYears(p, i, t, d) {
+  let count = 0
+  while (p < d) {
+    p = (p + (p * i)) - (p * i * t)
+    count++
+  }
+  return (p===d) ? 0 : count
+}
+
+
+/*
+Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+For example (Input --> Output):
+39 --> 3 (because 3*9 = 27, 2*7 = 14, 1*4 = 4 and 4 has only one digit)
+999 --> 4 (because 9*9*9 = 729, 7*2*9 = 126, 1*2*6 = 12, and finally 1*2 = 2)
+4 --> 0 (because 4 is already a one-digit number)
+*/
+
+function persistence(num) {
+  let count = 0
+  while (num.toString().length != 1) {
+    num = num.toString().split('').reduce((a,b) => +a * +b, 1)
+    count++
+  }
+  return count
+}
+
+
+/*
+Complete the solution so that the function will break up camel casing, using a space between words.
+Example
+"camelCasing"  =>  "camel Casing"
+"identifier"   =>  "identifier"
+""             =>  ""
+*/
+
+/* alternate solution
+let solution = (string) => string.replace(/([A-Z])/g, ' $1')
+*/
+
+function solution(str) {
+  return str.split('').map((item,i) => item === item.toUpperCase() ? ` ${item}` : item).join('')
+}
+
+/*
 
 */
