@@ -2067,5 +2067,307 @@ function solution(str) {
 }
 
 /*
+You are given two arrays a1 and a2 of strings. Each string is composed with letters from a to z. Let x be any string in the first array and y be any string in the second array.
+Find max(abs(length(x) − length(y)))
+If a1 and/or a2 are empty return -1.
+Example:
+a1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"]
+a2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]
+mxdiflg(a1, a2) --> 13
+*/
+
+function mxdiflg(a1, a2) {
+  if (a1.length === 0 || a2.length === 0) return -1
+  a1 = a1.map(str => str.length)
+  a2 = a2.map(str => str.length)
+  return Math.max(Math.max(...a1) - Math.min(...a2), Math.max(...a2) - Math.min(...a1))
+}
+
+
+/*
+Count the number of divisors of a positive integer n.
+Random tests go up to n = 500000.
+Examples (input --> output)
+4 --> 3 (1, 2, 4)
+5 --> 2 (1, 5)
+12 --> 6 (1, 2, 3, 4, 6, 12)
+30 --> 8 (1, 2, 3, 5, 6, 10, 15, 30)
+*/
+
+function getDivisorsCnt(n){
+  let arr = []
+  for (let i = 1; i <= n; i++) {
+    if (n % i === 0) arr.push(i)
+  }
+  return arr.length
+}
+
+
+/*
+is_divisible() should tell you whether a wall of a certain length can exactly fit an integer number of pixels of a certain length.
+
+Your function should take two arguments: the size of the wall in millimeters and the size of a pixel in millimeters. It should return True if you can fit an exact number of pixels on the wall, otherwise it should return False. For example is_divisible(4050, 27) should return True, but is_divisible(4066, 27) should return False.
+
+>>> def equals_three(num):
+>>>     return num == 3
+>>> equals_three(5)
+False
+>>> equals_three(3)
+True
+*/
+
+let isDivisible = (w, p) => w % p === 0
+
+
+/*
+You are given a string containing a sequence of character sequences separated by commas.Write a function which returns a new string containing the same character sequences except the first and the last ones but this time separated by spaces.
+If the input string is empty or the removal of the first and last items would cause the resulting string to be empty, return an empty value (represented as a generic value NULL in the examples below).
+
+Examples
+"1,2,3"      =>  "2"
+"1,2,3,4"    =>  "2 3"
+"1,2,3,4,5"  =>  "2 3 4"
+""     =>  NULL
+"1"    =>  NULL
+"1,2"  =>  NULL
+*/
+
+let array = (arr) => arr.split(",").slice(1,-1).join(" ") || null
+
+
+/*
+Implement a function that accepts 3 integer values a, b, c. The function should return true if a triangle can be built with the sides of given length and false in any other case.
+
+(In this case, all triangles must have surface greater than 0 to be accepted).
+*/
+
+let isTriangle = (a,b,c) => (a + b > c && a + c > b && b + c > a)
+
+
+/*
+Return a new array consisting of elements which are multiple of their own index in input array (length > 1).
+
+Some cases:
+[22, -6, 32, 82, 9, 25] =>  [-6, 32, 25]
+
+[68, -1, 1, -7, 10, 10] => [-1, 10]
+
+[-56,-85,72,-26,-14,76,-27,72,35,-21,-67,87,0,21,59,27,-92,68] => [-85, 72, 0, 68]
+*/
+
+let multipleOfIndex = (arr) => arr.filter((item,i) => item % i === 0)
+
+/*
+You get any card as an argument. Your task is to return the suit of this card (in lowercase).
+Our deck (is preloaded):
+('3♣') -> return 'clubs'
+('3♦') -> return 'diamonds'
+('3♥') -> return 'hearts'
+('3♠') -> return 'spades'
+*/
+
+function defineSuit(card) {
+  return card[card.length-1] === '♣' ? 'clubs'
+  : card[card.length-1] === '♦' ? 'diamonds'
+  : card[card.length-1] === '♥' ? 'hearts'
+  : 'spades'
+}
+
+
+/*
+A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).
+Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
+*/
+
+function isPangram(str){
+  return 'abcdefghijklmnopqrstuvwxyz'
+    .split('')
+    .every((item) => str.toLowerCase().includes(item));
+}
+
+
+/*
+A western man is trying to find gold in a river. To do that, he passes a bucket through the river's soil and then checks if it contains any gold. However, he could be more productive if he wrote an algorithm to do the job for him.
+Return true if there is gold and false if not.
+*/
+
+let checkTheBucket = (bucket) => bucket.includes('gold')
+
+
+/*
+Two red beads are placed between every two blue beads. There are N blue beads. After looking at the arrangement below work out the number of red beads.
+b rr b rr b rr b rr b rr b
+@ @@ @ @@ @ @@ @ @@ @ @@ @
+Implement count_red_beads(n) (in PHP count_red_beads($n); in Java, Javascript, TypeScript, C, C++ countRedBeads(n)) so that it returns the number of red beads.
+If there are less than 2 blue beads return 0.
+*/
+
+let countRedBeads = (n) => (n < 2) ? 0 : (n - 1) * 2
+
+
+/*
+The goal of this kata is to create a very simple ASCII encryption and decryption. The encryption algorithm should shift each character's charcode by the character's current index in the string (0-based).
+The input strings will never require to go outside of the ASCII range.
+Example:
+  p | a | s | s | w | o | r | d # Plaintext
++ 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 # Shift (add)
+  p | b | u | v | { | t | x | k # Ciphertext
+The decryption should reverse this:
+  p | b | u | v | { | t | x | k # Ciphertext
+- 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 # Shift (subtract)
+  p | a | s | s | w | o | r | d # Plaintext
+*/
+
+function asciiEncrypt(plain) {
+  return plain.split('').map((item,i) => String.fromCharCode(item.charCodeAt() + i)).join('')
+}
+    
+function asciiDecrypt(cipher) {
+  return cipher.split('').map((item,i) => String.fromCharCode(item.charCodeAt() - i)).join('')
+}
+
+
+/*
+You are given a list of unique integers arr, and two integers a and b. Your task is to find out whether or not a and b appear consecutively in arr, and return a boolean value (True if a and b are consecutive, False otherwise).
+It is guaranteed that a and b are both present in arr.
+*/
+
+function consecutive(arr, a, b) {
+  return Math.abs(arr.indexOf(a) - arr.indexOf(b)) == 1;
+}
+
+
+/*
+Given an array of numbers, return a new array of length number containing the last even numbers from the original array (in the same order). The original array will be not empty and will contain at least "number" even numbers.
+For example:
+([1, 2, 3, 4, 5, 6, 7, 8, 9], 3) => [4, 6, 8]
+([-22, 5, 3, 11, 26, -6, -7, -8, -9, -8, 26], 2) => [-8, 26]
+([6, -25, 3, 7, 5, 5, 7, -3, 23], 1) => [6]
+*/
+
+let evenNumbers = (arr, num) => arr.filter(item => item % 2 === 0).splice(-num)
+
+
+/*
+In this kata, strings represent buildings while whitespaces within those strings represent ghosts.
+Example:
+ghostBusters("Sky scra per") => "Skyscraper"
+If the building contains no ghosts, return the string:
+"You just wanted my autograph didn't you?"
+*/
+
+function ghostBusters(building) {
+  return (building.includes(' ')) ? building.replace(/ /g, '') : "You just wanted my autograph didn't you?"
+}
+
+
+/*
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in. Additionally, if the number is negative, return 0 (for languages that do have them).
+Note: If the number is a multiple of both 3 and 5, only count it once.
+*/
+
+function solution(num) {
+  let sum = 0
+  for (let i = 1; i < num; i++) {
+    if (i % 3 === 0 || i % 5 === 0) sum += i
+  }
+  return sum
+}
+
+
+/*
+Write a method, that will get an integer array as parameter and will process every number from this array.
+Return a new array with processing every number of the input-array like this:
+If the number has an integer square root, take this, otherwise square the number.
+Example
+[4,3,9,7,2,1] -> [2,9,3,49,4,1]
+*/
+
+function squareOrSquareRoot(arr) {
+  return arr.map((item) => Math.sqrt(item) % 1 === 0 ? Math.sqrt(item) : item * item)
+}
+
+
+/*
+In this kata you get the start number and the end number of a region and should return the count of all numbers except numbers with a 5 in it. The start and the end number are both inclusive!
+Examples:
+1,9 -> 1,2,3,4,6,7,8,9 -> Result 8
+4,17 -> 4,6,7,8,9,10,11,12,13,14,16,17 -> Result 12
+*/
+
+function dontGiveMeFive(start, end){
+  let count = 0
+  for (let i = start; i <= end; i++) {
+    if (!i.toString().includes(5)) count++
+  }
+  return count
+}
+
+
+/*
+For this game of BINGO, you will receive a single array of 10 numbers from 1 to 26 as an input. Duplicate numbers within the array are possible.
+Each number corresponds to their alphabetical order letter (e.g. 1 = A. 2 = B, etc). Write a function where you will win the game if your numbers can spell "BINGO". They do not need to be in the right order in the input array. Your outputs should be "WIN" or "LOSE" respectively.
+*/
+
+let bingo = arr => [2,7,9,14,15].every(e => arr.includes(e)) ? 'WIN' : 'LOSE'
+
+
+/*
+write me a function stringy that takes a size and returns a string of alternating '1s' and '0s'.
+the string should start with a 1.
+a string with size 6 should return :'101010'.
+with size 4 should return : '1010'.
+with size 12 should return : '101010101010'.
+The size will always be positive and will only use whole numbers.
+*/
+
+function stringy(size) {
+  let str = ''
+  for (let i = 1; i <= size; i++) str += i % 2
+  return str
+}
+
+
+/*
+A Narcissistic Number is a number of length l in which the sum of its digits to the power of l is equal to the original number. If this seems confusing, refer to the example below.
+Ex: 153, where l = 3 ( the number of digits in 153 )
+13 + 53 + 33 = 153
+Write a function that, given n, returns whether or not n is a Narcissistic Number.
+*/
+
+function isNarcissistic(n) {
+  let l = n.toString().length
+  return n.toString().split('').reduce((a,b) => a + (b ** l), 0) == n
+}
+
+
+/*
+In this Kata, you will be given a string and your task will be to return a list of ints detailing the count of uppercase letters, lowercase, numbers and special characters, as follows.
+Solve("*'&ABCDabcde12345") = [4,5,5,3]. 
+--the order is: uppercase letters, lowercase, numbers and special characters.
+*/
+
+let solve = (str) => [/[A-Z]/, /[a-z]/, /\d/, /\W|_/].map(rgx => str.split(rgx).length - 1)
+
+
+/*
+Write a function toWeirdCase (weirdcase in Ruby) that accepts a string, and returns the same string with all even indexed characters in each word upper cased, and all odd indexed characters in each word lower cased. The indexing just explained is zero based, so the zero-ith index is even, therefore that character should be upper cased and you need to start over for each word.
+The passed in string will only consist of alphabetical characters and spaces(' '). Spaces will only be present if there are multiple words. Words will be separated by a single space(' ').
+Examples:
+toWeirdCase( "String" );//=> returns "StRiNg"
+toWeirdCase( "Weird string case" );//=> returns "WeIrD StRiNg CaSe"
+*/
+
+function toWeirdCase(str){
+  return str.split(' ')
+    .map((item,i) => item.split('')
+         .map((item,i) => i % 2 === 0 ? item.toUpperCase() : item)
+         .join(''))
+    .join(' ')
+}
+
+
+/*
 
 */
