@@ -2361,7 +2361,7 @@ toWeirdCase( "Weird string case" );//=> returns "WeIrD StRiNg CaSe"
 
 function toWeirdCase(str){
   return str.split(' ')
-    .map((item,i) => item.split('')
+    .map(item => item.split('')
          .map((item,i) => i % 2 === 0 ? item.toUpperCase() : item)
          .join(''))
     .join(' ')
@@ -2369,5 +2369,218 @@ function toWeirdCase(str){
 
 
 /*
-
+Write a function that will check if two given characters are the same case.
+If either of the characters is not a letter, return -1
+If both characters are the same case, return 1
+If both characters are letters, but not the same case, return 0
+Examples
+'a' and 'g' returns 1
+'A' and 'C' returns 1
+'b' and 'G' returns 0
+'B' and 'g' returns 0
+'0' and '?' returns -1
 */
+
+function sameCase(a, b){
+  return (/\W|_|\d/.test(a) || /\W|_|\d/.test(b)) ? -1
+  : (/[A-Z]/.test(a) && /[A-Z]/.test(b)) || (/[a-z]/.test(a) && /[a-z]/.test(b)) ? 1
+  : 0
+}
+
+
+/*
+We want to know the index of the vowels in a given word, for example, there are two vowels in the word super (the second and fourth letters).
+So given a string "super", we should return a list of [2, 4].
+Some examples:
+Mmmm  => []
+Super => [2,4]
+Apple => [1,5]
+YoMama -> [1,2,4,6]
+NOTES
+Vowels in this context refers to: a e i o u y (including upper case)
+This is indexed from [1..n] (not zero indexed!)
+*/
+
+function vowelIndices(word){
+  return word.split('').map((item,i) => /[aeiouy]/i.test(item) ? i+1 : '').filter(item => /\d/.test(item))
+}
+
+
+/*
+Using n as a parameter in the function pattern, where n>0, complete the codes to get the pattern (take the help of examples):
+Note: There is no newline in the end (after the pattern ends)
+Examples
+pattern(3) should return "1\n1*2\n1**3", e.g. the following:
+1
+1*2
+1**3
+pattern(10): should return the following:
+1
+1*2
+1**3
+1***4
+1****5
+1*****6
+1******7
+1*******8
+1********9
+1*********10
+*/
+
+function pattern(n){
+  let ladder = '1'
+  let stars = ''
+  for (let i = 1; i < n; i++) {
+    ladder += `\n${1}${stars += '*'}${i+1}`
+  }
+  return ladder
+}
+
+/*
+Your function should:
+Capitalise the first letter of the first word.
+Add a period (.) to the end of the sentence.
+Join the words into a complete string, with spaces.
+Do no other manipulation on the words.
+Here are a few examples of what your function should do:
+Input	Output
+["i", "am", "an", "AI"]	"I am an AI."
+["FIELDS","of","CORN","are","to","be","sown"]	"FIELDS of CORN are to be sown."
+["i'm","afraid","I","can't","let","you","do","that"]	"I'm afraid I can't let you do that."
+*/
+
+let sentencify = (words) => words[0][0].toUpperCase() + words.join(' ').slice(1) + '.'
+
+
+/*
+Every book has n pages with page numbers 1 to n. The summary is made by adding up the number of digits of all page numbers.
+Task: Given the summary, find the number of pages n the book has.
+Example
+If the input is summary=25, then the output must be n=17: The numbers 1 to 17 have 25 digits in total: 1234567891011121314151617.
+Be aware that you'll get enormous books having up to 100.000 pages.
+All inputs will be valid.
+*/
+
+function amountOfPages(summary){
+  let str = ''
+  let num = 0
+  for (let i = 1; str.length < summary; i++) {
+    str += i
+    num++
+  }
+  return num
+}
+
+
+/*
+Given a string, swap the case for each of the letters.
+Examples
+""           -->   ""
+"CodeWars"   -->   "cODEwARS"
+"abc"        -->   "ABC"
+"ABC"        -->   "abc"
+"123235"     -->   "123235"
+*/
+
+function swap(str){
+  return str.split('').map(item => item == item.toUpperCase() ? item.toLowerCase() : item.toUpperCase()).join('')
+}
+
+
+/*
+Create a function named divisors/Divisors that takes an integer n > 1 and returns an array with all of the integer's divisors(except for 1 and the number itself), from smallest to largest. If the number is prime return the string '(integer) is prime' (null in C#) (use Either String a in Haskell and Result<Vec<u32>, String> in Rust).
+Example:
+divisors(12); // should return [2,3,4,6]
+divisors(25); // should return [5]
+divisors(13); // should return "13 is prime"
+*/
+
+function divisors(int) {
+  let arr = []
+  for (let i = 2; i < int; i++) {
+    if (int % i === 0) arr.push(i)
+  }
+  return !arr[0] ? `${int} is prime` : arr
+}
+
+/*
+Your task is to remove all consecutive duplicate words from a string, leaving only first words entries. For example:
+"alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"
+--> "alpha beta gamma delta alpha beta gamma delta"
+*/
+
+let removeConsecutiveDuplicates = s => s.split(' ').filter((item,i,a) => item != a[i+1]).join(' ')
+
+
+/*
+In its most basic form a spoonerism is a two word phrase in which only the first letters of each word are swapped:
+"not picking" --> "pot nicking"
+Your task is to create a function that takes a string of two words, separated by a space: words and returns a spoonerism of those words in a string
+*/
+
+function spoonerize(words) {
+  words = words.split(' ')
+  return `${words[1][0]}${words[0].slice(1)} ${words[0][0]}${words[1].slice(1)}`
+}
+
+/*
+In this kata you need to check the provided array (x) for good ideas 'good' and bad ideas 'bad'. If there are one or two good ideas, return 'Publish!', if there are more than 2 return 'I smell a series!'. If there are no good ideas, as is often the case, return 'Fail!'.
+*/
+
+function well(x){
+  x = x.filter(item => item == 'good').length
+  return (x === 0) ? "Fail!" : (x < 3) ? "Publish!" : "I smell a series!"
+}
+
+/*
+Given a string made up of letters a, b, and/or c, switch the position of letters a and b (change a to b and vice versa). Leave any incidence of c untouched.
+Example:
+'acb' --> 'bca'
+'aabacbaa' --> 'bbabcabb'
+*/
+
+let switcheroo = x => x.replace(/[ab]/g, x => x == "a" ? "b" : "a")
+
+
+/*
+When provided with a String, capitalize all vowels
+For example:
+Input : "Hello World!"
+Output : "HEllO WOrld!"
+Note: Y is not a vowel in this kata.
+*/
+
+let swap = (str) => str.replace(/[aeiou]/g, v => v.toUpperCase())
+
+
+/*
+Given a positive integer n: 0 < n < 1e6, remove the last digit until you're left with a number that is a multiple of three.
+Return n if the input is already a multiple of three, and if no such number exists, return null, a similar empty value, or -1.
+Examples
+1      => null
+25     => null
+36     => 36
+1244   => 12
+952406 => 9
+*/
+
+const prevMultOfThree = n => {
+  n = n.toString()
+  for (let i = n.length; n % 3 !== 0; i--) {
+    n = n.slice(0,i)
+  }
+  return n == 0 ? null : +n
+}
+
+
+/*
+Remove the duplicates from a list of integers, keeping the last ( rightmost ) occurrence of each element.
+Example:
+For input: [3, 4, 4, 3, 6, 3]
+remove the 3 at index 0
+remove the 4 at index 1
+remove the 3 at index 3
+Expected output: [4, 6, 3]
+*/
+
+let solve = arr => [...new Set(arr.reverse())].reverse()
