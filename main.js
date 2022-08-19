@@ -2672,5 +2672,352 @@ let doubleEveryOther = a => a.map((item,i) => i % 2 !== 0 ? item * 2 : item)
 
 
 /*
-
+Write function toInitials returs initials for a given person name. E.g: "Bill Gates" -> "B. G."
+Note: initials should be separated with a space.
 */
+
+let toInitials = (name) => name.split(' ').map(item => item[0][0]).join('. ') + '.'
+
+
+/*
+Digital root is the recursive sum of all the digits in a number.
+Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
+Examples
+    16  -->  1 + 6 = 7
+   942  -->  9 + 4 + 2 = 15  -->  1 + 5 = 6
+132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6
+493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2
+*/
+
+/* HARD alternate solution
+let digitalRoot = (n) => (n - 1) % 9 + 1
+*/
+
+function digitalRoot(n) {
+  do {
+    n = n.toString().split('').reduce((a,b) => a + +b, 0)
+  } while(n.toString().length > 1)
+  return n
+}
+
+/*
+Write a program to determine if the two given numbers are coprime. A pair of numbers are coprime if their greatest shared factor is 1.
+The inputs will always be two positive integers between 2 and 99.
+Examples
+20 and 27:
+Factors of 20: 1, 2, 4, 5, 10, 20
+Factors of 27: 1, 3, 9, 27
+Greatest shared factor: 1
+Result: 20 and 27 are coprime
+12 and 39:
+Factors of 12: 1, 2, 3, 4, 6, 12
+Factors of 39: 1, 3, 13, 39
+Greatest shared factor: 3
+Result: 12 and 39 are not coprimes
+*/
+
+/* HARD Eculids's algorithm alternate solution
+function isCoprime(x, y) {
+  if (!y) {  
+    return x
+  }  
+  return isCoprime(y, x % y) == 1
+}
+*/
+
+
+function isCoprime(x, y) {
+  let arr1 = []; let arr2 = []; let arr3 = []
+  for (let i = 1; i <= x; i++) {
+    if (x % i === 0) arr1.push(i)
+  }
+  for (let i = 1; i <= y; i++) {
+    if (y % i === 0) arr2.push(i)
+  }
+  arr1.forEach((item,i) => arr2.includes(item) ? arr3.push(item) : item)
+  return arr3.length == 1
+}
+
+
+/*
+You will be given two strings: lamps and drone. lamps represents a row of lamps, currently off, each represented by x. When these lamps are on, they should be represented by o.
+The drone string represents the position of the drone T (any better suggestion for character??) and its flight path up until this point =. The drone always flies left to right, and always begins at the start of the row of lamps. Anywhere the drone has flown, including its current position, will result in the lamp at that position switching on.
+flyBy('xxxxxx', '====T') ===> 'ooooox'
+*/
+
+let flyBy = (lamps, drone) => [...lamps].fill(`o`, 0, drone.length).join(``)
+
+
+/*
+Given a string showing either flat road (_) or bumps (n). If you are able to reach home safely by encountering 15 bumps or less, return Woohoo!, otherwise return Car Dead
+*/
+
+let bump = (x) => x.replace(/_/g,"").length <= 15 ? "Woohoo!" : "Car Dead"
+
+
+/*
+Some really funny web dev gave you a sequence of numbers from his API response as an sequence of strings!
+You need to cast the whole array to the correct type.
+Create the function that takes as a parameter a sequence of numbers represented as strings and outputs a sequence of numbers.
+ie:["1", "2", "3"] to [1, 2, 3]
+Note that you can receive floats as well.
+*/
+
+let toNumberArray = (arr) => arr.map(item => +item)
+
+
+/*
+Write a function that accepts two integers and returns the remainder of dividing the larger value by the smaller value.
+Division by zero should return NaN.
+Examples:
+n = 17
+m = 5
+result = 2 (remainder of `17 / 5`)
+n = 13
+m = 72
+result = 7 (remainder of `72 / 13`)
+n = 0
+m = -1
+result = 0 (remainder of `0 / -1`)
+n = 0
+m = 1
+result - division by zero (refer to the specifications on how to handle this in your language)
+*/
+
+let remainder = (n, m) => n > m ? n % m : m % n
+
+
+/*
+For this Kata you will be given an array of numbers and another number n. You have to find the sum of the n largest numbers of the array and the product of the n smallest numbers of the array, and compare the two.
+If the sum of the n largest numbers is higher, return "sum"
+If the product of the n smallest numbers is higher, return "product"
+If the 2 values are equal, return "same"
+Note The array will never be empty and n will always be smaller than the length of the array.
+Example
+sumOrProduct([10, 41, 8, 16, 20, 36, 9, 13, 20], 3) // => "product"
+*/
+
+function sumOrProduct(arr, n) {
+  arr = arr.sort((a,b) => a - b)
+  let sum = arr.slice(-n).reduce((a,b) => a + b, 0)
+  let product = arr.slice(0,n).reduce((a,b) => a * b, 1)
+  return sum > product ? "sum" : sum == product ? 'same' : 'product'
+}
+
+
+/*
+Write a function that combines two arrays by alternatingly taking elements from each array in turn.
+Examples:
+[a, b, c, d, e], [1, 2, 3, 4, 5] becomes  [a, 1, b, 2, c, 3, d, 4, e, 5]
+[1, 2, 3], [a, b, c, d, e, f] becomes [1, a, 2, b, 3, c, d, e, f]
+Points:
+The arrays may be of different lengths, with at least one character/digit.
+One array will be of string characters (in lower case, a-z), a second of integers (all positive starting at 1).
+*/
+
+function mergeArrays(a, b) {
+  return a.map((item,i) => a[i] && b[i] ? `${a[i]} ${b[i]}` : !a[i] ? `${b[i]}` : `${a[i]}`)
+    .join(' ').split(" ").map(item => /\d/.test(item) ? +item : item)
+}
+
+
+/*
+Write a function that combines two arrays by alternatingly taking elements from each array in turn.
+Examples:
+[a, b, c, d, e], [1, 2, 3, 4, 5] becomes  [a, 1, b, 2, c, 3, d, 4, e, 5]
+[1, 2, 3], [a, b, c, d, e, f] becomes [1, a, 2, b, 3, c, d, e, f]
+Points:
+The arrays may be of different lengths, with at least one character/digit.
+One array will be of string characters (in lower case, a-z), a second of integers (all positive starting at 1).
+*/
+
+function mergeArrays(a, b) {
+  let max = Math.max(a.length, b.length)
+  let arr = []
+  for (let i = 0; i < max; i++) {
+    a[i] && b[i] ? arr.push(a[i], b[i]) : !a[i] ? arr.push(b[i]) : arr.push(a[i])
+  }
+  return arr
+}
+
+
+/*
+Return the Nth Even Number
+Example(Input --> Output)
+1 --> 0 (the first even number is 0)
+3 --> 4 (the 3rd even number is 4 (0, 2, 4))
+100 --> 198
+1298734 --> 2597466
+The input will not be 0.
+*/
+
+let nthEven = n => n * 2 - 2
+
+
+/*
+Return the number of times in a signal, represented as an array of numbers, that the value crosses 0. Zero is neither negative nor positive, but [1,0,-1] does constitute a crossing. If the input array contains a NaN, you should return -1.
+Example
+zcr([1,2,1,-1,-2,-1]) // returns 1
+zcr([1,-1,1,-1,1,-1]) // returns 5
+*/
+
+function zcr(arr) {
+  arr = arr.filter(item => item !== 0)
+  let tally = 0
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < 0 && arr[i+1] > 0 || (arr[i] > 0 && arr[i+1] < 0)) tally++
+  }
+  return (arr.includes(NaN)) ? -1 : tally
+}
+
+/*
+Imagine you start on the 5th floor of a building, then travel down to the 2nd floor, then back up to the 8th floor. You have travelled a total of 3 + 6 = 9 floors of distance.
+Given an array representing a series of floors you must reach by elevator, return an integer representing the total distance travelled for visiting each floor in the array in order.
+// simple examples
+elevatorDistance([5,2,8]) = 9
+elevatorDistance([1,2,3]) = 2
+elevatorDistance([7,1,7,1]) = 18
+// if two consecutive floors are the same,
+//distance travelled between them is 0
+elevatorDistance([3,3]) = 0
+Array will always contain at least 2 floors. Random tests will contain 2-20 elements in array, and floor values between 0 and 30.
+*/
+
+function elevatorDistance(arr) {
+  let tally = 0
+  for (let i = 0; i < arr.length - 1; i++) {
+    tally += Math.abs(arr[i] - arr[i+1])
+  }
+  return tally
+}
+
+
+/*
+Given an array of numbers, check if any of the numbers are the character codes for lower case vowels (a, e, i, o, u).
+If they are, change the array value to a string of that vowel.
+Return the resulting array.
+*/
+
+let isVow = a => a.map(item => /97|101|105|111|117/.test(item) ? String.fromCharCode(item) : item)
+
+
+/*
+Complete the function which takes two arguments and returns all numbers which are divisible by the given divisor. First argument is an array of numbers and the second is the divisor.
+Example(Input1, Input2 --> Output)
+[1, 2, 3, 4, 5, 6], 2 --> [2, 4, 6]
+*/
+
+let divisibleBy = (num, divisor) => num.filter(item => item % divisor === 0)
+
+
+/*
+Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+It should remove all values from list a, which are present in list b keeping their order.
+arrayDiff([1,2],[1]) == [2]
+If a value is present in b, all of its occurrences must be removed from the other:
+arrayDiff([1,2,2,2,3],[2]) == [1,3]
+*/
+
+let arrayDiff = (a, b) => a.filter(item => !b.includes(item))
+
+/*
+Note: anagrams are case insensitive
+Complete the function to return true if the two arguments given are anagrams of each other; return false otherwise.
+Examples
+"foefet" is an anagram of "toffee"
+"Buckethead" is an anagram of "DeathCubeK"
+*/
+
+function isAnagram(test, original){
+  test = test.toLowerCase().split('').sort().join('')
+  original = original.toLowerCase().split('').sort().join('')
+  return test === original
+}
+
+
+/*
+Use the super secret characters in the superSecretChars variable to replace the matching characters in your totally insecure password and make it un-hackable.
+eg. replace all 'a's with '@'s. Make sure you get the upper case characters too just in case the user wants to SHOUT their password at you.
+*/
+
+/* alternate
+var chars = {a: '@', s: '$', o: 0, h: 5, x: '*'};
+function createSSP(p){
+  return p.replace(/[asohx]/gi, (m) => chars[m.toLowerCase()])
+}
+*/
+
+var superSecretChars = [['a', '@'],['s', '$'],['o', '0'], ['h', '5'], ['x', '*']];
+function createSSP(p){
+  return p.replace(/a/gi, '@').replace(/s/gi, '$').replace(/o/gi, '0').replace(/h/gi, '5').replace(/x/gi, '*')
+}
+
+
+/*
+Return an output string that translates an input string s/$s by replacing each character in s/$s with a number representing the number of times that character occurs in s/$s and separating each number with the character(s) sep/$sep.
+freq_seq("hello world", "-"); // => "1-1-3-3-2-1-1-2-1-3-1"
+freq_seq("19999999", ":"); // => "1:7:7:7:7:7:7:7"
+freq_seq("^^^**$", "x"); // => "3x3x3x2x2x1"
+*/
+
+function freqSeq(str, sep) {
+  return str.split('').map((item,i,arr) => arr.filter(a => item == a).length).join(sep)
+}
+
+
+/*
+Write a function that checks whether all elements in an array are square numbers. The function should be able to take any number of array elements.
+Your function should return true if all elements in the array are square numbers and false if not. An empty array should return undefined. You can assume that all array elements will be positive integers.
+Examples:
+isSquare([1, 4, 9, 16]) --> true
+isSquare([3, 4, 7, 9]) --> false
+isSquare([]) --> undefined
+*/
+
+let isSquare = arr => !arr[0] ? arr[0] : arr.every(item => Number.isInteger(Math.sqrt(item)))
+
+
+/*
+The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+Examples
+"din"      =>  "((("
+"recede"   =>  "()()()"
+"Success"  =>  ")())())"
+"(( @"     =>  "))((" 
+Notes
+Assertion messages may be unclear about what they display in some languages. If you read "...It Should encode XXX", the "XXX" is the expected result, not the input!
+*/
+
+function duplicateEncode(str){
+  return str.toLowerCase().split('')
+    .map((item,i,arr) => arr.filter(a => item == a).length == 1 ? '(' : ')').join('')
+}
+
+
+/*
+Given a string of digits confirm whether the sum of all the individual even digits are greater than the sum of all the indiviudal odd digits. Always a string of numbers will be given.
+If the sum of even numbers is greater than the odd numbers return: "Even is greater than Odd"
+If the sum of odd numbers is greater than the sum of even numbers return: "Odd is greater than Even"
+If the total of both even and odd numbers are identical return: "Even and Odd are the same"
+*/
+
+function evenOrOdd(str) {
+  let e = str.split('').filter(item => +item % 2 === 0).reduce((a,b) => a + +b, 0)
+  let o = str.split('').filter(item => +item % 2 !== 0).reduce((a,b) => a + +b, 0)
+  return e > o ? 'Even is greater than Odd' : e < o ? 'Odd is greater than Even' : 'Even and Odd are the same'
+}
+
+
+/*
+You will be given a string with sets of characters, (i.e. words), seperated by between one and three spaces (inclusive).
+Looking at the first letter of each word (case insensitive-"A" and "a" should be treated the same), you need to determine whether it falls into the positive/first half of the alphabet ("a"-"m") or the negative/second half ("n"-"z").
+Return True/true if there are more (or equal) positive words than negative words, False/false otherwise.
+"A big brown fox caught a bad rabbit" => True/true
+"Xylophones can obtain Xenon." => False/false
+*/
+
+function connotation(str) {
+  let p = str.match(/\b[a-m]/ig) || []
+  let n = str.match(/\b[n-z]/ig) || []
+  return p.length >= n.length
+}
