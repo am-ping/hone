@@ -2584,3 +2584,93 @@ Expected output: [4, 6, 3]
 */
 
 let solve = arr => [...new Set(arr.reverse())].reverse()
+
+
+/*
+Given two arrays of integers m and n, test if they contain at least one identical element. Return true if they do; false if not.
+Your code must handle any value within the range of a 32-bit integer, and must be capable of handling either array being empty (which is a false result, as there are no duplicated elements).
+*/
+
+let duplicateElements = (m, n) => m.some(item => n.includes(item))
+
+
+/*
+Write function alternateCase which switch every letter in string from upper to lower and from lower to upper. E.g: Hello World -> hELLO wORLD
+*/
+
+function alternateCase(str) {
+  return str.replace(/\w/g,s => s == s.toUpperCase() ? s.toLowerCase() : s.toUpperCase())
+}
+
+/*
+Given an input of an array of digits, return the array with each digit incremented by its position in the array: the first digit will be incremented by 1, the second digit by 2, etc. Make sure to start counting your positions from 1 ( and not 0 ).
+Your result can only contain single digit numbers, so if adding a digit with its position gives you a multiple-digit number, only the last digit of the number should be returned.
+Notes:
+return an empty array if your array is empty
+arrays will only contain numbers so don't worry about checking that
+Examples:
+[1, 2, 3]  -->  [2, 4, 6]   #  [1+1, 2+2, 3+3]
+[4, 6, 9, 1, 3]  -->  [5, 8, 2, 5, 8]  #  [4+1, 6+2, 9+3, 1+4, 3+5]
+                                       #  9+3 = 12  -->  2
+*/
+
+let incrementer = (nums) => nums.map((item,i) => (item + i + 1) % 10)
+
+
+/*
+The median is the middle number of a sorted list of numbers. If the list is of even length, the 2 middle values are averaged.
+Write a function that takes an array of integers as an argument and returns the median of those integers.
+Notes:
+The sorting step is vital.
+Input arrays are non-empty.
+Examples
+Median of [33,99,100,30,29,50] is 41.5.
+Median of [3,2,1] is 2.
+*/
+
+function median(arr) {
+  arr = arr.sort((a,b) => a - b)
+  let l = arr.length
+  return l % 2 == 0 ? (arr[l/2] + arr[l/2 - 1]) / 2: arr[Math.floor(l/2)]
+}
+
+/*
+Create a function that takes one positive three digit integer and rearranges its digits to get the maximum possible number. Assume that the argument is an integer.
+Return -1 if the argument is not valid
+Return null (nil for Ruby, nothing for Julia) if the argument is not valid.
+maxRedigit(123); // returns 321
+*/
+
+function maxRedigit(num) {
+  return num.toString().length == 3 ? +num.toString().split('').sort((a,b) => b - a).join('') : null
+}
+
+
+/*
+You have to write a function printer_error which given a string will return the error rate of the printer as a string representing a rational whose numerator is the number of errors (letters that aren't a-m) and the denominator the length of the control string. Don't reduce this fraction to a simpler expression. The string has a length greater or equal to one and contains only letters from ato z.
+Examples:
+s="aaabbbbhaijjjm"
+printer_error(s) => "0/14"
+s="aaaxbbbbyyhwawiwjjjwwm"
+printer_error(s) => "8/22"
+*/
+
+function printerError(s) {
+  let count = 0
+  s.split('').map(item => /[^a-m]/.test(item) ? count++ : count)
+  return `${count}/${s.length}`
+}
+
+
+/*
+Write a function that doubles every second integer in a list, starting from the left.
+Example:
+[1,2,3,4] => [1,4,3,8]
+*/
+
+let doubleEveryOther = a => a.map((item,i) => i % 2 !== 0 ? item * 2 : item)
+
+
+/*
+
+*/
