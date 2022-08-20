@@ -3021,3 +3021,81 @@ function connotation(str) {
   let n = str.match(/\b[n-z]/ig) || []
   return p.length >= n.length
 }
+
+
+/*
+In this kata, your job is to return the two distinct highest values in a list. If there're less than 2 unique values, return as many of them, as possible.
+The result should also be ordered from highest to lowest.
+Examples:
+[4, 10, 10, 9]  =>  [10, 9]
+[1, 1, 1]  =>  [1]
+[]  =>  []
+*/
+
+function twoHighest(arr) {
+  return [...new Set(arr)].sort((a, b) => b - a).slice(0, 2)
+}
+
+
+/*
+Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.
+For example:
+uniqueInOrder('AAAABBBCCDAABBB') == ['A', 'B', 'C', 'D', 'A', 'B']
+uniqueInOrder('ABBCcAD')         == ['A', 'B', 'C', 'c', 'A', 'D']
+uniqueInOrder([1,2,2,3,3])       == [1,2,3]
+*/
+
+function uniqueInOrder(str) {
+  if (typeof str == 'string') str = str.split('')
+  return str.filter((item,i,arr) => item !== arr[i + 1])
+}
+
+
+/*
+By "looping array" it means removing elements from start and adding them to end of array one-by-one (if direction is "left") or removing from end and adding them to start one by-one (if direction is "right").
+Function should accept three arguments:
+array - non-empty array of elements of any type;
+direction - 'left' or 'right' - tells how to loop array;
+steps - number of steps to loop array (less or equal to array size);
+Examples:
+loopArr([1, 5, 87, 45, 8, 8], 'left', 2);
+should produce result: [87, 45, 8, 8, 1, 5]
+loopArr([1, 5, 87, 45, 8, 8], 'right', 2);
+should produce result: [8, 8, 1, 5, 87, 45]
+*/
+
+function loopArr(arr, d, s) {
+  let i = d == 'left' ? s : -s
+  return arr.slice(i).concat(arr.slice(0, i))
+}
+
+
+/*
+Your task in this kata is to implement a function that calculates the sum of the integers inside a string. For example, in the string "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog", the sum of the integers is 3635.
+Note: only positive integers will be tested.
+*/
+
+let sumOfIntegersInString = (s) => s.split(/\D/).reduce((a,b) => a + +b, 0)
+
+
+/*
+Your task is to remove all duplicate words from a string, leaving only single (first) words entries.
+Example:
+Input:
+'alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'
+Output:
+'alpha beta gamma delta'
+*/
+
+let removeDuplicateWords = (s) => [...new Set(s.split(' '))].join(' ')
+
+
+/*
+Write a function that replaces 'two', 'too' and 'to' with the number '2'. Even if the sound is found mid word (like in octopus) or not in lowercase grandma still thinks that should be replaced with a 2. Bless her.
+'I love to text' becomes 'I love 2 text'
+'see you tomorrow' becomes 'see you 2morrow'
+'look at that octopus' becomes 'look at that oc2pus'
+Note that 'too' should become '2', not '2o'
+*/
+
+let textin = (s) => s.replace(/two|too|to/gi, '2')
