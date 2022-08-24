@@ -3099,3 +3099,119 @@ Note that 'too' should become '2', not '2o'
 */
 
 let textin = (s) => s.replace(/two|too|to/gi, '2')
+
+
+/*
+Given three integers a ,b ,c, return the largest number obtained after inserting the following operators and brackets: +, *, ()
+In other words , try every combination of a,b,c with [*+()] , and return the Maximum Obtained
+Example
+With the numbers are 1, 2 and 3 , here are some ways of placing signs and brackets:
+
+1 * (2 + 3) = 5
+1 * 2 * 3 = 6
+1 + 2 * 3 = 7
+(1 + 2) * 3 = 9
+So the maximum value that you can obtain is 9.
+
+Notes
+The numbers are always positive.
+The numbers are in the range (1  ≤  a, b, c  ≤  10).
+You can use the same operation more than once.
+It's not necessary to place all the signs and brackets.
+Repetition in numbers may occur .
+You cannot swap the operands. For instance, in the given example you cannot get expression (1 + 3) * 2 = 8.
+Input >> Output Examples:
+expressionsMatter(1,2,3)  ==>  return 9
+Explanation:
+After placing signs and brackets, the Maximum value obtained from the expression (1+2) * 3 = 9.
+
+expressionsMatter(1,1,1)  ==>  return 3
+Explanation:
+After placing signs, the Maximum value obtained from the expression is 1 + 1 + 1 = 3.
+
+expressionsMatter(9,1,1)  ==>  return 18
+Explanation:
+After placing signs and brackets, the Maximum value obtained from the expression is 9 * (1+1) = 18.
+*/
+
+function expressionMatter(a, b, c) {
+  return Math.max(a * b * c, a + b + c, (a + b) * c, a * (b + c))
+}
+
+
+/*
+Some numbers have funny properties. For example:
+89 --> 8¹ + 9² = 89 * 1
+695 --> 6² + 9³ + 5⁴= 1390 = 695 * 2
+46288 --> 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
+Given a positive integer n written as abcd... (a, b, c, d... being digits) and a positive integer p
+we want to find a positive integer k, if it exists, such that the sum of the digits of n taken to the successive powers of p is equal to k * n.
+In other words:
+Is there an integer k such as : (a ^ p + b ^ (p+1) + c ^(p+2) + d ^ (p+3) + ...) = n * k
+If it is the case we will return k, if not return -1.
+Note: n and p will always be given as strictly positive integers.
+digPow(89, 1) should return 1 since 8¹ + 9² = 89 = 89 * 1
+digPow(92, 1) should return -1 since there is no k such as 9¹ + 2² equals 92 * k
+digPow(695, 2) should return 2 since 6² + 9³ + 5⁴= 1390 = 695 * 2
+digPow(46288, 3) should return 51 since 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
+*/
+
+function digPow(n, p){
+  let sum = [...''+n].reduce((a,item,i) => a + (item ** (i + p)), 0)
+  return sum % n ? -1 : sum / n
+}
+
+/*
+You are given a string of n lines, each substring being n characters long: For example:
+s = "abcd\nefgh\nijkl\nmnop"
+Vertical mirror: vert_mirror (or vertMirror or vert-mirror)
+vert_mirror(s) => "dcba\nhgfe\nlkji\nponm"
+Horizontal mirror: hor_mirror (or horMirror or hor-mirror)
+ hor_mirror(s) => "mnop\nijkl\nefgh\nabcd"
+or printed:
+vertical mirror   |horizontal mirror   
+abcd --> dcba     |abcd --> mnop 
+efgh     hgfe     |efgh     ijkl 
+ijkl     lkji     |ijkl     efgh 
+mnop     ponm     |mnop     abcd 
+Task:
+Write these two functions and high-order function oper(fct, s) where fct is the function of one variable f to apply to the string s (fct will be one of vertMirror, horMirror)
+Examples:
+s = "abcd\nefgh\nijkl\nmnop"
+oper(vert_mirror, s) => "dcba\nhgfe\nlkji\nponm"
+oper(hor_mirror, s) => "mnop\nijkl\nefgh\nabcd"
+*/
+
+function vertMirror(str) {
+  return str.split('\n').map(item => [...''+item].reverse().join('')).join('\n')
+}
+function horMirror(str) {
+  return str.split('\n').reverse().join('\n')
+}
+function oper(fct, s) {
+  return fct(s)
+}
+
+
+/*
+You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
+Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
+[]                                -->  "no one likes this"
+["Peter"]                         -->  "Peter likes this"
+["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
+["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
+["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
+Note: For 4 or more names, the number in "and 2 others" simply increases.
+*/
+
+function likes(names) {
+  return !names[0] ? 'no one likes this' : (names.length == 1) ? `${names[0]} likes this`
+  : (names.length == 2) ? `${names[0]} and ${names[1]} like this`
+  : (names.length == 3) ? `${names[0]}, ${names[1]} and ${names[2]} like this`
+  : `${names[0]}, ${names[1]} and ${names.length - 2} others like this`
+}
+
+
+/*
+
+*/
