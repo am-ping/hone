@@ -3213,5 +3213,70 @@ function likes(names) {
 
 
 /*
-
+Return the century of the input year. The input will always be a 4 digit string, so there is no need for validation.
+Examples
+"1999" --> "20th"
+"2011" --> "21st"
+"2154" --> "22nd"
+"2259" --> "23rd"
+"1124" --> "12th"
+"2000" --> "20th"
 */
+
+function whatCentury(year){
+  let century = Math.ceil(year/100)
+  return century + (century < 20 ? 'th' : ['th', 'st', 'nd', 'rd'][century % 10] || 'th')
+}
+
+
+/*
+Write a function "unspan(text)" that will delete both the opening and the following closing span tags, as well as all of the text between them.
+Input
+"This kata has<span>n't</span> got me excited<span> at all</span>!"
+Output
+"This kata has got me excited!"
+If the whole text is spanned, the function should return an empty string. If none of the text is spanned, the text should not be affected by the function.
+*/
+
+/* alternate solution
+let unspan = text => text.replace(/<span>.*?n>/g, "")
+*/
+let unspan = text => text.replace(/<spa.+?n>/g, '')
+
+
+/*
+You will be given an array of letters. Dora and Boots are represented as 'x', while Swiper, who can dress in different disguises, is represented as any case-sensitive vowel (discluding y).
+If Swiper is next to Dora, yell "Swiper, no swiping!". If Swiper is here, but not next to Dora, cry out "Keep your eyes peel Dora!". If Swiper is not present at the restaurant, let Dora know there is nothing to worry about.
+Example:
+['n', 't', 'x', 'A', 'p', 's'] => "Swiper, no swiping!"
+['r', 't', 'e', 'q', 'x', 'W'] => "Keep your eyes peel Dora!"
+['n',' t', 'y', 'j', 'x', 'W'] => "You're safe Dora!"
+*/
+
+function holaDora(val) {
+  val = val.join('').toLowerCase()
+  return /[aeiou]/.test(val) && (/x[aeiou]/.test(val) || /[aeiou]x/.test(val)) ? 'Swiper, no swiping!'
+    : /[aeiou]/.test(val) ? 'Keep your eyes peel Dora!' : "You're safe Dora!"
+}
+
+
+/*
+This operation is performed by replacing vowels in the sequence 'a' 'i' 'y' 'e' 'o' 'u' with the vowel three advanced, cyclicly, while preserving case (i.e., lower or upper).
+Similarly, consonants are replaced from the sequence 'b' 'k' 'x' 'z' 'n' 'h' 'd' 'c' 'w' 'g' 'p' 'v' 'j' 'q' 't' 's' 'r' 'l' 'm' 'f' by advancing ten letters.
+So for instance the phrase 'One ring to rule them all.' translates to 'Ita dotf ni dyca nsaw ecc.'
+The fascinating thing about this transformation is that the resulting language yields pronounceable words. For this problem, you will write code to translate Gandalf's manuscripts into plain text.
+Your job is to write a function that decodes Gandalf's writings.
+Input
+The function will be passed a string for the function to decode. Each string will contain up to 100 characters, representing some text written by Gandalf. All characters will be plain ASCII, in the range space (32) to tilde (126).
+Output
+For each string passed to the decode function return its translation.
+*/
+
+function tongues(code) {
+  let v = 'aiyeou'
+  let c = 'bkxznhdcwgpvjqtsrlmf'
+  let b = code.split('').map(item => c.includes(item.toLowerCase()) ? c[(c.indexOf(item.toLowerCase()) + 10) % 20]
+                  : v.includes(item.toLowerCase()) ? v[(v.indexOf(item.toLowerCase()) + 3) % 6]
+                            : item)
+  return b.map((item,i) => (code[i] == code[i].toUpperCase() ? item.toUpperCase() : item)).join("")
+}
