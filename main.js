@@ -3275,8 +3275,153 @@ For each string passed to the decode function return its translation.
 function tongues(code) {
   let v = 'aiyeou'
   let c = 'bkxznhdcwgpvjqtsrlmf'
-  let b = code.split('').map(item => c.includes(item.toLowerCase()) ? c[(c.indexOf(item.toLowerCase()) + 10) % 20]
-                  : v.includes(item.toLowerCase()) ? v[(v.indexOf(item.toLowerCase()) + 3) % 6]
-                            : item)
-  return b.map((item,i) => (code[i] == code[i].toUpperCase() ? item.toUpperCase() : item)).join("")
+  return code.split('').map(item => c.includes(item.toLowerCase()) ? c[(c.indexOf(item.toLowerCase()) + 10) % 20]
+                                    : v.includes(item.toLowerCase()) ? v[(v.indexOf(item.toLowerCase()) + 3) % 6]
+                                    : item)
+                        .map((item,i) => code[i] == code[i].toUpperCase() ? item.toUpperCase() : item).join("")
+}
+
+
+/*
+Given an array of 3 or more integers, where all but one integer are either even or odd, return the integer that is not like the others.
+For example:
+findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]) ==> 11
+findOutlier([160, 3, 1719, 19, 11, 13, -21]) ==> 160
+*/
+
+function findOutlier (arr) {
+  let even = arr.filter(item => item % 2 === 0)
+  let odd = arr.filter(item => item & 2 !== 0)
+  return even.length < odd.length ? even[0] : odd[0]
+}
+
+
+/*
+Typically, reversing an array is a pretty straightforward task even for novice programmers. But not when a crowd of angry zombies scratching your door, looking for a fresh brains. In this case even skilled ninja-geek probably prefer to quickly push his code on github to have enough time to find a chainsaw. So there's two obstacles:
+Your code needs to be as short as possible, in fact not longer than 28 characters
+Because you are scared and stressed you have forgotten how to use the standard reverse() method
+#Input: an array containing data of any types. Ex: [1,2,3,'a','b','c',[]] #Output: [[],'c','b','a',3,2,1]
+*/
+
+weirdReverse=a=>a.sort(a=>1)
+
+
+/*
+What is an anagram? Well, two words are anagrams of each other if they both contain the same letters. For example:
+'abba' & 'baab' == true
+'abba' & 'bbaa' == true
+'abba' & 'abbba' == false
+'abba' & 'abca' == false
+Write a function that will find all the anagrams of a word from a list. You will be given two inputs a word and an array with words. You should return an array of all the anagrams or an empty array if there are none. For example:
+anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']) => ['aabb', 'bbaa']
+anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']) => ['carer', 'racer']
+anagrams('laser', ['lazing', 'lazy',  'lacer']) => []
+*/
+
+function anagrams(word, words) {
+  return words.filter(item => item.split("").sort().join('') == word.split('').sort().join(''))
+}
+
+
+/*
+ASC Week 1 Challenge 4 (Medium #1)
+
+Write a function that converts any sentence into a V A P O R W A V E sentence. a V A P O R W A V E sentence converts all the letters into uppercase, and adds 2 spaces between each letter (or special character) to create this V A P O R W A V E effect.
+
+Note that spaces should be ignored in this case.
+
+Examples
+"Lets go to the movies"       -->  "L  E  T  S  G  O  T  O  T  H  E  M  O  V  I  E  S"
+"Why isn't my code working?"  -->  "W  H  Y  I  S  N  '  T  M  Y  C  O  D  E  W  O  R  K  I  N  G  ?"
+*/
+
+let vaporcode = (str) => str.toUpperCase().split(' ').join('').split('').join('  ')
+
+
+/*
+Christmas is coming, and Santa has a long list to go through, to find who deserves presents for the big day. Go through a list of children, and return a list containing every child who appeared on Santa's list. Do not add any child more than once. Output should be sorted.
+Comparison should be case sensitive and the returned list should contain only one copy of each name: "Sam" and "sam" are different, but "sAm" and "sAm" are not.
+*/
+
+let findChildren = (s, c) => [...new Set(c.filter(item => s.includes(item)).sort())]
+
+
+/*
+For a given number num, write a function to test if it's a numerical palindrome or not and return a boolean (true if it is and false if not).
+Return "Not valid" if the input is not an integer or less than 0.
+*/
+
+function palindrome(num) {
+  if ((typeof num !== 'number') || num <= 0) return "Not valid"
+  return num === +[...''+num].reverse().join('')
+}
+
+
+/*
+In this Kata, you will be given an array of unique elements, and your task is to rearrange the values so that the first max value is followed by the first minimum, followed by second max value then second min value, etc.
+For example:
+solve([15,11,10,7,12]) = [15,7,12,10,11]
+The first max is 15 and the first min is 7. The second max is 12 and the second min is 10 and so on.
+*/
+
+function solve(arr){
+  let l = arr.length
+  let b = []
+  for (let i = 0 ; i < l; i++) {
+    if (i % 2 === 0) {
+      b.push(Math.max(...arr))
+      arr = arr.filter(item => item !== Math.max(...arr))
+    } else {
+      b.push(Math.min(...arr))
+      arr = arr.filter(item => item !== Math.min(...arr))
+    }
+  }
+  return b
+}
+
+
+/*
+given ["apple","rottenBanana","apple"] the replaced array should be ["apple","banana","apple"]. Your task is to implement a method that accepts an array of strings containing fruits should returns an array of strings where all the rotten fruits are replaced by good ones.
+Notes
+If the array is null/nil/None or empty you should return empty array ([]).
+The rotten fruit name will be in this camelcase (rottenFruit).
+The returned array should be in lowercase.
+*/
+
+let removeRotten = (arr) => arr ? arr.map(item => item.replace('rotten', '').toLowerCase()) : []
+
+
+/*
+To find the volume (centimeters cubed) of a cuboid you use the formula:
+volume = Length * Width * Height
+But someone forgot to use proper record keeping, so we only have the volume, and the length of a single side!
+It's up to you to find out whether the cuboid has equal sides (= is a cube).
+Return true if the cuboid could have equal sides, return false otherwise.
+Return false for invalid numbers too (e.g volume or side is less than or equal to 0).
+Note: the sides must be integers
+*/
+
+let cubeChecker = (v, s) => (v > 0 || s > 0) && v === s ** 3
+
+
+/*
+Complete function howManydays, function accept 1 parameters:month, means the month of year, different month has different days (refer to the following table), return a number that how many days in this month(month is always greater than 0, less than or equal to 12).
+
++---------------+-------------+
+|    month      |    days     |
++---------------+-------------+
+|1,3,5,7,8,10,12|     31      |
++---------------+-------------+
+|4,6,9,11       |     30      |
++---------------+-------------+
+|2              |     28      |  (Do not consider the leap year)
++---------------+-------------+
+*/
+
+function howManydays(month){
+  switch (month){
+     case 2: return 28
+     case 4: case 6: case 9: case 11: return 30
+  }
+  return 31
 }
