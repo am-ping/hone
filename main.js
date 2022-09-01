@@ -3559,3 +3559,29 @@ remove("Hi") === "Hi"
 */
 
 let remove = s => s.replace(/!+$/, '')
+
+
+/*
+You'll have to return a string that contains dots, as many the equation returns. If the result is 0, return the empty string. When it comes to subtraction, the first number will always be greater than or equal to the second number.
+Examples (Input => Output)
+* "..... + ..............." => "...................."
+* "..... - ..."             => ".."
+* "..... - ."               => "...."
+* "..... * ..."             => "..............."
+* "..... * .."              => ".........."
+* "..... // .."             => ".."
+* "..... // ."              => "....."
+* ". // .."                 => ""
+* ".. - .."                 => ""
+*/
+
+let dotCalculator = (equation) => {
+  const operations = {
+    '+' : (a, b) => a + b,
+    '-' : (a, b) => a - b,
+    '*' : (a, b) => a * b,
+    '//': (a, b) => a / b,
+  }
+  let [left, operator, right] = equation.split(' ')
+  return '.'.repeat(operations[operator](left.length, right.length))
+}
