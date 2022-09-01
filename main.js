@@ -3442,3 +3442,120 @@ You will be given an array of all the family members' ages, in any order. The ag
 */
 
 let differenceInAges = (ages) => [Math.min(...ages), Math.max(...ages), Math.max(...ages) - Math.min(...ages)]
+
+
+/*
+Create a method to see whether the string is ALL CAPS.
+Examples (input -> output)
+"c" -> False
+"C" -> True
+"hello I AM DONALD" -> False
+"HELLO I AM DONALD" -> True
+"ACSKLDFJSgSKLDFJSKLDFJ" -> False
+"ACSKLDFJSGSKLDFJSKLDFJ" -> True
+In this Kata, a string is said to be in ALL CAPS whenever it does not contain any lowercase letter so any string containing no letters at all is trivially considered to be in ALL CAPS.
+*/
+
+String.prototype.isUpperCase=function() {return this==this.toUpperCase()}
+
+
+/*
+Impliment the reverse function, which takes in input n and reverses it. For instance, reverse(123) should return 321. You should do this without converting the inputted number into a string.
+
+// Please do not use
+const forbidden = "
+                  '
+                  `
+                  string
+                  fixed
+                  precision
+                  .keys
+*/
+
+function reverse(n){
+  let rev = 0;
+  while (n) {
+      rev = rev * 10 + n % 10;
+      n = Math.floor(n/10);
+  }
+  return rev;
+}
+
+
+/*
+ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. ROT13 is an example of the Caesar cipher.
+Create a function that takes a string and returns the string ciphered with Rot13. If there are numbers or special characters included in the string, they should be returned as they are. Only letters from the latin/english alphabet should be shifted, like in the original Rot13 "implementation".
+*/
+
+function rot13(message) {
+  let a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  let b = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
+  return message.replace(/[a-z]/gi, c => b[a.indexOf(c)])
+}
+
+
+/*
+Given an integer as input, can you round it to the next (meaning, "greater than or equal") multiple of 5?
+Examples:
+input:    output:
+0    ->   0
+2    ->   5
+3    ->   5
+12   ->   15
+21   ->   25
+30   ->   30
+-2   ->   0
+-5   ->   -5
+etc.
+Input may be any positive or negative integer (including 0).
+You can assume that all inputs are valid integers.
+*/
+
+let roundToNext5 = (n) => Math.ceil(n / 5) * 5
+
+
+/*
+The number 89 is the first integer with more than one digit that fulfills the property partially introduced in the title of this kata. What's the use of saying "Eureka"? Because this sum gives the same number.
+In effect: 89 = 8^1 + 9^2
+The next number in having this property is 135.
+See this property again: 135 = 1^1 + 3^2 + 5^3
+We need a function to collect these numbers, that may receive two integers a, b that defines the range [a, b] (inclusive) and outputs a list of the sorted numbers in the range that fulfills the property described above.
+Let's see some cases (input -> output):
+1, 10 -> [1, 2, 3, 4, 5, 6, 7, 8, 9]
+1, 100 -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 89]
+If there are no numbers of this kind in the range [a, b] the function should output an empty list.
+90, 100 --> []
+*/
+
+function sumDigPow(a, b) {
+  let arr = []
+  for (let i = a; i <= b; i++) {
+    if (i === [...''+i].map((item,index) => item ** (index + 1)).reduce((a,b) => a + b, 0)) arr.push(i)
+  }
+  return arr
+}
+
+
+/*
+Kevin is noticing his space run out! Write a function that removes the spaces from the values and returns an array showing the space decreasing. For example, running this function on the array ['i', 'have','no','space'] would produce ['i','ihave','ihaveno','ihavenospace'].
+*/
+
+function spacey(arr){
+  let str = ''
+  return arr.map(item => str += item)
+}
+
+
+/*
+Description:
+Remove all exclamation marks from the end of sentence.
+Examples
+remove("Hi!") === "Hi"
+remove("Hi!!!") === "Hi"
+remove("!Hi") === "!Hi"
+remove("!Hi!") === "!Hi"
+remove("Hi! Hi!") === "Hi! Hi"
+remove("Hi") === "Hi"
+*/
+
+let remove = s => s.replace(/!+$/, '')
