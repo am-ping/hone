@@ -3632,6 +3632,121 @@ function multiplicationTable(size) {
 }
 
 
+/* HARD
+Given two strings s1 and s2, we want to visualize how different the two strings are. We will only take into account the lowercase letters (a to z). First let us count the frequency of each lowercase letters in s1 and s2.
+s1 = "A aaaa bb c"
+s2 = "& aaa bbb c d"
+s1 has 4 'a', 2 'b', 1 'c'
+s2 has 3 'a', 3 'b', 1 'c', 1 'd'
+So the maximum for 'a' in s1 and s2 is 4 from s1; the maximum for 'b' is 3 from s2. In the following we will not consider letters when the maximum of their occurrences is less than or equal to 1.
+We can resume the differences between s1 and s2 in the following string: "1:aaaa/2:bbb" where 1 in 1:aaaa stands for string s1 and aaaa because the maximum for a is 4. In the same manner 2:bbb stands for string s2 and bbb because the maximum for b is 3.
+
+The task is to produce a string in which each lowercase letters of s1 or s2 appears as many times as its maximum if this maximum is strictly greater than 1; these letters will be prefixed by the number of the string where they appear with their maximum value and :. If the maximum is in s1 as well as in s2 the prefix is =:.
+
+In the result, substrings (a substring is for example 2:nnnnn or 1:hhh; it contains the prefix) will be in decreasing order of their length and when they have the same length sorted in ascending lexicographic order (letters and digits - more precisely sorted by codepoint); the different groups will be separated by '/'. See examples and "Example Tests".
+
+Hopefully other examples can make this clearer.
+s1 = "my&friend&Paul has heavy hats! &"
+s2 = "my friend John has many many friends &"
+mix(s1, s2) --> "2:nnnnn/1:aaaa/1:hhh/2:mmm/2:yyy/2:dd/2:ff/2:ii/2:rr/=:ee/=:ss"
+
+s1 = "mmmmm m nnnnn y&friend&Paul has heavy hats! &"
+s2 = "my frie n d Joh n has ma n y ma n y frie n ds n&"
+mix(s1, s2) --> "1:mmmmmm/=:nnnnnn/1:aaaa/1:hhh/2:yyy/2:dd/2:ff/2:ii/2:rr/=:ee/=:ss"
+
+s1="Are the kids at home? aaaaa fffff"
+s2="Yes they are here! aaaaa fffff"
+mix(s1, s2) --> "=:aaaaaa/2:eeeee/=:fffff/1:tt/2:rr/=:hh"
+*/
+
+const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
+
+function mix(s1, s2) {
+  return alphabet
+    .map(char => {
+      const s1Count = s1.split('').filter(x => x === char).length,
+            s2Count = s2.split('').filter(x => x === char).length,
+            maxCount = Math.max(s1Count, s2Count)
+
+      return {
+        char: char,
+        count: maxCount,
+        src: maxCount > s1Count ? '2' : maxCount > s2Count ? '1' : '='
+      }
+    })
+    .filter(c => c.count > 1)
+    .sort((objA, objB) => objB.count - objA.count || (objA.src + objA.char > objB.src + objB.char ? 1 : -1))
+    .map(c => `${c.src}:${c.char.repeat(c.count)}`)
+    .join('/')
+}
+
+
+/*
+Your task is simply to count the total number of lowercase letters in a string.
+Examples
+lowercaseCount("abc"); ===> 3
+lowercaseCount("abcABC123"); ===> 3
+lowercaseCount("abcABC123!@€£#$%^&*()_-+=}{[]|\':;?/>.<,~"); ===> 3
+lowercaseCount(""); ===> 0;
+lowercaseCount("ABC123!@€£#$%^&*()_-+=}{[]|\':;?/>.<,~"); ===> 0
+lowercaseCount("abcdefghijklmnopqrstuvwxyz"); ===> 26
+*/
+
+let lowercaseCount = (str) => str.replace(/[^a-z]/g,'').length
+
+/*
+For this problem you must create a program that says who ate the last cookie. If the input is a string then "Zach" ate the cookie. If the input is a float or an int then "Monica" ate the cookie. If the input is anything else "the dog" ate the cookie. The way to return the statement is: "Who ate the last cookie? It was (name)!"
+Ex: Input = "hi" --> Output = "Who ate the last cookie? It was Zach! (The reason you return Zach is because the input is a string)
+*/
+
+function cookie(x){
+  return `Who ate the last cookie? It was ${typeof x === 'string' ? 'Zach' : typeof x === 'number' ? "Monica" :
+  'the dog'}!`
+}
+
+
+/*
+Your mission is to implement a function that converts the following potentially harmful characters:
+< --> &lt;
+> --> &gt;
+" --> &quot;
+& --> &amp;
+*/
+
+function htmlspecialchars(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+}
+
+
+/*
+Coding in function bigToSmall. function accept 1 parameter arr(2D number array).
+Your task is: First to all, refer to the example above, flat output arr to a one-dimensional array.
+And then sort array in descending order.
+Finally, use the separator ">" to connect the elements into a string.
+Don't complain about the situation like 1>1 is not reasonable, it is just a separator.
+Some example:
+bigToSmall([[1,2],[3,4],[5,6]]) should return "6>5>4>3>2>1"
+bigToSmall([[1,3,5],[2,4,6]]) should return "6>5>4>3>2>1"
+bigToSmall([[1,1],[1],[1,1]]) should return "1>1>1>1>1"
+*/
+
+let bigToSmall = (arr) => [].concat(...arr).sort((a, b) => b - a).join('>')
+
+
+/*
+Given an array add all the number elements and return the binary equivalent of that sum; to make the code bullet proof anything else than a number should be addeded as 0 since it can't be addeded.
+If your language can handle float binaries assume the array won't contain float or doubles.
+arr2bin([1,2]) == '11'
+arr2bin([1,2,'a']) == '11'
+arr2bin([]) == '0'
+NOTE: NaN is a number too in javascript for decimal, binary and n-ary base
+*/
+
+function arr2bin(arr){
+  return arr.filter(item => typeof item == 'number').reduce((a,b) => a + b, 0).toString(2)
+}
+
+
 /*
 
 */
