@@ -3787,5 +3787,184 @@ let encode = (str) => str.replace(/[aeiou]/g, c => '_aeiou'.indexOf(c))
 let decode = (str) => str.replace(/[12345]/g, c => '_aeiou'.charAt(c))
 
 /*
+Coding in function pickIt, function accept 1 parameter:arr, it's a number array, we need traverse arr by using for loop, if element is odd number, push it to array odd, if it's a even number, push it to array even.
+I've defined two array odd and even in the function, and also wrote the return statement. your work is write a for loop.
+*/
+
+function pickIt(arr){
+  let odd=[],even=[]
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      even.push(arr[i])
+    } else {
+      odd.push(arr[i])
+    }
+  }  
+  return [odd, even]
+}
+
+
+/*
+Coding in function trueOrFalse, function accept 1 parameters:val, try to use the conditional statement if...else, if val value is false (val==false or it can convert to false), should return a string "false", if not, return a string "true".
+When you have finished the work, click "Run Tests" to see if your code is working properly.
+In the end, click "Submit" to submit your code pass this kata.
+*/
+
+let trueOrFalse = (val) => Boolean(val).toString()
+
+
+/*
+Coding in function roundIt. function accept 1 parameter n. It's a number with a decimal point. Please use different methods based on the location of the decimal point, turn the number into an integer.
+If the decimal point is on the left side of the number (that is, the count of digits on the left of the decimal point is less than that on the right), Using ceil() method.
+roundIt(3.45) should return 4
+If the decimal point is on the right side of the number (that is, the count of digits on the left of the decimal point is more than that on the right), Using floor() method.
+roundIt(34.5) should return 34
+If the decimal point is on the middle of the number (that is, the count of digits on the left of the decimal point is equals that on the right), Using round() method.
+roundIt(34.56) should return 35
+*/
+
+function roundIt(n){
+  let a = n.toString().split('.')
+  return a[0].length < a[1].length ? Math.ceil(n) : a[0].length > a[1].length ? Math.floor(n) : Math.round(n)
+}
+
+
+/*
+You will be given an array of numbers. You have to sort the odd numbers in ascending order while leaving the even numbers at their original positions.
+Examples
+[7, 1]  =>  [1, 7]
+[5, 8, 6, 3, 4]  =>  [3, 8, 6, 5, 4]
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]  =>  [1, 8, 3, 6, 5, 4, 7, 2, 9, 0]
+*/
+
+function sortArray(arr) {
+  let odd = arr.filter(item => item % 2).sort((a,b) => a - b)
+  return arr.map(item => item % 2 ? odd.shift() : item)
+}
+
+
+/*
+Write a method that takes one argument as name and then greets that name, capitalized and ends with an exclamation point.
+Example:
+"riley" --> "Hello Riley!"
+"JACK"  --> "Hello Jack!"
+*/
+
+let greet = (name) => `Hello ${name[0].toUpperCase() + name.slice(1).toLowerCase()}!`
+
+
+/*
+Coding in function maxMin. function accept 2 parameter arr1 and arr2. They are two number array and have the same number of elements.
+First, calculate the difference of the same index of the arr1 and arr2. Like this:
+[1,3,5]
+ | | |   --->  8, 5, 2
+[9,8,7]
+Please note that the difference is positive. Such as the above 1 and 9, the difference should be 8, not -8. I think abs() can help you get the correct result ;-)
+Then find the maximum and minimum values of them, and return the results in the form of an array. Like this:
+  maxvalue , minvalue
+[    8     ,    2     ]
+*/
+
+function maxMin(arr1,arr2){
+  let arr = arr1.map( (item,i) => Math.abs(item - arr2[i]) )
+  return [Math.max(...arr), Math.min(...arr)]
+}
+
+/*
+Complete the function, which calculates how much you need to tip based on the total amount of the bill and the service.
+You need to consider the following ratings:
+Terrible: tip 0%
+Poor: tip 5%
+Good: tip 10%
+Great: tip 15%
+Excellent: tip 20%
+The rating is case insensitive (so "great" = "GREAT"). If an unrecognised rating is received, then you need to return:
+"Rating not recognised" in Javascript
+Because you're a nice person, you always round up the tip, regardless of the service.
+*/
+
+function calculateTip(a, r) {
+  r = r.toLowerCase()
+  return r === 'terrible' ? 0 
+  : r === 'poor' ? Math.ceil(a * 0.05)
+  : r === 'good' ? Math.ceil(a * 0.10)
+  : r === 'great' ? Math.ceil(a * 0.15)
+  : r === 'excellent' ? Math.ceil(a * 0.2)
+  : "Rating not recognised"
+}
+
+
+/* HARD
+Write a function dirReduc which will take an array of strings and returns an array of strings with the needless directions removed (W<->E or S<->N side by side).
+In ["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], "NORTH" and "SOUTH" are not directly opposite but they become directly opposite after the reduction of "EAST" and "WEST" so the whole path is reducible to ["WEST", "WEST"].
+*/
+
+/* alternate best practice solution
+function dirReduc(plan) {
+  var opposite = {
+    'NORTH': 'SOUTH', 'EAST': 'WEST', 'SOUTH': 'NORTH', 'WEST': 'EAST'};
+  return plan.reduce(function(dirs, dir){
+      if (dirs[dirs.length - 1] === opposite[dir])
+        dirs.pop();
+      else
+        dirs.push(dir);
+      return dirs;
+    }, []);
+}
+*/
+
+function dirReduc(arr) {
+  var str = arr.join(''), pattern = /NORTHSOUTH|EASTWEST|SOUTHNORTH|WESTEAST/;
+  while (pattern.test(str)) str = str.replace(pattern,'');
+  return str.match(/(NORTH|SOUTH|EAST|WEST)/g)||[];
+}
+
+
+/*
+Coding in function countGrade. function accept 1 parameters scores, it's a number array. Your task is to count the grade distribution of the scores, to return an object like this:
+{S:888, A:888, B:888, C:888, D:888, X:888}
+Grading rules:
+Grade S: Full marks(score=100)
+Grade A: score<100 and score>=90
+Grade B: score<90 and score>=80
+Grade C: score<80 and score>=60
+Grade D: score<60 and score>=0
+Grade X: score=-1(The cheating guy gets a score like that)
+Example
+countGrade([50,60,70,80,90,100]) should return {S:1, A:1, B:1, C:2, D:1, X:0}
+countGrade([65,75,,85,85,95,100,100]) should return {S:2, A:1, B:2, C:2, D:0, X:0}
+countGrade([-1,-1,-1,-1,-1,-1]) should return {S:0, A:0, B:0, C:0, D:0, X:6}
+*/
+
+function countGrade(s){
+  return {
+    'S': s.filter(function(x){return x == 100}).length,
+    'A': s.filter(function(x){return (x < 100 && x >= 90)}).length,
+    'B': s.filter(function(x){return (x < 90 && x >= 80)}).length,
+    'C': s.filter(function(x){return (x < 80 && x >= 60)}).length,
+    'D': s.filter(function(x){return (x < 60 && x >= 0)}).length,
+    'X': s.filter(function(x){return x == -1}).length,
+  }
+}
+
+
+/*
+Given a lowercase string that has alphabetic characters only and no spaces, return the highest value of consonant substrings. Consonants are any letters of the alphabet except "aeiou".
+We shall assign the following values: a = 1, b = 2, c = 3, .... z = 26.
+For example, for the word "zodiacs", let's cross out the vowels. We get: "z o d ia cs"
+-- The consonant substrings are: "z", "d" and "cs" and the values are z = 26, d = 4 and cs = 3 + 19 = 22. The highest is 26.
+solve("zodiacs") = 26
+For the word "strength", solve("strength") = 57
+-- The consonant substrings are: "str" and "ngth" with values "str" = 19 + 20
+*/
+
+function solve(s) {
+  s = s.split(/[aeiou]/gi)
+  s = s.map(item => [...''+item].map(item => item.charCodeAt() - 96).reduce((a,b) => a + b, 0) )
+  return Math.max(...s)
+}
+
+
+/*
 
 */
