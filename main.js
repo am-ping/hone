@@ -3966,5 +3966,59 @@ function solve(s) {
 
 
 /*
-
+Basic regex tasks. Write a function that takes in a numeric code of any length. The function should check if the code begins with 1, 2, or 3 and return true if so. Return false otherwise.
+You can assume the input will always be a number.
 */
+
+let validateCode = (code) => /^[123]/.test(code)
+
+
+/*
+Consider the word "abode". We can see that the letter a is in position 1 and b is in position 2. In the alphabet, a and b are also in positions 1 and 2. Notice also that d and e in abode occupy the positions they would occupy in the alphabet, which are positions 4 and 5.
+Given an array of words, return an array of the number of letters that occupy their positions in the alphabet for each word. For example,
+solve(["abode","ABc","xyzD"]) = [4, 3, 1]
+Input will consist of alphabet characters, both uppercase and lowercase. No spaces.
+*/
+
+function solve(arr){
+  arr = arr.map(item => item.toLowerCase())
+  return arr.map((item,i) => [...''+item].filter((item,i) => item.charCodeAt() - 96  === i + 1).length)
+}
+
+
+/*
+Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+Rules for a smiling face:
+Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+Every smiling face must have a smiling mouth that should be marked with either ) or D
+No additional characters are allowed except for those mentioned.
+Valid smiley face examples: :) :D ;-D :~)
+Invalid smiley faces: ;( :> :} :]
+
+countSmileys([':)', ';(', ';}', ':-D']);       // should return 2;
+countSmileys([';D', ':-(', ':-)', ';~)']);     // should return 3;
+countSmileys([';]', ':[', ';*', ':$', ';-D']); // should return 1;
+*/
+
+let countSmileys = (arr) => arr.filter(v => v.match(/(:|;)(-|~)?(\)|D)/)).length
+
+
+/*
+Your task is to find the nearest square number, nearest_sq(n), of a positive integer n.
+*/
+
+let nearestSq = (n) => Math.round(Math.sqrt(n)) ** 2
+
+
+/*
+There are pillars near the road. The distance between the pillars is the same and the width of the pillars is the same. Your function accepts three arguments:
+number of pillars (≥ 1);
+distance between pillars (10 - 30 meters);
+width of the pillar (10 - 50 centimeters).
+Calculate the distance between the first and the last pillar in centimeters (without the width of the first and last pillar).
+*/
+
+function pillars(numPill, dist, width) {
+  return numPill === 1 ? 0 : (numPill - 1) * (dist * 100) + (numPill - 2) * width
+}
