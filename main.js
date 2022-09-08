@@ -4022,3 +4022,53 @@ Calculate the distance between the first and the last pillar in centimeters (wit
 function pillars(numPill, dist, width) {
   return numPill === 1 ? 0 : (numPill - 1) * (dist * 100) + (numPill - 2) * width
 }
+
+
+/*
+Complete the method which returns the number which is most frequent in the given input array. If there is a tie for most frequent number, return the largest number among them.
+Note: no empty arrays will be given.
+Examples
+[12, 10, 8, 12, 7, 6, 4, 10, 12]              -->  12
+[12, 10, 8, 12, 7, 6, 4, 10, 12, 10]          -->  12
+[12, 10, 8, 8, 3, 3, 3, 3, 2, 4, 10, 12, 10]  -->   3
+*/
+
+function highestRank(arr){
+  arr = arr.sort((a,b) => b - a)
+  let r = [...new Set(arr)].map((item,i,nums) => arr.filter(a => a == item).length)
+  return [...new Set(arr)][r.indexOf(Math.max(...r))]
+}
+
+
+/*
+Given the length of a correction tape l, consider whether a word can be whited out, considering that the correction tape has a height of 5mm and letters are 10mm high(vertical) and 5mm long(horizontal)(letters i,l,t,f are only 1mm long)and we can only tape horizontally. All letters will be passed lower-cased, and all words are 10mm high, even though e,h are different size So, can you white-out the word? Return true or false and the remaining length, or the one that wou would need in order to finish exactly inside an array
+Example 1:
+whiteOut("hello", 70)
+Since for h,e,o we need 15mm * 2=30, 2 because 10/5=2. For l,l we need 2mm * 2?4, So 70-30-4=36. And you return an array with true and how much has not been used of the 70 mm (Which is 36)
+Answer: [true, 36]
+
+Example 2:
+whiteOut("something", 70)
+Now, we have the word something instead of hello. So, for s,o,m,e,h,n,g we need 35mm * 2 = 70, 2 because 10/5=2. For t,i we need 2mm * 2=4, So 70-70-4=-4. So, we can see that it is impossible to white it out with only 70 mm of tape, so we return an array where we write false (Because we can't white it) and 4, which would be how much more tape you would need in order to white it out completely
+Answer: [false, 4]
+*/
+
+function whiteOut(str, l){
+  let one = str.replace(/[^iltf]/g,'').length * 2
+  let two = str.replace(/[iltf]/g,'').length * 5 * 2
+  let result = l - two - one
+  return [result <= l && result > 0, Math.abs(result)]
+}
+
+/*
+Remove all exclamation marks from the end of words. Words are separated by a single space. There are no exclamation marks within a word.
+Examples
+remove("Hi!") === "Hi"
+remove("Hi!!!") === "Hi"
+remove("!Hi") === "!Hi"
+remove("!Hi!") === "!Hi"
+remove("Hi! Hi!") === "Hi Hi"
+remove("!!!Hi !!hi!!! !hi") === "!!!Hi !!hi !hi"
+*/
+
+let remove = str => str.replace(/\b!+/g, '')
