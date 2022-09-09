@@ -938,7 +938,6 @@ const mean3 = numbers => {
 
 /*
 Rövarspråket ("the Robber") is a Swedish language game. The rules of the game are thus:
-
 Pick any word.
 double every consonant, and then put an "o" between them.
 leave all vowels intact.
@@ -4291,5 +4290,70 @@ Array.prototype.odd = function() {return this.filter(item => item % 2 !== 0)}
 
 
 /*
-
+Given a variable n,
+If n is an integer, Return a string with dash'-'marks before and after each odd integer, but do not begin or end the string with a dash mark. If n is negative, then the negative sign should be removed.
+If n is not an integer, return the string "NaN".
+Ex:
+dashatize(274) -> '2-7-4'
+dashatize(6815) -> '68-1-5'
 */
+
+function dashatize(num) {
+  return String(num)
+    .replace(/([13579])/g, "-$1-")
+    .replace(/--+/g, "-")
+    .replace(/(^-|-$)/g, "")
+}
+
+
+/*
+Count the number of Duplicates
+Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+Example
+"abcde" -> 0 # no characters repeats more than once
+"aabbcde" -> 2 # 'a' and 'b'
+"aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
+"indivisibility" -> 1 # 'i' occurs six times
+"Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
+"aA11" -> 2 # 'a' and '1'
+"ABBA" -> 2 # 'A' and 'B' each occur twice
+*/
+
+function duplicateCount(str){
+  str = str.toLowerCase()
+  return [...new Set([...str])].map(item => str.split(item).length - 1).filter(item => item > 1).length
+}
+
+
+/*
+Given an array of integers, find the one that appears an odd number of times.
+There will always be only one integer that appears an odd number of times.
+Examples
+[7] should return 7, because it occurs 1 time (which is odd).
+[0] should return 0, because it occurs 1 time (which is odd).
+[1,1,2] should return 2, because it occurs 1 time (which is odd).
+[0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
+[1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
+*/
+
+/* HARD alternate solution
+const findOdd = (xs) => xs.reduce((a, b) => a ^ b)
+*/
+
+function findOdd(a) {
+  return a.map(item => a.filter(b => b ===item)).filter(item => item.length % 2 !== 0)[0][0]
+}
+
+
+/*
+Modify the kebabize function so that it converts a camel case string into a kebab case.
+kebabize('camelsHaveThreeHumps') // camels-have-three-humps
+kebabize('camelsHave3Humps') // camels-have-humps
+Notes:
+the returned string should only contain lowercase letters
+*/
+
+function kebabize(str) {
+  str = str.replace(/[\W\d]/g, '').replace(/[A-Z]/g, s => `-${s.toLowerCase()}`)
+  return str[0] == '-' ? str.slice(1) : str
+}
