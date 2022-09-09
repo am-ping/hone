@@ -4035,7 +4035,7 @@ Examples
 
 function highestRank(arr){
   arr = arr.sort((a,b) => b - a)
-  let r = [...new Set(arr)].map((item,i,nums) => arr.filter(a => a == item).length)
+  let r = [...new Set(arr)].map(item => arr.filter(a => a == item).length)
   return [...new Set(arr)][r.indexOf(Math.max(...r))]
 }
 
@@ -4072,3 +4072,224 @@ remove("!!!Hi !!hi!!! !hi") === "!!!Hi !!hi !hi"
 */
 
 let remove = str => str.replace(/\b!+/g, '')
+
+
+/*
+You are given an array (which will have a length of at least 3, but could be very large) containing integers. The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N. Write a method that takes the array as an argument and returns this "outlier" N.
+Examples
+[2, 4, 0, 100, 4, 11, 2602, 36]
+Should return: 11 (the only odd number)
+[160, 3, 1719, 19, 11, 13, -21]
+Should return: 160 (the only even number)
+*/
+
+function findOutlier(nums){
+  let odd = nums.filter(item => item % 2 !== 0)
+  let even = nums.filter(item => item % 2 === 0)
+  return odd.length === 1 ? odd[0] : even[0]
+}
+
+
+/*
+An AI has infected a text with a character!!
+This text is now fully mutated to this character.
+If the text or the character are empty, return an empty string.
+There will never be a case when both are empty as nothing is going on!!
+Note: The character is a string of length 1 or an empty string.
+Example
+text before = "abc"
+character   = "z"
+text after  = "zzz"
+*/
+
+let contamination = (text, char) => char.repeat(text.length)
+
+
+/*
+Write function parseF which takes an input and returns a number or null if conversion is not possible. The input can be one of many different types so be aware.
+*/
+
+let parseF = (s) => isNaN(parseFloat(s)) ? null : parseFloat(s)
+
+
+/*
+Count the number of occurrences of each character and return it as a list of tuples in order of appearance. For empty output return an empty list.
+Example:
+orderedCount("abracadabra") == [['a', 5], ['b', 2], ['r', 2], ['c', 1], ['d'
+*/
+
+const orderedCount = str => [...new Set([...str])].map(item => [item, str.split(item).length - 1])
+
+
+/*
+Write a function which removes from string all non-digit characters and parse the remaining to number. E.g: "hell5o wor6ld" -> 56
+*/
+
+let getNumberFromString = s => +s.replace(/\D/g, "")
+
+
+/*
+Task
+Given an array of integers , Find the minimum sum which is obtained from summing each Two integers product .
+Notes
+Array/list will contain positives only .
+Array/list will always have even size
+
+Input >> Output Examples
+minSum({5,4,2,3}) ==> return (22) 
+Explanation:
+The minimum sum obtained from summing each two integers product ,  5*2 + 3*4 = 22
+
+minSum({12,6,10,26,3,24}) ==> return (342)
+Explanation:
+The minimum sum obtained from summing each two integers product ,  26*3 + 24*6 + 12*10 = 342
+
+minSum({9,2,8,7,5,4,0,6}) ==> return (74)
+Explanation:
+The minimum sum obtained from summing each two integers product ,  9*0 + 8*2 +7*4 +6*5 = 74
+*/
+
+function minSum(arr) {
+  let d = arr.sort((a, b) => b - a).slice(0, arr.length/2)
+  let a = arr.sort((a, b) => a - b).slice(0, arr.length/2)
+  return d.map((item,i) => item * a[i]).reduce((a,b) => a + b, 0)
+}
+
+
+/*
+Write Number in Expanded Form
+You will be given a number and you will need to return it as a string in Expanded Form. For example:
+expandedForm(12); // Should return '10 + 2'
+expandedForm(42); // Should return '40 + 2'
+expandedForm(70304); // Should return '70000 + 300 + 4'
+NOTE: All numbers will be whole numbers greater than 0.
+*/
+
+/* alternate solution
+const expandedForm = num => [...''+num]
+                            .map((item, i, a) => item * 10 ** (a.length - i - 1))
+                            .filter(Boolean)
+                            .join(' + ')
+*/
+
+
+const expandedForm = n => [...''+n]
+                            .reverse()
+                            .map((item, i) => item * (10 ** i))
+                            .filter(item => item > 0)
+                            .reverse()
+                            .join(" + ")
+
+
+/*
+We've begun receiving transmissions from Planet Gibber again after many decades of silence. Unfortunately, this time they've been all garbled up!
+Luckily, linguists were able to figure out the rules of Gibberish the last time we heard from them. They've given us a guide on how to identify the actual bits of language from the random data in the strings we receive.
+In order to parse the Gibberish from the... well, gibberish, we'll need to follow these rules:
+Gibberish, as we read it, only contains letters: remove all non-letter characters (including spaces)
+Gibberish is only made up of 5 letter words: separate this into words that are all 5 letters long - no trailing words with fewer than 5 letters!
+Gibberish word are all capitalised: so capitalise all the words (sort of like German nouns)
+Some of the transmissions are only garbled data. If you are given an empty string or a string that doesn't contain any letters, then please return an empty string at the end.
+*/
+
+function cleanItUp(gib) {
+  return gib
+    .replace(/[\W\d_]/gi, '')
+    .toLowerCase()
+    .replace(/\w{5}/g, s => s.replace(/\w/, f => f.toUpperCase()) + ' ')
+    .split(' ')
+    .filter(word => word.length == 5)
+    .join(' ');
+}
+
+
+/*
+I will give you an integer. Give me back a shape that is as long and wide as the integer. The integer will be a whole number between 1 and 50.
+Example
+n = 3, so I expect a 3x3 square back just like below as a string:
++++
++++
++++
+*/
+
+function generateShape(n){
+  return ("+".repeat(n)+"\n").repeat(n).trim()
+}
+
+
+/*
+Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013). Jaden is also known for some of his philosophy that he delivers via Twitter. When writing on Twitter, he is known for almost always capitalizing every word. For simplicity, you'll have to capitalize each word, check out how contractions are expected to be in the example below.
+Your task is to convert strings to how they would be written by Jaden Smith. The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+Example:
+Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
+Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
+*/
+
+String.prototype.toJadenCase = function () {
+  return this.split(" ").map(item => item[0].toUpperCase() + item.slice(1)).join(' ')
+}
+
+/*
+There is a bus moving in the city, and it takes and drop some people in each bus stop.
+You are provided with a list (or array) of integer pairs. Elements of each pair represent number of people get into bus (The first item) and number of people get off the bus (The second item) in a bus stop.
+Your task is to return number of people who are still in the bus after the last bus station (after the last array). Even though it is the last bus stop, the bus is not empty and some people are still in the bus, and they are probably sleeping there :D
+Take a look on the test cases.
+Please keep in mind that the test cases ensure that the number of people in the bus is always >= 0. So the return integer can't be negative.
+The second value in the first integer array is 0, since the bus is empty in the first bus stop.
+*/
+
+/* alternate
+const number = busStops => busStops.reduce((rem, [on, off]) => rem + on - off, 0);
+*/
+
+let number = bus => {
+  let add = bus.map(item => item[0]).reduce((a,b) => a + b, 0)
+  let sub = bus.map(item => item[1]).reduce((a,b) => a - b, add)
+  return sub
+}
+
+
+/*
+You can print your name on a billboard ad. Find out how much it will cost you. Each character has a default price of £30, but that can be different if you are given 2 parameters instead of 1.
+You can not use multiplier "*" operator.
+If your name would be Jeong-Ho Aristotelis, ad would cost £600. 20 leters * 30 = 600 (Space counts as a character).
+*/
+
+let billboard = (n, p = 30) => [...''+n].map(item=> p).reduce((a,b) => a + b, 0)
+
+
+/*
+This kata is designed to test your ability to extend the functionality of built-in classes. In this case, we want you to extend the built-in Array class with the following methods: square(), cube(), average(), sum(), even() and odd().
+Explanation:
+square() must return a copy of the array, containing all values squared
+cube() must return a copy of the array, containing all values cubed
+average() must return the average of all array values; on an empty array must return NaN (note: the empty array is not tested in Ruby!)
+sum() must return the sum of all array values
+even() must return an array of all even numbers
+odd() must return an array of all odd numbers
+Note: the original array must not be changed in any case!
+Example
+var numbers = [1, 2, 3, 4, 5];
+numbers.square();  // must return [1, 4, 9, 16, 25]
+numbers.cube();    // must return [1, 8, 27, 64, 125]
+numbers.average(); // must return 3
+numbers.sum();     // must return 15
+numbers.even();    // must return [2, 4]
+numbers.odd();     // must return [1, 3, 5]
+*/
+
+Array.prototype.square = function() {return this.map(item => item ** 2)}
+
+Array.prototype.cube = function() {return this.map(item => item ** 3)}
+
+Array.prototype.average = function() {return this.sum() / this.length}
+
+Array.prototype.sum = function() {return this.reduce((a,b) => a + b, 0)}
+
+Array.prototype.even = function() {return this.filter(item => item % 2 === 0)}
+
+Array.prototype.odd = function() {return this.filter(item => item % 2 !== 0)}
+
+
+/*
+
+*/
