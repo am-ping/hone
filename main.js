@@ -4438,5 +4438,152 @@ function correctPolishLetters (str) {
 
 
 /*
-
+Given a mixed array of number and string representations of integers, add up the string integers and subtract this from the total of the non-string integers. Return as a number.
 */
+
+function divCon(x){
+  return x.reduce((acc, item) => typeof item === 'number' ? acc + item : acc - +item, 0)
+}
+
+
+/*
+Write a function that accepts fight string consists of only small letters and return who wins the fight. When the left side wins return Left side wins!, when the right side wins return Right side wins!, in other case return Let's fight again!.
+The left side letters and their power:
+ w - 4
+ p - 3
+ b - 2
+ s - 1
+The right side letters and their power:
+ m - 4
+ q - 3
+ d - 2
+ z - 1
+The other letters don't have power and are only victims.
+Example
+alphabetWar("z");        //=> Right side wins!
+alphabetWar("zdqmwpbs"); //=> Let's fight again!
+alphabetWar("zzzzs");    //=> Right side wins!
+alphabetWar("wwwwwwz");  //=> Left side wins!
+*/
+
+function alphabetWar(fight) {
+  let map = { w: -4, p: -3, b: -2, s: -1, m: 4, q: 3, d: 2, z: 1 }
+  let result = fight.split('').reduce((a, b) => a + (map[b] || 0), 0)
+  return result ? (result < 0 ? "Left" : "Right") + " side wins!" : "Let's fight again!"
+}
+
+
+/*
+In this first kata in the series, you need to define a Hero prototype to be used in a terminal game. The hero should have the following attributes:
+attribute	  value
+name	      user argument or 'Hero'
+position	  '00'
+health	    100
+damage	    5
+experience	0
+*/
+
+function Hero (name) {
+  this.name = name || 'Hero';
+  this.position = '00';
+  this.health = 100;
+  this.damage = 5;
+  this.experience = 0;
+}
+
+
+/*
+Given a string, turn each character into its ASCII character code and join them together to create a number - let's call this number total1:
+'ABC' --> 'A' = 65, 'B' = 66, 'C' = 67 --> 656667
+Then replace any incidence of the number 7 with the number 1, and call this number 'total2':
+total1 = 656667
+              ^
+total2 = 656661
+              ^
+Then return the difference between the sum of the digits in total1 and total2:
+  (6 + 5 + 6 + 6 + 6 + 7)
+- (6 + 5 + 6 + 6 + 6 + 1)
+-------------------------
+                       6
+*/
+
+function calc(x){
+  let total1 = x.replace(/./g, x => x.charCodeAt(0))
+  let total2 = total1.replace(/7/g,'1')
+  return [...total1].reduce((a,b) => a + +b, 0) - [...total2].reduce((a,b) => a + +b, 0)
+}
+
+
+/*
+Encrypt this!
+You want to create secret messages which can be deciphered by the Decipher this! kata. Here are the conditions:
+Your message is a string containing space separated words.
+You need to encrypt each word in the message using the following rules:
+The first letter must be converted to its ASCII code.
+The second letter must be switched with the last letter
+Keepin' it simple: There are no special characters in the input.
+Examples:
+encryptThis("Hello") === "72olle"
+encryptThis("good") === "103doo"
+encryptThis("hello world") === "104olle 119drlo"
+*/
+
+let encryptThis = str => str
+  .split(' ')
+  .map(word => word
+    .replace(/(^\w)(\w)(\w*)(\w$)/, `$1$4$3$2`)
+    .replace(/^\w/, word.charCodeAt(0)))
+  .join(' ')
+
+
+/*
+Given an array/list [] of integers , Find all the LEADERS in the array.
+Notes: Array/list size is at least 3 .
+Array/list's numbers Will be mixture of positives , negatives and zeros
+Repetition of numbers in the array/list could occur.
+Returned Array/list should store the leading numbers in the same order in the original array/list .
+
+Input >> Output Examples
+arrayLeaders ({1, 2, 3, 4, 0}) ==> return {4}
+Explanation:
+4 is greater than the sum all the elements to its right side
+Note : The last element 0 is equal to right sum of its elements (abstract zero).
+
+arrayLeaders ({16, 17, 4, 3, 5, 2}) ==> return {17, 5, 2}
+Explanation:
+17 is greater than the sum all the elements to its right side
+5 is greater than the sum all the elements to its right side
+Note : The last element 2 is greater than the sum of its right elements (abstract zero).
+
+arrayLeaders ({5, 2, -1}) ==> return {5, 2}
+Explanation:
+5 is greater than the sum all the elements to its right side
+2 is greater than the sum all the elements to its right side
+Note : The last element -1 is less than the sum of its right elements (abstract zero).
+
+arrayLeaders ({0, -1, -29, 3, 2}) ==> return {0, -1, 3, 2}
+Explanation:
+0 is greater than the sum all the elements to its right side
+-1 is greater than the sum all the elements to its right side
+3 is greater than the sum all the elements to its right side
+Note : The last element 2 is greater than the sum of its right elements (abstract zero).
+*/
+
+function arrayLeaders(num){
+  let sol = []
+  num = num.map((item,i,arr) => item > arr.slice(i+1).reduce((a,b) => a + b, 0) ? sol.push(item) : item)
+  return sol
+}
+
+
+/*
+Create a class Ghost
+Ghost objects are instantiated without any arguments.
+Ghost objects are given a random color attribute of "white" or "yellow" or "purple" or "red" when instantiated
+ghost = new Ghost();
+ghost.color //=> "white" or "yellow" or "purple" or "red"
+*/
+
+let Ghost = function() {
+  this.color = ["white","yellow","purple","red"][Math.floor(Math.random() * 4)]
+}
