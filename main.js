@@ -4587,3 +4587,54 @@ ghost.color //=> "white" or "yellow" or "purple" or "red"
 let Ghost = function() {
   this.color = ["white","yellow","purple","red"][Math.floor(Math.random() * 4)]
 }
+
+
+/*
+Move the first letter of each word to the end of it, then add "ay" to the end of the word. Leave punctuation marks untouched.
+Examples
+pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
+pigIt('Hello world !');     // elloHay orldway !
+*/
+
+/* alternate
+let pigIt = str => str.replace(/(\w)(\w*)(\s|$)/g, "\$2\$1ay\$3")
+*/
+
+function pigIt(str){
+  str = str.split(' ').map(item => /\W/.test(item) ? item : item.slice(1) + item[0] + 'ay').join(' ')
+  return str
+}
+
+
+/*
+A Narcissistic Number is a positive number which is the sum of its own digits, each raised to the power of the number of digits in a given base. In this Kata, we will restrict ourselves to decimal (base 10).
+For example, take 153 (3 digits), which is narcisstic:
+    1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
+and 1652 (4 digits), which isn't:
+    1^4 + 6^4 + 5^4 + 2^4 = 1 + 1296 + 625 + 16 = 1938
+The Challenge:
+Your code must return true or false (not 'true' and 'false') depending upon whether the given number is a Narcissistic number in base 10.
+Error checking for text strings or other invalid inputs is not required, only valid positive non-zero integers will be passed into the function.
+*/
+
+function narcissistic(num) {
+  let l = [...''+num].length
+  return num === [...""+num].reduce((a,b) => a + ((+b) ** l), 0)
+}
+
+
+/*
+Write a function, which takes a non-negative integer (seconds) as input and returns the time in a human-readable format (HH:MM:SS)
+HH = hours, padded to 2 digits, range: 00 - 99
+MM = minutes, padded to 2 digits, range: 00 - 59
+SS = seconds, padded to 2 digits, range: 00 - 59
+The maximum time never exceeds 359999 (99:59:59)
+You can find some examples in the test fixtures.
+*/
+
+function humanReadable (s) {
+  let z = x => (x < 10) ? '0' + x : x
+  return z(Math.floor(s/60/60)) + ":" +
+         z(Math.floor(s/60%60)) + ':' +
+         z(s % 60)
+}
