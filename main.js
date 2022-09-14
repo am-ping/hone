@@ -4638,3 +4638,64 @@ function humanReadable (s) {
          z(Math.floor(s/60%60)) + ':' +
          z(s % 60)
 }
+
+
+/*
+Create a function called _if which takes 3 arguments: a boolean value bool and 2 functions (which do not take any parameters): func1 and func2
+When bool is truth-ish, func1 should be called, otherwise call the func2.
+Example:
+_if(true, function(){console.log("True")}, function(){console.log("false")})
+// Logs 'True' to the console.
+*/
+
+let _if = (bool, func1, func2) => bool ? func1() : func2()
+
+
+/*
+A Tidy number is a number whose digits are in non-decreasing order.
+Task
+Given a number, Find if it is Tidy or not .
+*/
+
+let tidyNumber = n => n == +[...""+n].sort().join('')
+
+
+/*
+Disarium number is the number that The sum of its digits powered with their respective positions is equal to the number itself.
+Task
+Given a number, Find if it is Disarium or not .
+Notes
+Number passed is always Positive
+Return the result as String
+Input >> Output Examples
+disariumNumber(89) ==> return "Disarium !!"
+Since , 81 + 92 = 89 , thus output is "Disarium !!"
+disariumNumber(564) ==> return "Not !!"
+Since , 51 + 62 + 43 = 105 != 564 , thus output is "Not !!"
+*/
+
+function disariumNumber(n){
+  return n == [...''+n].reduce((a,item,i) => a + ( (+item) ** (i + 1) ), 0) ? "Disarium !!" : "Not !!"
+}
+
+
+/*
+Jumping number is the number that All adjacent digits in it differ by 1.
+Task
+Given a number, Find if it is Jumping or not 
+Notes
+Number passed is always Positive .
+Return the result as String .
+The difference between ‘9’ and ‘0’ is not considered as 1 .
+All single digit numbers are considered as Jumping numbers.
+Input >> Output Examples
+jumpingNumber(9) ==> return "Jumping!!"
+It's single-digit number
+jumpingNumber(79) ==> return "Not!!"
+Adjacent digits don't differ by 1
+*/
+
+function jumpingNumber(n){
+  return [...''+n]
+    .every((item,i,a) => !i || item == +a[i-1] + 1 || item == a[i-1] - 1) ? 'Jumping!!' : 'Not!!'
+}
