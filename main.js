@@ -4699,3 +4699,31 @@ function jumpingNumber(n){
   return [...''+n]
     .every((item,i,a) => !i || item == +a[i-1] + 1 || item == a[i-1] - 1) ? 'Jumping!!' : 'Not!!'
 }
+
+
+/*
+a boolean true if all rotations of strng are included in arr
+false otherwise
+Examples:
+contain_all_rots(
+  "bsjq", ["bsjq", "qbsj", "sjqb", "twZNsslC", "jqbs"]) -> true
+contain_all_rots(
+  "Ajylvpy", ["Ajylvpy", "ylvpyAj", "jylvpyA", "lvpyAjy", "pyAjylv", "vpyAjyl", "ipywee"]) -> false)
+Note:
+Though not correct in a mathematical sense:
+we will consider that there are no rotations of strng == ""
+and for any array arr: contain_all_rots("", arr) --> true
+*/
+
+function containAllRots(str, arr) {
+  let list = []
+  for (let i = 0; i < str.length; i++) {
+    list.push( str.slice(str.length-i) + str.slice(0, str.length-i) )
+  }
+  return list.every(item => arr.includes(item))
+}
+
+
+/*
+
+*/
