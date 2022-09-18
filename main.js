@@ -4737,3 +4737,10 @@ splitAndMerge("Hello World!", ",")     ==  "H,e,l,l,o W,o,r,l,d,!"
 function splitAndMerge(str, separator) {
   return str.split(' ').map(item => item.split('').join(separator)).join(' ')
 }
+
+
+/*
+Your task is to return a number from a string. You will be given a string of numbers and letters mixed up, you have to return all the numbers in that string in the order they occur.
+*/
+
+let FilterString = str => +str.replace(/\D/g,'')
