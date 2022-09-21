@@ -4777,3 +4777,23 @@ function outed(meet, boss){
   let total = arr.reduce((a,b) => a + b, 0) + meet[boss]
   return total / arr.length <= 5 ? 'Get Out Now!' : 'Nice Work Champ!'
 }
+
+
+/*
+Write a function called calculate that takes 3 values. The first and third values are numbers. The second value is a character. If the character is "+" , "-", "*", or "/", the function will return the result of the corresponding mathematical function on the two numbers. If the string is not one of the specified characters or if dividing by zero, return null
+calculate(2,"+", 4); //Should return 6
+calculate(6,"-", 1.5); //Should return 4.5
+calculate(-4,"*", 8); //Should return -32
+calculate(49,"/", -7); //Should return -7
+calculate(8,"m", 2); //Should return null
+calculate(4,"/",0) //should return null
+*/
+
+function calculate(n1, o, n2) {
+  if (n2 == 0 && o == '/') return null
+  return o == '+' ? n1 + n2
+  : o == '-' ? n1 - n2
+  : o == '*' ? n1 * n2
+  : o == '/' ? n1 / n2
+  : null
+}
