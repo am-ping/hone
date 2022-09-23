@@ -4810,5 +4810,23 @@ let min = (arr, toReturn) => toReturn == 'value' ? Math.min(...arr) : arr.indexO
 
 
 /*
-
+You'll be given a string, and have to return the sum of all characters as an int. The function should be able to handle all ASCII characters.
+examples:
+uniTotal("a") == 97
+uniTotal("aaa") == 291
 */
+
+let uniTotal = str => [...str].reduce((a,b) => a + b.charCodeAt(), 0)
+
+
+/*
+Reverse every other word in a given string, then return the string. Throw away any leading or trailing whitespace, while ensuring there is exactly one space between each word. Punctuation marks should be treated as if they are a part of the word in this kata.
+*/
+
+function reverse(str){
+  return str
+    .split(' ')
+    .map((item,i) => i % 2 ? item = [...item].reverse().join('') : item)
+    .join(' ')
+    .trim()
+}
