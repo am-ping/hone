@@ -4862,3 +4862,41 @@ The input will be a lowercase string with no spaces and an array of digits.
 */
 
 let capitalize = (s,arr) => s.replace(/\w/g, (a,i) => arr.includes(i) ? a = a.toUpperCase() : a)
+
+
+/*
+Given an array/list [] of integers , Find the Nth smallest element in this array of integers
+*/
+
+let nthSmallest = (arr, pos) => arr.sort((a,b) => a - b)[pos-1]
+
+
+/*
+Given an array/list [] of integers , Find the product of the k maximal numbers.
+*/
+
+let maxProduct = (num, size) => num.sort((a,b) => b - a).slice(0, size).reduce((a,b) => a * b, 1)
+
+
+/*
+Given an array/list [] of integers , Find The maximum difference between the successive elements in its sorted form.
+*/
+
+function maxGap (num){
+  num = num.sort((a,b) => b - a)
+  let arr = []
+  for (let i = 0; i < num.length; i++) {
+    if (i > 0) {
+      arr.push(num[i-1] - num[i])
+    }
+  }
+  return Math.max(...arr)
+}
+
+
+/*
+Given an array of N integers, you have to find how many times you have to add up the smallest numbers in the array until their Sum becomes greater or equal to K.
+*/
+
+let minimumSteps = (nums, v) => nums.sort((a,b)=> a - b).filter((item,i) => (v = v - item) > 0).length
+
