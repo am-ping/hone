@@ -4900,3 +4900,10 @@ Given an array of N integers, you have to find how many times you have to add up
 
 let minimumSteps = (nums, v) => nums.sort((a,b)=> a - b).filter((item,i) => (v = v - item) > 0).length
 
+/*
+Implement String#digit? (in Java StringUtils.isDigit(String)), which should return true if given object is a digit (0-9), false otherwise.
+*/
+
+String.prototype.digit = function() {
+  return /^\d$/.test(this)
+}
