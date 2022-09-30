@@ -4944,3 +4944,43 @@ function multiply(a, b) {
 
   return stack.reverse().join('').replace(/^(0(?!$))+/, "")
 }
+
+
+/*
+Given a two-dimensional array of integers, return the flattened version of the array with all the integers in the sorted (ascending) order.
+Example:
+Given [[3, 2, 1], [4, 6, 5], [], [9, 7, 8]], your function should return [1, 2, 3, 4, 5, 6, 7, 8, 9].
+*/
+
+let flattenAndSort = arr => [].concat(...arr).sort((a,b) => a - b)
+
+
+/*
+Modify the spacify function so that it returns the given string with spaces inserted between each character.
+spacify("hello world") // returns "h e l l o   w o r l d"
+*/
+
+let spacify = str => [...str].join(" ")
+
+
+/*
+You need to find out if the cat can catch the mouse from it's current position. The cat can jump over three characters. So:
+C.....m returns 'Escaped!' <-- more than three characters between
+C...m returns 'Caught!' <-- as there are three characters between the two, the cat can jump.
+*/
+
+let catMouse = x => x.includes('....') ? "Escaped!" : "Caught!"
+
+
+/*
+A number is called Automorphic number if and only if its square ends in the same digits as the number itself.
+Given a number determine if it Automorphic or not
+
+autoMorphic (25) -->> return "Automorphic"
+25 squared is 625 , Ends with the same number's digits which are 25
+
+autoMorphic (13) -->> return "Not!!"
+13 squared is 169 , Not ending with the same number's digits which are 69
+*/
+
+let automorphic = n => String(n * n).endsWith(String(n)) ? "Automorphic" : "Not!!"
