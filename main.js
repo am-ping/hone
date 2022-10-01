@@ -5013,7 +5013,6 @@ function nbDig(n, d) {
 }
 */
 
-
 function nbDig(n, d) {
   let arr = []
   for (let i = 0; i <= n; i++) {
