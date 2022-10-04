@@ -5050,3 +5050,17 @@ You must not mutate the original array.
 */
 
 let multiplyAll = arr => int => arr.map(item => item * int)
+
+
+/*
+Implement a function, multiples(m, n), which returns an array of the first m multiples of the real number n. Assume that m is a positive integer.
+multiples(3, 5.0) => [5.0, 10.0, 15.0]
+*/
+
+function multiples(m, n){
+  let arr = []
+  for (let i = n; arr.length < m; i += n) {
+    arr.push(i)
+  }
+  return arr
+}
