@@ -5064,3 +5064,21 @@ function multiples(m, n){
   }
   return arr
 }
+
+
+/*
+Write a function that removes every lone 9 that is inbetween 7s.
+"79712312" --> "7712312"
+"79797"    --> "777"
+*/
+
+/* alternate
+let sevenAte9 = str => str.replace(/79(?=7)/g, '7')
+*/
+
+function sevenAte9(str) {
+  for (let i = 0; str.includes('797'); i++) {
+    str = str.replace(/797/g, '77')
+  }
+  return str
+}
