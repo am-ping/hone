@@ -5092,3 +5092,12 @@ You have to create the function factorial that receives n and returns n!. You ha
 */
 
 let factorial = n => (n < 1) ? 1 : n * factorial(--n)
+
+
+/*
+The number n is Evil if it has an even number of 1's in its binary representation.
+The number n is Odious if it has an odd number of 1's in its binary representation.
+You have to write a function that determine if a number is Evil of Odious, function should return "It's Evil!" in case of evil number and "It's Odious!" in case of odious number.
+*/
+
+let evil = n => n.toString(2).replace(/[^1]/g,'').length % 2 ? "It's Odious!" : "It's Evil!"
