@@ -5101,3 +5101,45 @@ You have to write a function that determine if a number is Evil of Odious, funct
 */
 
 let evil = n => n.toString(2).replace(/[^1]/g,'').length % 2 ? "It's Odious!" : "It's Evil!"
+
+
+/*
+Given an array of Boolean values and a logical operator, return a Boolean result based on sequentially applying the operator to the values in the array.
+
+booleans = [true, true, false], operator = "AND"
+true AND true -> true
+true AND false -> false
+return false
+
+booleans = [true, true, false], operator = "OR"
+true OR true -> true
+true OR false -> true
+return true
+
+booleans = [true, true, false], operator = "XOR"
+true XOR true -> false
+false XOR false -> false
+return false
+
+Input
+an array of Boolean values (1 <= array_length <= 50)
+a string specifying a logical operator: "AND", "OR", "XOR"
+Output
+A Boolean value (true or false).
+*/
+
+/* alternate solution
+let ops = {
+  'AND': (a, b) => a && b,
+  'OR': (a, b) =>  a || b,
+  'XOR': (a, b) => a !== b
+}
+let logicalCalc = (arr, op) => arr.reduce(ops[op])
+*/
+
+function logicalCalc(arr, op){
+  let b = (op == 'AND') ? arr.reduce((a,b) => a && b)
+  : (op == 'OR') ? arr.reduce((a,b) => a || b)
+  : arr.reduce((a,b) => a ^ b)
+  return b == 1
+}
