@@ -5143,3 +5143,22 @@ function logicalCalc(arr, op){
   : arr.reduce((a,b) => a ^ b)
   return b == 1
 }
+
+
+/*
+Given an integer (1 <= n <= 100) representing a person's age, return their minimum and maximum age range.
+min = Math.floor( (age/2) + 7 )
+max = Math.floor( (age - 7) * 2 )
+This equation doesn't work when the age <= 14, so use this equation instead:
+min = Math.floor( age - 0.10 * age )
+max = Math.floor( age + 0.10 * age )
+age = 27   =>   20-40
+age = 5    =>   4-5
+age = 17   =>   15-20
+*/
+
+function datingRange(age){
+  let min = age <= 14 ? Math.floor(age - 0.10 * age) : Math.floor((age/2) + 7)
+  let max = age <= 14 ? Math.floor(age + 0.10 * age) : (age - 7) * 2
+  return `${min}-${max}`
+}
