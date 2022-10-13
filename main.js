@@ -5201,3 +5201,18 @@ Your code will show Full name of the neighbor and the truncated version of the n
 */
 
 let whoIsPaying = name => name.length <= 2 ? [name] : [name, name.slice(0,2)]
+
+
+/*
+Complete the function that returns an array of length n, starting with the given number x and the squares of the previous number. If n is negative or zero, return an empty array/list.
+2, 5  -->  [2, 4, 16, 256, 65536]
+3, 3  -->  [3, 9, 81]
+*/
+
+function squares(x, n) {
+  let arr = []
+  for (let i = x; arr.length < n; i *= i) {
+    arr.push(i)
+  }
+  return arr
+}
