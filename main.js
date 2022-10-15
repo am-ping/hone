@@ -5227,3 +5227,16 @@ duck_duck_goose([a, b, c, d], 4) should return d.name
 
 let duckDuckGoose = (p, g) => p[(g - 1) % p.length].name
 
+
+/*
+A number is a Special Number if it’s digits only consist 0, 1, 2, 3, 4 or 5
+Given a number determine if it special number or not
+The number passed will be positive (N > 0) .
+All single-digit numbers within the interval [1:5] are considered as special number.
+Input >> Output Examples
+specialNumber(2) ==> return "Special!!"
+specialNumber(9) ==> return "NOT!!"
+specialNumber(59) ==> return "NOT!!"
+*/
+
+let specialNumber = n => /[6-9]/.test(n) ? "NOT!!" : "Special!!"
