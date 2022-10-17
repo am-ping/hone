@@ -5259,3 +5259,36 @@ function aliasGen(f, l){
   l = l.toUpperCase()[0]
   return (/\d/.test(f) || /\d/.test(l)) ? "Your name must start with a letter from A - Z." : `${firstName[f]} ${surname[l]}`
 }
+
+
+/*
+The Pied Piper has been enlisted to play his magical tune and coax all the rats out of town but some of the rats are deaf and are going the wrong way!
+How many deaf rats are there?
+Legend
+P = The Pied Piper
+O~ = Rat going left
+~O = Rat going right
+Example
+ex1 ~O~O~O~O P has 0 deaf rats
+ex2 P O~ O~ ~O O~ has 1 deaf rat
+ex3 ~O~O~O~OP~O~OO~ has 2 deaf rats
+*/
+
+/* alternate solution
+function countDeafRats(town) {
+  return [...town.replace(/ +/g,'')].reduce((a,c,i) => a + (i % 2 == 0 && c == 'O'), 0)
+}
+*/
+
+function countDeafRats(town) {
+  town = town.replace(/ /g, '')
+  if (town.length == 1) return 0
+  let right = (town[town.length-1] === 'P')
+  let left = (town[0] === 'P')
+  return right ? town.replace("P",'').match(/.{1,2}/g).filter(it => it == 'O~').length
+  : left ? town.replace("P",'').match(/.{1,2}/g).filter(it => it == '~O').length
+  : town.split('P')
+        .map((item,i) => i == 0 ? item.match(/.{1,2}/g).filter(s => s == 'O~').length
+                      : item.match(/.{1,2}/g).filter(s => s == '~O').length)
+        .reduce((a,b) => a + b, 0)
+}
