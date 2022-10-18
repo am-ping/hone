@@ -5292,3 +5292,4 @@ function countDeafRats(town) {
                       : item.match(/.{1,2}/g).filter(s => s == '~O').length)
         .reduce((a,b) => a + b, 0)
 }
+
