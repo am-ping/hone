@@ -5316,3 +5316,11 @@ oddOne([2,4,6,8]) // => -1
 */
 
 let oddOne = arr => arr.findIndex(item => item % 2)
+
+
+/*
+Complete the solution so that it returns a formatted string. The return value should equal "Value is VALUE" where value is a 5 digit padded number.
+solution(5) // should return "Value is 00005"
+*/
+
+let solution = value => "Value is " + ("00000" + value).slice(-5)
