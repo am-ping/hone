@@ -5324,3 +5324,11 @@ solution(5) // should return "Value is 00005"
 */
 
 let solution = value => "Value is " + ("00000" + value).slice(-5)
+
+
+/*
+Determine the total number of digits in the integer (n>=0) given as input to the function. For example, 9 is a single digit, 66 has 2 digits and 128685 has 6 digits. Be careful to avoid overflows/underflows.
+*/
+
+let digits = n => String(n).length
+
