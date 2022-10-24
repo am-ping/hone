@@ -1,3 +1,4 @@
+// https://dev.codewars.com/#list-completed-challenges
 
 // fetch codewars challenges I solved
 fetch(`https://www.codewars.com/api/v1/users/AM-png/code-challenges/completed?page=2`)
