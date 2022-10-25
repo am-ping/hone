@@ -1,12 +1,35 @@
 // https://dev.codewars.com/#list-completed-challenges
 
 // fetch codewars challenges I solved
-fetch(`https://www.codewars.com/api/v1/users/AM-png/code-challenges/completed?page=2`)
-  .then(res => res.json())
-  .then(data => {
-    console.log(data.data)
-    return fetch(`https://www.codewars.com/api/v1/code-challenges/${data.data[1].id}`)
-  })
-  .then(res => res.json())
-  .then(data => console.log(data.description))
-  .catch(err => console.log(err))
+async function getCodewarsChallenges() {
+  const res = await axios.get(`https://www.codewars.com/api/v1/users/AM-png/code-challenges/completed?page=1`)
+  return res.data.data
+}
+
+async function cData() {
+  let arr = await getCodewarsChallenges()
+  for (let i = 0; i < arr.length; i++) {
+    let challenge = await axios.get(`https://www.codewars.com/api/v1/code-challenges/${arr[i].id}`)
+    listChallenges(challenge)
+  }
+}
+
+function listChallenges(c) {
+  let div = document.querySelector('.container')
+
+  let data = c.data
+
+  let h2 = document.createElement('h2')
+  h2.textContent = data.name
+  div.append(h2)
+
+  let p = document.createElement('p')
+  p.classList = 'lh-1'
+  p.innerText = data.description
+  div.append(p)
+  
+}
+
+// listChallenges()
+
+cData()
