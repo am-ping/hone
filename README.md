@@ -1,6 +1,6 @@
 # Codewars: [My Profile](https://www.codewars.com/users/AM-png)
-
-Repository consisting of all codewars kata (challenges) I worked on and solved.
+# LeetCode: [My Profile](https://leetcode.com/AM-png/)
+Repository consisting of all LeetCode and Codewars kata (challenges) I worked on and solved.
 
 ## How It's Made
 **Tech used:** JavaScript
