@@ -5367,3 +5367,25 @@ function cutIt(arr){
   return arr.map(item => item.slice(0,l))
 }
 
+
+/*
+Compare two strings by comparing the sum of their values (ASCII character code).
+For comparing treat all letters as UpperCase
+null/NULL/Nil/None should be treated as empty strings
+If the string contains other characters than letters, treat the whole string as it would be empty
+Your method should return true, if the strings are equal and false if they are not equal.
+"AD", "BC"  -> equal
+"AD", "DD"  -> not equal
+"gf", "FG"  -> equal
+"zz1", ""   -> equal (both are considered empty)
+"ZzZz", "ffPFF" -> equal
+"kl", "lz"  -> not equal
+null, ""    -> equal
+*/
+
+function compare(s1, s2) {
+  s1 = (/[^A-z]/.test(s1) || s1 == null) ? s1 = 0 : s1.split('').reduce((a,b) => a + +b.toUpperCase().charCodeAt(), 0)
+  s2 = (/[^A-z]/.test(s2) || s2 == null) ? s2 = 0 : s2.split('').reduce((a,b) => a + +b.toUpperCase().charCodeAt(), 0)
+  return s1 === s2
+}
+
