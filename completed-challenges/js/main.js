@@ -8,14 +8,14 @@ async function getCodewarsChallenges() {
 
 async function cData() {
   let arr = await getCodewarsChallenges()
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < 5; i++) {
     let challenge = await axios.get(`https://www.codewars.com/api/v1/code-challenges/${arr[i].id}`)
     listChallenges(challenge)
   }
 }
 
 function listChallenges(c) {
-  let div = document.querySelector('.container')
+  let div = document.querySelector('code')
 
   let data = c.data
 
@@ -27,9 +27,8 @@ function listChallenges(c) {
   p.classList = 'lh-1'
   p.innerText = data.description
   div.append(p)
-  
 }
 
 // listChallenges()
 
-cData()
+// cData()
