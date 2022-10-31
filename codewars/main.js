@@ -5449,3 +5449,10 @@ all((1, 2, 3, 4, 5), less_than_9)    -> True
 
 let all = (arr, fun) => arr.every(fun)
 
+
+/*
+Create an any? (JS: any) function that accepts an array and a block (JS: function), and returns true if the block (/function) returns true for any item in the array. If the array is empty, the function should return false.
+*/
+
+let any = (arr, func) => arr.some(func)
+
