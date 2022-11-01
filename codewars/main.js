@@ -909,9 +909,7 @@ function powersUp(number, upTo) {
 
 /*
 You will be given an array of objects, each of which contains a key of veg and a value which is an array of vegetables. For example, [{veg: ["carrots","butternut squash"]},{veg: ["sweet potato","courgette"]}].
-
 Your job is to find out which recipe has the most vegetables and is therefore the tastiest.
-
 Return the statement "The recipe at index _ is the tastiest!!!"
 */
 
@@ -5447,7 +5445,7 @@ all((1, 2, 3, 4, 5), greater_than_9) -> false
 all((1, 2, 3, 4, 5), less_than_9)    -> True
 */
 
-let all = (arr, fun) => arr.every(fun)
+let all = (arr, func) => arr.every(func)
 
 
 /*
@@ -5455,4 +5453,11 @@ Create an any? (JS: any) function that accepts an array and a block (JS: functio
 */
 
 let any = (arr, func) => arr.some(func)
+
+
+/*
+Create a method none? (JS none) that accepts an array and a block (JS: a function), and returns true if the block (/function) returns true for none of the items in the array. An empty list should return true.
+*/
+
+let none = (arr, func) => !arr.some(func)
 
