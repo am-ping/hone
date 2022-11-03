@@ -5000,7 +5000,7 @@ the k*k that contain the digit 1 are:
 So there are 11 digits 1 for the squares of numbers between 0 and 25.
 */
 
-/* alternate
+/* alternative solution
 function nbDig(n, d) {
   let count = 0
     for (let i = 0; i <= n; i++){
@@ -5181,7 +5181,7 @@ Examples: (Input --> output)
 3 --> 36 (sum of the cubes of 1, 2, and 3 is 1 + 8 + 27)
 */
 
-/* alternate
+/* alternative solution
 let sumCubes = n => (n * (n + 1) / 2) ** 2
 */
 
@@ -5272,7 +5272,7 @@ ex2 P O~ O~ ~O O~ has 1 deaf rat
 ex3 ~O~O~O~OP~O~OO~ has 2 deaf rats
 */
 
-/* alternate solution
+/* alternative solution
 function countDeafRats(town) {
   return [...town.replace(/ +/g,'')].reduce((a,c,i) => a + (i % 2 == 0 && c == 'O'), 0)
 }
@@ -5421,7 +5421,7 @@ Task:
 Place all people in alphabetical order where Mothers are followed by their children, i.e. "aAbaBb" => "AaaBbb".
 */
 
-/* alternate solution
+/* alternative solution
 function findChildren(dancingBrigade) {
   return [...dancingBrigade]
     .sort((a, b) => a.localeCompare(b, `kf`, {caseFirst: `upper`}))
@@ -5472,4 +5472,11 @@ one([1, 3, 5, 6, 5, 1, 3], bigger_than_ten) -> false
 
 let one = (arr, func) => arr.filter(func).length === 1
 
+
+/*
+Complete the function that calculates the area of the red square, when the length of the circular arc A is given as the input. Return the result rounded to two decimals.
+Note: use the π value provided in your language (Math::PI, M_PI, math.pi, etc)
+*/
+
+let squareArea = a => ((360 * a)/(2 * Math.PI * 90)) ** 2
 
