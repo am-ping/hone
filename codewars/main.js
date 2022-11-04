@@ -1961,7 +1961,7 @@ Examples
 (112, "+ () -") => "+ () -"
 */
 
-/* alternate
+/* alternative solution
 function formatNumber(num, template) {
   for ( let c of num.toString() ) template = template.replace('#', c)
   return template.includes('#') && "Invalid phone number" || template
@@ -5479,4 +5479,19 @@ Note: use the π value provided in your language (Math::PI, M_PI, math.pi, etc)
 */
 
 let squareArea = a => ((360 * a)/(2 * Math.PI * 90)) ** 2
+
+
+/*
+Write a function that accepts two arguments and generates a sequence containing the integers from the first argument to the second inclusive.
+Pair of integers greater than or equal to 0. The second argument will always be greater than or equal to the first.
+generateIntegers(2, 5) // --> [2, 3, 4, 5]
+*/
+
+function generateIntegers(m, n) {
+  let arr = []
+  for (let i = m; i <= n; i++) {
+    arr.push(i)
+  }
+  return arr
+}
 
