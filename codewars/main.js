@@ -836,7 +836,7 @@ function validatePIN (pin) {
 
 
 /*
-Take 2 strings s1 and s2 including only letters from ato z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
+Take 2 strings s1 and s2 including only letters from a to z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
 
 Examples:
 a = "xyaabbbccccdefww"
@@ -5548,5 +5548,26 @@ function differenceOfSquares(n){
   let squareOfSum = arr.reduce((a,b) => a + b, 0) ** 2
   let sumOfSquare = arr.reduce((a,b) => a + b ** 2, 0)
   return squareOfSum - sumOfSquare
+}
+
+
+/*
+Your task is to write a function toLeetSpeak that converts a regular english sentence to Leetspeak. Consider only uppercase letters (no lowercase letters, no numbers) and spaces.
+toLeetSpeak("LEET") returns "1337"
+In this kata we use a simple LeetSpeak dialect. Use this alphabet:
+{
+    A: '@', B: '8', C: '(', E: '3',
+    G: '6', H: '#', I: '!', L: '1',
+    O: '0', S: '$', T: '7', Z: '2'
+}
+*/
+
+function toLeetSpeak(s) {
+  let a = {
+    A: '@', B: '8', C: '(', E: '3',
+    G: '6', H: '#', I: '!', L: '1',
+    O: '0', S: '$', T: '7', Z: '2'
+  }
+  s.replace(/[ABCEGHILOSTZ]/g, l => a[l])
 }
 
