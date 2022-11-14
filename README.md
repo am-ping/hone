@@ -1,5 +1,4 @@
-# Codewars: [My Profile](https://www.codewars.com/users/AM-png)
-# LeetCode: [My Profile](https://leetcode.com/AM-png/)
+# [Codewars Profile](https://www.codewars.com/users/AM-png) & [LeetCode Profile](https://leetcode.com/AM-png/)
 Repository consisting of all LeetCode and Codewars kata (challenges) I worked on and solved.
 
 ## How It's Made
