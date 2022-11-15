@@ -4896,7 +4896,7 @@ function maxGap (num){
 Given an array of N integers, you have to find how many times you have to add up the smallest numbers in the array until their Sum becomes greater or equal to K.
 */
 
-let minimumSteps = (nums, v) => nums.sort((a,b)=> a - b).filter((item,i) => (v = v - item) > 0).length
+let minimumSteps = (nums, v) => nums.sort((a,b)=> a - b).filter(item => (v = v - item) > 0).length
 
 /*
 Implement String#digit? (in Java StringUtils.isDigit(String)), which should return true if given object is a digit (0-9), false otherwise.
@@ -5665,4 +5665,35 @@ function sumMul(n, m){
     sum += i
   }
   return sum
+}
+
+
+/*
+Can you mirror the properties on an object?
+Given an object with properties with no value
+abc: -
+arara: -
+xyz: -
+Return a new object that have the properties with its mirrored key!
+abc: cba
+arara: arara
+xyz: zyx
+You cannot change the original object, because if you did that the reflection would change.
+*/
+
+/* alternative solution
+const mirror = obj => {
+  return Object.keys(obj).reduce((item, i) => {
+    item[i] = [...i].reverse().join('');
+    return item;
+  }, {});
+};
+*/
+
+function mirror(obj) {
+  const copy = Object.assign({}, obj)
+  for (let item in copy) {
+    copy[item] = item.split('').reverse().join('')
+  }
+  return copy
 }
