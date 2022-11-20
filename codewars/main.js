@@ -5759,3 +5759,27 @@ function order(str){
   }
   return arr.join(' ')
 }
+
+
+/*
+Given a string s. You have to return another string such that even-indexed and odd-indexed characters of s are grouped and groups are space-separated (see sample below)
+0 is considered to be an even index. 
+All input strings are valid with no spaces
+input: 'CodeWars'
+output 'CdWr oeas'
+S[0] = 'C'
+S[1] = 'o'
+S[2] = 'd'
+S[3] = 'e'
+S[4] = 'W'
+S[5] = 'a'
+S[6] = 'r'
+S[7] = 's'
+*/
+
+function sortMyString(s) {
+  let even = [...s].filter((item, i) => i % 2 === 0).join('')
+  let odd = [...s].filter((item, i) => i % 2).join('')
+  return even + ' ' + odd
+}
+
