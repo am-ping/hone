@@ -5814,3 +5814,10 @@ function stringTransformer(str) {
     .split('')
     .map(item => item == item.toUpperCase() ? item.toLowerCase() : item.toUpperCase()).join('')
 }
+
+
+/*
+You will be given an array of numbers which can be used using the String.fromCharCode() (JS), Tools.FromCharCode() (C#) method to convert the number to a character. It is recommended to map over the array of numbers and convert each number to the corresponding ascii character.
+*/
+
+let ArrowFunc = arr => arr.map(item => String.fromCharCode(item)).join('')
