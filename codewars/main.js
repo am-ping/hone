@@ -5831,3 +5831,15 @@ Your task is to create a function that returns true if the given number is a Wil
 */
 
 let amIWilson = p => p == 5 || p == 13 || p == 563
+
+
+/*
+Coding in function howManySmaller, function accept 2 parameter:arr and n. arr is a decimal array. n is a decimal.
+The first mission: let all elements in the array keep two decimal places(No need to convert number n).
+The second mission: Traversal arr, count the number of the element which smaller than n and return it.
+howManySmaller([1.234,1.235,1.228],1.24) should return 2
+howManySmaller([1.1888,1.1868,1.1838],1.19) should return 1
+howManySmaller([3.1288,3.1212,3.1205],3.1212) should return 2
+*/
+
+let howManySmaller = (arr,n) => arr.filter(item => item.toFixed(2) < n).length
