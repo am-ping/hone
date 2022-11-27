@@ -5843,3 +5843,39 @@ howManySmaller([3.1288,3.1212,3.1205],3.1212) should return 2
 */
 
 let howManySmaller = (arr,n) => arr.filter(item => item.toFixed(2) < n).length
+
+
+/*
+Each department has a different boredom assessment score, as follows:
+accounts = 1
+finance = 2
+canteen = 10
+regulation = 3
+trading = 6
+change = 6
+IS = 8
+retail = 5
+cleaning = 4
+pissing about = 25
+Depending on the cumulative score of the team, return the appropriate sentiment:
+<=80: 'kill me now'
+< 100 & > 80: 'i can handle this'
+100 or over: 'party time!!'
+*/
+
+function boredom(staff){
+  let map = {
+    accounts:1,
+    finance:2,
+    canteen:10,
+    regulation:3,
+    trading: 6,
+    change:6,
+    IS:8,
+    retail:5,
+    cleaning:4,
+    'pissing about':25
+  }
+  let score = Object.keys(staff).reduce((a,b) => a + map[staff[b]], 0)
+  return score <= 80 ? 'kill me now': score < 100 && score > 80 ? 'i can handle this' : 'party time!!'
+}
