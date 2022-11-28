@@ -5892,3 +5892,13 @@ Will return a new string
 function splitInParts(s, partLength) {
   return [...s].map((item,i) => i > 0 && i % partLength == 0 ? ` ${item}` : item).join('')
 }
+
+
+/*
+Write a function isReallyNaN that returns true only if passed in an argument that evalutes to NaN, and returns false otherwise.
+*/
+/* alternative solution
+const isReallyNaN = Number.isNaN
+*/
+let isReallyNaN = val => Number.isNaN(val)
+
