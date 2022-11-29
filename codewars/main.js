@@ -5902,3 +5902,10 @@ const isReallyNaN = Number.isNaN
 */
 let isReallyNaN = val => Number.isNaN(val)
 
+
+/*
+Create a function that returns the elements of the input-array / list sorted in lexicographical order.
+*/
+
+let sortme = names => names.sort()
+
