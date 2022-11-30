@@ -5909,3 +5909,16 @@ Create a function that returns the elements of the input-array / list sorted in 
 
 let sortme = names => names.sort()
 
+
+/*
+Write a function reverse which reverses a list (or in clojure's case, any list-like data structure)
+(the dedicated builtin(s) functionalities are deactivated)
+*/
+
+function reverse(arr) {
+  let arr2 = []
+  for (let i = arr.length - 1; i >= 0; i--) {
+    arr2.push(arr[i])
+  }
+  return arr2
+}
