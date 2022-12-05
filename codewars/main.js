@@ -5974,3 +5974,19 @@ The vowel substrings in the word codewarriors are o,e,a,io. The longest of these
 */
 
 let solve = s => Math.max(...s.replace(/[^aeiou]/g, " ").split(" ").map(item => item.length))
+
+
+/*
+Given a series of digits as a string, determine if the number represented by the string is divisible by three.
+"123"      -> true
+"8409"     -> true
+"100853"   -> false
+"33333333" -> true
+"7"        -> false
+*/
+
+function divisibleByThree(str){
+  let sum = 0
+  str = [...str].forEach(item => sum += +item)
+  return sum % 3 == 0
+}
