@@ -6052,3 +6052,13 @@ For example, take_umbrella('sunny', 0.40) should return False.
 function takeUmbrella(weather, chance) {
   return weather == 'rainy' || (weather == 'cloudy' && chance > 0.2 ) || chance > 0.5
 }
+
+
+/*
+The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age,  oldest age].
+[1, 2, 10, 8] --> [8, 10]
+[1, 5, 87, 45, 8, 8] --> [45, 87]
+[1, 3, 10, 0]) --> [3, 10]
+*/
+
+let twoOldestAges = ages => ages.sort((a,b) => b - a).slice(0,2).reverse()
