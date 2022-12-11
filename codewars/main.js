@@ -6062,3 +6062,28 @@ The two oldest ages function/method needs to be completed. It should take an arr
 */
 
 let twoOldestAges = ages => ages.sort((a,b) => b - a).slice(0,2).reverse()
+
+
+/*
+Find the first character that repeats in a String and return that character.
+firstDup('tweet') => 't'
+firstDup('like') => undefined
+This is not the same as finding the character that repeats first. In that case, an input of 'tweet' would yield 'e'.
+Another example:
+In 'translator' you should return 't', not 'a'.
+v      v  
+translator
+  ^   ^
+*/
+
+/* alternative solution
+let firstDup = s => s[s.search(/(.).*\1/ )]
+*/
+
+function firstDup (s) {
+  let oi = ''
+  for (let i = 0; i < s.length; i++) {
+    if (s.slice(i + 1).includes(s[i])) oi += s[i]
+  }
+  return oi[0]
+}
