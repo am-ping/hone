@@ -6140,3 +6140,12 @@ function hydrate(s) {
   s = [...s.replace(/[^\d]/g, '')].reduce((a,b) => a + +b, 0)
   return `${s} glass${s > 1 ? 'es' : ''} of water`
 }
+
+
+/*
+Create a function, called removeVowels (or remove_vowels), that takes a string argument and returns that same string with all vowels removed (vowels are "a", "e", "i", "o", "u").
+removeVowels("drake") // => "drk"
+removeVowels("aeiou") // => ""
+*/
+
+let removeVowels = str => str.replace(/[aeiou]/g,'')
