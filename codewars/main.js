@@ -6279,3 +6279,10 @@ function checkThreeAndTwo(arr) {
           && (a === 2 || b === 2 || c === 2)
 }
 
+
+/*
+In this exercise, a string is passed to a method and a new string has to be returned with the first character of each word in the string.
+"This Is A Test" ==> "TIAT"
+*/
+
+let makeString = s => s.split(' ').map(item => item[0]).join('')
