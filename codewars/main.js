@@ -6286,3 +6286,12 @@ In this exercise, a string is passed to a method and a new string has to be retu
 */
 
 let makeString = s => s.split(' ').map(item => item[0]).join('')
+
+
+/*
+Implement the function which should return true if given object is a vowel (meaning a, e, i, o, u, uppercase or lowercase), and false otherwise.
+*/
+
+String.prototype.vowel = function() {
+  return /^[aeiou]$/i.test(this)
+}
