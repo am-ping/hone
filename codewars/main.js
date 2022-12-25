@@ -6295,3 +6295,22 @@ Implement the function which should return true if given object is a vowel (mean
 String.prototype.vowel = function() {
   return /^[aeiou]$/i.test(this)
 }
+
+
+/*
+you will do addition and subtraction on a given string. The return value must be also a string.
+Note: the input will not be empty.
+Examples
+"1plus2plus3plus4"  --> "10"
+"1plus2plus3minus4" -->  "2"
+*/
+
+function calculate(str) {
+  str = str.replace(/(plus|minus)/g, item => item == 'plus' ? item = ' +' : item = " -")
+  let arr = str.split(' ')
+  let count = 0
+  arr.forEach(item => item.includes('+') ? count += +item.slice(1)
+                    : item.includes('-') ? count -= +item.slice(1)
+                    : count += +item)
+  return count.toString()
+}
