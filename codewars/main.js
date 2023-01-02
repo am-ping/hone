@@ -6397,3 +6397,10 @@ arr.numberOfOccurrences("a") === 0;
 Array.prototype.numberOfOccurrences = function(n) {
   return this.filter(item => item == n).length
 }
+
+
+/*
+Implement a function that returns the minimal and the maximal value of a list (in this order).
+*/
+
+let getMinMax = arr => [Math.min(...arr), Math.max(...arr)]
