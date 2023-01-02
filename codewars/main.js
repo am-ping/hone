@@ -6404,3 +6404,13 @@ Implement a function that returns the minimal and the maximal value of a list (i
 */
 
 let getMinMax = arr => [Math.min(...arr), Math.max(...arr)]
+
+
+/*
+Write a function that will accept two parameters: variable and type and check if type of variable is matching type. Return true if types match or false if not.
+42, "number"   --> true
+"42", "number" --> false
+*/
+
+let typeValidation = (variable, type) => typeof variable === type
+
