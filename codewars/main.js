@@ -6433,3 +6433,21 @@ function countZeros(n) {
   }
   return count
 }
+
+
+/*
+Make your strings more nerdy: Replace all 'a'/'A' with 4, 'e'/'E' with 3 and 'l' with 1 e.g. "Fundamentals" --> "Fund4m3nt41s"
+*/
+
+/* alternative solution
+function nerdify(t) {
+  return t.replace(/[aelAE]/g, item => ({ 'a': 4, 'e': 3, 'l':1 }[item.toLowerCase()]))
+}
+*/
+
+function nerdify(txt){
+  return txt.replace(/[ael]/gi, item => item == 'a' || item == 'A' ? 4
+                                      : item == 'e' || item == 'E' ? 3
+                                      : item == 'l' ? 1
+                                      : item)
+}
