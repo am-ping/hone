@@ -6451,3 +6451,21 @@ function nerdify(txt){
                                       : item == 'l' ? 1
                                       : item)
 }
+
+
+/*
+Count the number of exclamation marks and question marks, return the product.
+Product("") == 0
+product("!") == 0
+Product("!ab? ?") == 2
+Product("!!") == 0
+Product("!??") == 2
+Product("!???") == 3
+Product("!!!??") == 6
+Product("!!!???") == 9
+Product("!???!!") == 9
+*/
+
+function product(s) {
+  return s.replace(/[^!]/g, '').length * s.replace(/[^?]/g, '').length
+}
