@@ -6528,3 +6528,11 @@ let toCsvText = arr => arr.join('\n')
 function toCsvText(arr) {
   return arr.map((item,i) => i !== arr.length - 1 ? item.join(',') + '\n' : item).join('')
 }
+
+
+/*
+This is an easy twist to the example kata (provided by Codewars when learning how to create your own kata).
+Add the value "codewars" to the array websites/Websites 1,000 times.
+*/
+
+let websites = new Array(1000).fill("codewars");
