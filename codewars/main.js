@@ -6536,3 +6536,19 @@ Add the value "codewars" to the array websites/Websites 1,000 times.
 */
 
 let websites = new Array(1000).fill("codewars");
+
+/*
+In this Kata, you will be given two strings a and b and your task will be to return the characters that are not common in the two strings.
+solve("xyab","xzca") = "ybzc" 
+--The first string has 'yb' which is not in the second string. 
+--The second string has 'zc' which is not in the first string. 
+*/
+
+function solve(a, b){
+  let str = ''
+  a = [...a]
+  b = [...b]
+  a.forEach(item => !b.includes(item) ? str += item : str)
+  b.forEach(item => !a.includes(item) ? str += item : str)
+  return str
+}
