@@ -6552,3 +6552,14 @@ function solve(a, b){
   b.forEach(item => !a.includes(item) ? str += item : str)
   return str
 }
+
+
+/*
+You receive the name of a city as a string, and you need to return a string that shows how many times each letter shows up in the string by using asterisks (*).
+"Chicago"  -->  "c:**,h:*,i:*,a:*,g:*,o:*"
+*/
+
+function getStrings(city){
+  city = city.toLowerCase().replace(/ /g,'')
+  return [...new Set(city)].map(item => `${item}:${'*'.repeat(city.split(item).length-1)}`).join(',')
+}
