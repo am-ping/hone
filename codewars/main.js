@@ -6563,3 +6563,18 @@ function getStrings(city){
   city = city.toLowerCase().replace(/ /g,'')
   return [...new Set(city)].map(item => `${item}:${'*'.repeat(city.split(item).length-1)}`).join(',')
 }
+
+
+/*
+Complete the function to find the count of the most frequent item of an array. You can assume that input is an array of integers. For an empty array return 0
+input array: [3, -1, -1, -1, 2, 3, -1, 3, -1, 2, 4, 9, 3]
+ouptut: 5 
+*/
+
+function mostFrequentItemCount(arr) {
+  let count = 0
+  for (let i = 0; i < arr.length; i++) {
+    count = (count < arr.filter(item => item == arr[i]).length) ? arr.filter(item => item == arr[i]).length : count
+  }
+  return count
+}
