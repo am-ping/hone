@@ -6597,3 +6597,26 @@ SafeInteger(9007199254740992) //false
 */
 
 let SafeInteger = n => Number.isSafeInteger(n)
+
+
+/*
+Complete the function that takes an integer n and returns a list/array of length abs(n) + 1 of the arithmetic series explained above. Whenn < 0 return the sequence with negative terms.
+ 5  -->  [0,  1,  3,  6,  10,  15]
+-5  -->  [0, -1, -3, -6, -10, -15]
+ 7  -->  [0,  1,  3,  6,  10,  15,  21,  28]
+*/
+
+function sumOfN(n) {
+  let arr = []
+  let count = 0
+  if (n < 0) {
+    for (let i = 0; i >= n; i--) {
+      arr.push(count += i)
+    }
+  } else {
+    for (let i = 0; i <= n; i++) {
+      arr.push(count += i)
+    }
+  }
+  return arr
+}
