@@ -15,7 +15,7 @@ async function cData() {
 }
 
 function listChallenges(c) {
-  let div = document.querySelector('pre')
+  let div = document.querySelector('code')
 
   let data = c.data
 
