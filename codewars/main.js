@@ -6654,3 +6654,20 @@ function giveMeFive(obj){
   }
   return arr
 }
+
+
+/*
+The function new_avg(arr, navg) should return the expected donation (rounded up to the next integer) that will permit to reach the average navg.
+all donations and navg are numbers (integers or floats), arr can be empty.
+See examples below and "Sample Tests" to see which return is to be done.
+new_avg([14, 30, 5, 7, 9, 11, 15], 92) should return 645
+new_avg([14, 30, 5, 7, 9, 11, 15], 2) should raise an error
+*/
+
+function newAvg(arr, newavg) {
+  let total = arr.reduce((a,b) => a + b, 0)
+  if (total / arr.length > newavg) throw new Error("Expected New Average is too low")
+  for (let i = 1; b == 0; i++) {
+    if ( newavg == Math.floor( (total + i)/(arr.length + 1) ) ) return i
+  }
+}
