@@ -6680,3 +6680,36 @@ Write a function that reverses the bits in an integer. For example, the number 4
 function reverseBits(n) {
   return parseInt(n.toString(2).split('').reverse().join(''), 2)
 }
+
+
+/*
+You are given a secret message you need to decipher. Here are the things you need to know to decipher it:
+For each word:
+the second and the last letter is switched (e.g. Hello becomes Holle)
+the first letter is replaced by its character code (e.g. H becomes 72)
+Note: there are no special characters used, only letters and spaces
+decipherThis('72olle 103doo 100ya'); // 'Hello good day'
+decipherThis('82yade 115te 103o'); // 'Ready set go'
+*/
+
+/* alternative solution
+function decipherThis(str) {
+  return str.split(" ")
+    .map(w =>
+      w.replace(/^\d+/, c => String.fromCharCode(c))
+       .replace(/^(.)(.)(.*)(.)$/, "$1$4$3$2")
+    )
+    .join(" ")
+}
+*/
+
+function decipherThis(str) {
+  return str.split(' ').map(item => {
+    let a = item.replace(/[^a-z]/g, "")
+    if (a.length > 1) {
+      return String.fromCharCode(parseInt(item)) + a[a.length - 1] + a.slice(1, a.length - 1)+ a[0]
+    } else {
+      return String.fromCharCode(parseInt(item)) + a
+    }
+  }).join(' ')
+}
