@@ -6761,3 +6761,10 @@ let head = x => x[0]
 let tail = x => x.slice(1)
 let init = x => x.slice(0, x.length - 1)
 let last = x => x[x.length - 1]
+
+
+/*
+Write a function insert_dash(num) / insertDash(num) / InsertDash(int num) that will insert dashes ('-') between each two odd digits in num. For example: if num is 454793 the output should be 4547-9-3. Don't count zero as an odd digit. Note that the number will always be non-negative (>= 0)
+*/
+
+let insertDash = num => num.toString().replace(/[13579](?=[13579])/g, "$&-")
