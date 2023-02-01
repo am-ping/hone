@@ -6906,3 +6906,14 @@ function isPythagoreanTriple(arr) {
   arr = arr.sort((a,b) => a - b)
   return arr[0] ** 2 + arr[1] ** 2 == arr[2] ** 2
 }
+
+
+/*
+Given a sequence of integers, return the sum of all the integers that have an even index (odd index in COBOL), multiplied by the integer at the last index. If the sequence is empty, you should return 0.
+*/
+
+function evenLast(nums) {
+  if (nums.length == 0) return 0
+  let l = nums[nums.length - 1]
+  return nums.filter((item,i) => i % 2 == 0).reduce((a,b) => a + b, 0) * l
+}
