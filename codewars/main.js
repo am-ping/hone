@@ -6917,3 +6917,26 @@ function evenLast(nums) {
   let l = nums[nums.length - 1]
   return nums.filter((item,i) => i % 2 == 0).reduce((a,b) => a + b, 0) * l
 }
+
+
+/*
+ou're saying good-bye your best friend , See you next happy year
+Happy Year is the year with only distinct digits , (e.g) 2018
+Given a year, Find The next happy year or The closest year You'll see your best friend
+nextHappyYear (7712) ==> return (7801)
+*/
+/* alternative solution
+function nextHappyYear(a){
+  while(new Set([...++a+'']).size<4);
+  return a;
+}
+*/
+
+function nextHappyYear(y){
+  y = y + 1
+  let res
+  for (let i = y; String(res) !== [...new Set(String(res).split(''))].join(''); i++) {
+    res = i
+  }
+  return res
+}
