@@ -7362,3 +7362,18 @@ function slope(points) {
   let s = ( points[3] - points[1] ) / ( points[2] - points[0] )
   return Number.isInteger(s) ? s.toString() : 'undefined'
 }
+
+
+/*
+Complete function padIt, which accepts 2 parameters:
+str: a string representing the string to pad. We will pad it with "*" symbols on its left side and on its right side.
+n: a number indicating how many times to pad the string.
+*/
+
+function padIt(str,n) {
+  let d = ''
+  while (d.length !== n + 1) {
+    d += "*"
+  }
+  return d.replace(/\*/g, (item,i) => i == Math.floor(d.length/2) ? str : item)
+}
