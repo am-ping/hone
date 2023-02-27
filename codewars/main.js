@@ -7377,3 +7377,15 @@ function padIt(str,n) {
   }
   return d.replace(/\*/g, (item,i) => i == Math.floor(d.length/2) ? str : item)
 }
+
+
+/*
+The function must return the truncated version of the given string up to the given limit followed by "..." if the result is shorter than the original. Return the same string if nothing was truncated.
+solution('Testing String', 3) --> 'Tes...'
+solution('Testing String', 8) --> 'Testing ...'
+solution('Test', 8)           --> 'Test'
+*/
+
+function solution(str,limit){
+  return ( str.length <= limit ) ? str : str.slice(0, limit) + '...'
+}
