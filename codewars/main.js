@@ -7389,3 +7389,19 @@ solution('Test', 8)           --> 'Test'
 function solution(str,limit){
   return ( str.length <= limit ) ? str : str.slice(0, limit) + '...'
 }
+
+
+/*
+Teach snoopy and scooby doo how to bark using object methods. Currently only snoopy can bark and not scooby doo.
+snoopy.bark(); // return "Woof"
+scoobydoo.bark(); // undefined
+*/
+
+function Dog (breed) {
+  this.breed = breed;
+}
+Dog.prototype.bark = function() {
+    return "Woof";
+}
+let snoopy = new Dog("Beagle");
+let scoobydoo = new Dog("Great Dane");
