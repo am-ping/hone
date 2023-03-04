@@ -7449,3 +7449,17 @@ Write a function to find if a number is lucky or not. If the sum of all digits i
 */
 
 let isLucky = n => n % 9 === 0
+
+
+/*
+You are given an array. Complete the function that returns the number of ALL elements within an array, including any nested arrays.
+[]                   -->  0
+[1, 2, 3]            -->  3
+["x", "y", ["z"]]    -->  4
+[1, 2, [3, 4, [5]]]  -->  7
+The input will always be an array.
+*/
+
+function deepCount(a){
+  return a.reduce((acc, item) => acc + (Array.isArray(item) ? deepCount(item) : 0), a.length)
+}
