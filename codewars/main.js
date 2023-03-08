@@ -7508,3 +7508,14 @@ The keys of the preloaded dictionary are uppercase letters A-Z and the values ar
 function makeBackronym (str){
   return str.toUpperCase().split('').map(item => dict[item])
 }
+
+
+/*
+Write a function that takes two arguments, ppg (points per game) and mpg (minutes per game) and returns a straight extrapolation of ppg per 48 minutes rounded to the nearest tenth. Return 0 if 0.
+pointsPer48(12, 20) // 28.8
+pointsPer48(10, 10) // 48 
+pointsPer48(5, 17) // 14.1 
+pointsPer48(0, 0) // 0
+*/
+
+let pointsPer48 = (ppg, mpg) => +( ppg/mpg * 48 ).toFixed(1) || 0
