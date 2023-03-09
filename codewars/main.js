@@ -7519,3 +7519,15 @@ pointsPer48(0, 0) // 0
 */
 
 let pointsPer48 = (ppg, mpg) => +( ppg/mpg * 48 ).toFixed(1) || 0
+
+
+/*
+Write a function that takes a string and an an integer n as parameters and returns a list of all words that are longer than n.
+* With input "The quick brown fox jumps over the lazy dog", 4
+* Return ['quick', 'brown', 'jumps']
+*/
+
+function filterLongWords(sentence, n) {
+  return sentence.split(' ').filter(item => item.length > n)
+}
+
