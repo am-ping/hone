@@ -7531,3 +7531,13 @@ function filterLongWords(sentence, n) {
   return sentence.split(' ').filter(item => item.length > n)
 }
 
+
+/*
+Sheep return in groups each of the days -> you will be given two arrays with these numbers (one for Friday and one for Saturday night). Entries are always positive ints, higher than zero.
+Farmer knows the total amount of sheep, this is a third parameter. You need to return the amount of sheep lost (not returned to the farm) after final sheep counting on Saturday.
+Example 1: Input: {1, 2}, {3, 4}, 15 --> Output: 5
+*/
+
+function lostSheep(friday,saturday,total){
+  return friday.concat(saturday).reduce((a,b) => a - b, total)
+}
