@@ -7577,3 +7577,12 @@ function gordon(ramsay) {
           .replace(/\w+/g, '$&!!!!')
           .replace(/[AEIOU]/g, v => v == 'A' ? '@' : '*')
 }
+
+
+/*
+When given a string of space separated words, return the word with the longest length. If there are multiple words with the longest length, return the last instance of the word with the longest length.
+'red white blue' //returns string value of white
+'red blue gold' //returns gold
+*/
+
+let longestWord = s => s.split(' ').reduceRight((a,b) => (b.length > a.length) ? b : a)
