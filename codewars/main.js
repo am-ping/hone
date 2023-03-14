@@ -7586,3 +7586,10 @@ When given a string of space separated words, return the word with the longest l
 */
 
 let longestWord = s => s.split(' ').reduceRight((a,b) => (b.length > a.length) ? b : a)
+
+
+/*
+There is an object/class already created called MrFreeze. Mark this object as frozen so that no other changes can be made to it.
+*/
+
+Object.freeze(MrFreeze)
