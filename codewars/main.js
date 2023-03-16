@@ -7607,3 +7607,16 @@ Incorrect examples (e.g. if you round the numbers):
 */
 
 const twoDecimalPlaces = num => Math.trunc(num * 100) / 100
+
+
+/*
+Move every letter in the provided string forward 10 letters through the alphabet.
+If it goes past 'z', start again at 'a'.
+Input will be a string with length > 0.
+*/
+
+function moveTen(s){
+  let a = 'abcdefghijklmnopqrstuvwxyz'
+  let b = 'klmnopqrstuvwxyzabcdefghij'
+  return s.replace(/[a-z]/g, c => b[a.indexOf(c)])
+}
