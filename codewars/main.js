@@ -1670,10 +1670,9 @@ Example
 [2, 1, 10]  -->  9
 In descending order: [10, 2, 1]
 Sum: (10 - 2) + (2 - 1) = 8 + 1 = 9
-If the array is empty or the array has only one element the result should be 0 (Nothing in Haskell, None in Rust).
-*/
+If the array is empty or the array has only one element the result should be 0
 
-/* alternate solution
+alternative solution
 function sumOfDifferences(arr) {
     return arr.length > 1 ? Math.max(...arr) - Math.min(...arr) : 0;
 }
@@ -1758,9 +1757,8 @@ let remove = (str) => str.replace(/!/g,"") + "!"
 /*
 Find the number with the most digits.
 If two numbers in the argument array have the same number of digits, return the first one in the array.
-*/
 
-/* HARD alternate solution
+HARD alternative solution
 let findLongest = (arr) => arr.reduce((a,b) => (`${b}`.length > `${a}`.length) ? b : a)
 */
 
@@ -1973,9 +1971,8 @@ Examples
 (8123706890, "+## ### ### ##-##") => "Invalid phone number"
 (911, "###") => "911"
 (112, "+ () -") => "+ () -"
-*/
 
-/* alternative solution
+alternative solution
 function formatNumber(num, template) {
   for ( let c of num.toString() ) template = template.replace('#', c)
   return template.includes('#') && "Invalid phone number" || template
@@ -2067,9 +2064,8 @@ Example
 "camelCasing"  =>  "camel Casing"
 "identifier"   =>  "identifier"
 ""             =>  ""
-*/
 
-/* alternate solution
+alternative solution
 let solution = (string) => string.replace(/([A-Z])/g, ' $1')
 */
 
@@ -2698,9 +2694,8 @@ Examples
    942  -->  9 + 4 + 2 = 15  -->  1 + 5 = 6
 132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6
 493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2
-*/
 
-/* HARD alternate solution
+HARD alternative solution
 let digitalRoot = (n) => (n - 1) % 9 + 1
 */
 
@@ -2725,9 +2720,8 @@ Factors of 12: 1, 2, 3, 4, 6, 12
 Factors of 39: 1, 3, 13, 39
 Greatest shared factor: 3
 Result: 12 and 39 are not coprimes
-*/
 
-/* HARD Eculids's algorithm alternate solution
+HARD Eculids's algorithm alternative solution
 function isCoprime(x, y) {
   if (!y) {  
     return x
@@ -2949,9 +2943,8 @@ function isAnagram(test, original){
 /*
 Use the super secret characters in the superSecretChars variable to replace the matching characters in your totally insecure password and make it un-hackable.
 eg. replace all 'a's with '@'s. Make sure you get the upper case characters too just in case the user wants to SHOUT their password at you.
-*/
 
-/* alternate
+alternative solution
 var chars = {a: '@', s: '$', o: 0, h: 5, x: '*'};
 function createSSP(p){
   return p.replace(/[asohx]/gi, (m) => chars[m.toLowerCase()])
@@ -3247,9 +3240,8 @@ Input
 Output
 "This kata has got me excited!"
 If the whole text is spanned, the function should return an empty string. If none of the text is spanned, the text should not be affected by the function.
-*/
 
-/* alternate solution
+alternative solution
 let unspan = text => text.replace(/<span>.*?n>/g, "")
 */
 let unspan = text => text.replace(/<spa.+?n>/g, '')
@@ -3908,9 +3900,8 @@ function calculateTip(a, r) {
 /* HARD
 Write a function dirReduc which will take an array of strings and returns an array of strings with the needless directions removed (W<->E or S<->N side by side).
 In ["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], "NORTH" and "SOUTH" are not directly opposite but they become directly opposite after the reduction of "EAST" and "WEST" so the whole path is reducible to ["WEST", "WEST"].
-*/
 
-/* alternate best practice solution
+alternative best practice solution
 function dirReduc(plan) {
   var opposite = {
     'NORTH': 'SOUTH', 'EAST': 'WEST', 'SOUTH': 'NORTH', 'WEST': 'EAST'};
@@ -4174,9 +4165,8 @@ expandedForm(12); // Should return '10 + 2'
 expandedForm(42); // Should return '40 + 2'
 expandedForm(70304); // Should return '70000 + 300 + 4'
 NOTE: All numbers will be whole numbers greater than 0.
-*/
 
-/* alternate solution
+alternative solution
 const expandedForm = num => [...''+num]
                             .map((item, i, a) => item * 10 ** (a.length - i - 1))
                             .filter(Boolean)
@@ -4246,9 +4236,8 @@ Your task is to return number of people who are still in the bus after the last 
 Take a look on the test cases.
 Please keep in mind that the test cases ensure that the number of people in the bus is always >= 0. So the return integer can't be negative.
 The second value in the first integer array is 0, since the bus is empty in the first bus stop.
-*/
 
-/* alternate
+alternative solution
 const number = busStops => busStops.reduce((rem, [on, off]) => rem + on - off, 0);
 */
 
@@ -4346,9 +4335,8 @@ Examples
 [1,1,2] should return 2, because it occurs 1 time (which is odd).
 [0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
 [1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
-*/
 
-/* HARD alternate solution
+HARD alternative solution
 const findOdd = (xs) => xs.reduce((a, b) => a ^ b)
 */
 
@@ -4606,9 +4594,8 @@ Move the first letter of each word to the end of it, then add "ay" to the end of
 Examples
 pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
 pigIt('Hello world !');     // elloHay orldway !
-*/
 
-/* alternate
+alternative
 let pigIt = str => str.replace(/(\w)(\w*)(\s|$)/g, "\$2\$1ay\$3")
 */
 
@@ -5012,9 +4999,8 @@ nb_dig(25, 1) returns 11 since
 the k*k that contain the digit 1 are:
 1, 16, 81, 100, 121, 144, 169, 196, 361, 441.
 So there are 11 digits 1 for the squares of numbers between 0 and 25.
-*/
 
-/* alternative solution
+alternative solution
 function nbDig(n, d) {
   let count = 0
     for (let i = 0; i <= n; i++){
@@ -5082,9 +5068,8 @@ function multiples(m, n){
 Write a function that removes every lone 9 that is inbetween 7s.
 "79712312" --> "7712312"
 "79797"    --> "777"
-*/
 
-/* alternate
+alternate
 let sevenAte9 = str => str.replace(/79(?=7)/g, '7')
 */
 
@@ -5138,9 +5123,8 @@ an array of Boolean values (1 <= array_length <= 50)
 a string specifying a logical operator: "AND", "OR", "XOR"
 Output
 A Boolean value (true or false).
-*/
 
-/* alternate solution
+alternate solution
 let ops = {
   'AND': (a, b) => a && b,
   'OR': (a, b) =>  a || b,
@@ -5193,9 +5177,8 @@ Assume that the input n will always be a positive integer.
 Examples: (Input --> output)
 2 --> 9 (sum of the cubes of 1 and 2 is 1 + 8)
 3 --> 36 (sum of the cubes of 1, 2, and 3 is 1 + 8 + 27)
-*/
 
-/* alternative solution
+alternative solution
 let sumCubes = n => (n * (n + 1) / 2) ** 2
 */
 
@@ -5284,9 +5267,8 @@ Example
 ex1 ~O~O~O~O P has 0 deaf rats
 ex2 P O~ O~ ~O O~ has 1 deaf rat
 ex3 ~O~O~O~OP~O~OO~ has 2 deaf rats
-*/
 
-/* alternative solution
+alternative solution
 function countDeafRats(town) {
   return [...town.replace(/ +/g,'')].reduce((a,c,i) => a + (i % 2 == 0 && c == 'O'), 0)
 }
@@ -5433,9 +5415,8 @@ Legend:
 -Function input: String contains only letters, uppercase letters are unique.
 Task:
 Place all people in alphabetical order where Mothers are followed by their children, i.e. "aAbaBb" => "AaaBbb".
-*/
 
-/* alternative solution
+alternative solution
 function findChildren(dancingBrigade) {
   return [...dancingBrigade]
     .sort((a, b) => a.localeCompare(b, `kf`, {caseFirst: `upper`}))
@@ -5629,9 +5610,8 @@ let toFreud = s => s.replace(/[^ ]+/g,'sex')
 Given a list and a number, create a new list that contains each number of list at most N times, without reordering.
 For example if the input number is 2, and the input list is [1,2,3,1,2,1,2,3], you take [1,2,3,1,2], drop the next [1,2] since this would lead to 1 and 2 being in the result 3 times, and then take 3, which leads to [1,2,3,1,2,3].
 With list [20,37,20,21] and number 1, the result would be [20,37,21].
-*/
 
-/* alternative solution
+alternative solution
 const deleteNth = (a, x) => {
   let m = {};
   return a.filter( v => ( m[v] = m[v]+1||1 ) <= x );
@@ -5693,9 +5673,8 @@ abc: cba
 arara: arara
 xyz: zyx
 You cannot change the original object, because if you did that the reflection would change.
-*/
 
-/* alternative solution
+alternative solution
 const mirror = obj => {
   return Object.keys(obj).reduce((item, i) => {
     item[i] = [...i].reverse().join('');
@@ -5754,9 +5733,8 @@ Examples
 "is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
 "4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
 ""  -->  ""
-*/
 
-/* alternative solution
+alternative solution
 function order(words) {
   return words
       .split(' ')
@@ -5910,8 +5888,8 @@ function splitInParts(s, partLength) {
 
 /*
 Write a function isReallyNaN that returns true only if passed in an argument that evalutes to NaN, and returns false otherwise.
-*/
-/* alternative solution
+
+alternative solution
 const isReallyNaN = Number.isNaN
 */
 let isReallyNaN = val => Number.isNaN(val)
@@ -6088,9 +6066,8 @@ In 'translator' you should return 't', not 'a'.
 v      v  
 translator
   ^   ^
-*/
 
-/* alternative solution
+alternative solution
 let firstDup = s => s[s.search(/(.).*\1/ )]
 */
 
@@ -6451,9 +6428,9 @@ function countZeros(n) {
 
 /*
 Make your strings more nerdy: Replace all 'a'/'A' with 4, 'e'/'E' with 3 and 'l' with 1 e.g. "Fundamentals" --> "Fund4m3nt41s"
-*/
 
-/* alternative solution
+
+alternative solution
 function nerdify(t) {
   return t.replace(/[aelAE]/g, item => ({ 'a': 4, 'e': 3, 'l':1 }[item.toLowerCase()]))
 }
@@ -6520,8 +6497,8 @@ output:
     +'10,11,12,13,14\n'
     +'20,21,22,23,24\n'
     +'30,31,32,33,34'
-*/
-/* alternative solution
+
+alternative solution
 let toCsvText = arr => arr.join('\n')
 */
 
@@ -6690,9 +6667,8 @@ the first letter is replaced by its character code (e.g. H becomes 72)
 Note: there are no special characters used, only letters and spaces
 decipherThis('72olle 103doo 100ya'); // 'Hello good day'
 decipherThis('82yade 115te 103o'); // 'Ready set go'
-*/
 
-/* alternative solution
+alternative solution
 function decipherThis(str) {
   return str.split(" ")
     .map(w =>
@@ -6924,8 +6900,8 @@ ou're saying good-bye your best friend , See you next happy year
 Happy Year is the year with only distinct digits , (e.g) 2018
 Given a year, Find The next happy year or The closest year You'll see your best friend
 nextHappyYear (7712) ==> return (7801)
-*/
-/* alternative solution
+
+alternative solution
 function nextHappyYear(a){
   while(new Set([...++a+'']).size<4);
   return a;
@@ -7619,4 +7595,21 @@ function moveTen(s){
   let a = 'abcdefghijklmnopqrstuvwxyz'
   let b = 'klmnopqrstuvwxyzabcdefghij'
   return s.replace(/[a-z]/g, c => b[a.indexOf(c)])
+}
+
+
+/*
+Each exclamation mark's weight is 2; each question mark's weight is 3. Putting two strings left and right on the balance - are they balanced?
+If the left side is more heavy, return "Left"; if the right side is more heavy, return "Right"; if they are balanced, return "Balance".
+Examples
+"!!", "??"     -->  "Right"
+"!??", "?!!"   -->  "Left"
+"!?!!", "?!?"  -->  "Left"
+"!!???!????", "??!!?!!!!!!!"  -->  "Balance"
+*/
+
+function balance(left,right){
+  let l = [...left].reduce((a,b) => a + (b == '?' ? 3 : 2), 0)
+  let r = [...right].reduce((a,b) => a + (b == '?' ? 3 : 2), 0)
+  return l > r ? "Left" : l < r ? "Right" : 'Balance'
 }
