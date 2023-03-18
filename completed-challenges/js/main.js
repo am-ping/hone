@@ -8,7 +8,7 @@ async function getCodewarsChallenges() {
 
 async function cData() {
   let arr = await getCodewarsChallenges()
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     let challenge = await axios.get(`https://www.codewars.com/api/v1/code-challenges/${arr[i].id}`)
     listChallenges(challenge)
   }
