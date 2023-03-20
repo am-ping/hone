@@ -7685,3 +7685,45 @@ class Dog extends Animal {
     return `Hello ${this.master}`;
   }
 }
+
+
+/*
+They are good at taking orders, but they don't know how to capitalize words, or use a space bar!
+All the orders they create look something like this:
+"milkshakepizzachickenfriescokeburgerpizzasandwichmilkshakepizza"
+The kitchen staff are threatening to quit, because of how difficult it is to read the orders.
+Their preference is to get the orders as a nice clean string with spaces and capitals like so:
+"Burger Fries Chicken Pizza Pizza Pizza Sandwich Milkshake Milkshake Coke"
+The kitchen staff expect the items to be in the same order as they appear in the menu.
+The menu items are fairly simple, there is no overlap in the names of the items:
+1. Burger
+2. Fries
+3. Chicken
+4. Pizza
+5. Sandwich
+6. Onionrings
+7. Milkshake
+8. Coke
+
+alternative solution
+const menu = ["Burger", "Fries", "Chicken", "Pizza", "Sandwich", "Onionrings", "Milkshake", "Coke"];
+const capitalize = word => word.slice(0, 1).toUpperCase() + word.slice(1);
+const comparator = (a, b) => menu.indexOf(a) - menu.indexOf(b);
+
+function getOrder(input) {
+  return input.match(new RegExp(menu.join("|"), "ig")).map(capitalize).sort(comparator).join(" ");
+}
+*/
+
+function getOrder(input) {
+  let str = input.replace(/(burger|fries|chicken|pizza|sandwich|onionrings|milkshake|coke)/g, (item) => item[0].toUpperCase() + item.slice(1) + ' ')
+  let list = str.replace(/(Burger)|./gs, '$1').replace(/(Burger)/g, 'Burger ')
+  + str.replace(/(Fries)|./gs, '$1').replace(/(Fries)/g, 'Fries ')
+  + str.replace(/(Chicken)|./gs, '$1').replace(/(Chicken)/g, 'Chicken ')
+  + str.replace(/(Pizza)|./gs, '$1').replace(/(Pizza)/g, 'Pizza ')
+  + str.replace(/(Sandwich)|./gs, '$1').replace(/(Sandwich)/g, 'Sandwich ')
+  + str.replace(/(Onionrings)|./gs, '$1').replace(/(Onionrings)/g, 'Onionrings ')
+  + str.replace(/(Milkshake)|./gs, '$1').replace(/(Milkshake)/g, 'Milkshake ')
+  + str.replace(/(Coke)|./gs, '$1').replace(/(Coke)/g, 'Coke ')
+  return list.slice(0, str.length - 1)
+}
