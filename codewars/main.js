@@ -7822,3 +7822,26 @@ function whosOnline(friends) {
   }
   return o
 }
+
+
+/*
+Write a function, nicknameGenerator that takes a string name as an argument and returns the first 3 or 4 letters as a nickname.
+
+If the 3rd letter is a consonant, return the first 3 letters.
+
+nickname("Robert") //=> "Rob"
+nickname("Kimberly") //=> "Kim"
+nickname("Samantha") //=> "Sam"
+If the 3rd letter is a vowel, return the first 4 letters.
+
+nickname("Jeannie") //=> "Jean"
+nickname("Douglas") //=> "Doug"
+nickname("Gregory") //=> "Greg"
+If the string is less than 4 characters, return "Error: Name too short".
+*/
+
+function nicknameGenerator(name){
+  return name.length < 4 ? "Error: Name too short"
+  : !/[aeiou]/.test(name[2]) ? name.slice(0,3)
+  : name.slice(0,4)
+}
