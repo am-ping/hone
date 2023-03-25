@@ -7845,3 +7845,13 @@ function nicknameGenerator(name){
   : !/[aeiou]/.test(name[2]) ? name.slice(0,3)
   : name.slice(0,4)
 }
+
+
+/*
+Write a program that outputs the top n elements from a list.
+largest(2, [7,6,5,4,3,2,1]) => [6,7]
+*/
+
+function largest(n,xs){
+  return xs.sort((a,b) => b - a).slice(0,n).reverse()
+}
