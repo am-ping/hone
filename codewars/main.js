@@ -7911,3 +7911,10 @@ function longestConsec(strarr, k) {
      .forEach(item => item.length > str.length ? str = item : item)
   return str
 }
+
+
+/*
+The function takes in 2 inputs x and y, and should return x to the power of y but you're NOT allowed to use Math.pow()
+*/
+
+let power = (x,y) => x ** y
