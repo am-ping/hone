@@ -8004,3 +8004,10 @@ function sumPairs(ints, s) {
   }
   return undefined;
 }
+
+
+/*
+Your task is to create a method, Math.roundTo(number, precision) which rounds a given number to precision decimal places.
+*/
+
+Math.roundTo = (number, precision) => +number.toFixed(precision)
