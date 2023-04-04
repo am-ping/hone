@@ -8022,3 +8022,15 @@ Shorten the code such that it meets the requirements.
 */
 
 let sumSquares = arr => arr.reduce((a,b) => a + b ** 2, 0)
+
+
+/*
+In this kata you need to check the provided 2 dimensional array (x) for good ideas 'good' and bad ideas 'bad'. If there are one or two good ideas, return 'Publish!', if there are more than 2 return 'I smell a series!'. If there are no good ideas, as is often the case, return 'Fail!'.
+*/
+
+function well(x) {
+  let match = (''+x).match(/good/gi) || []
+  return (match.length == 0) ? 'Fail!' 
+  : (match.length <= 2) ? 'Publish!'
+  : 'I smell a series!'
+}
