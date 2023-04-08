@@ -8079,3 +8079,27 @@ function heron(a, b, c) {
   let s = ( a + b + c ) / 2
   return Math.sqrt( s * (s - a) * (s - b) * (s - c) )
 }
+
+
+/*
+In this kata you are given a string for example:
+"example(unwanted thing)example"
+Your task is to remove everything inside the parentheses as well as the parentheses themselves.
+The example above would return:
+"exampleexample"
+Notes
+Other than parentheses only letters and spaces can occur in the string. Don't worry about other brackets like "[]" and "{}" as these will never appear.
+There can be multiple parentheses.
+The parentheses can be nested.
+*/
+
+function removeParentheses(s){
+  let str = ''
+  let b = 0
+  for (let char of s) {
+    if (char == '(') b++
+    if (b == 0) str += char
+    if (char == ')') b--
+  }
+  return str
+}
