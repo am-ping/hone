@@ -8103,3 +8103,33 @@ function removeParentheses(s){
   }
   return str
 }
+
+
+/*
+seven(times(five())); // must return 35
+four(plus(nine())); // must return 13
+eight(minus(three())); // must return 5
+six(dividedBy(two())); // must return 3
+There must be a function for each number from 0 ("zero") to 9 ("nine")
+There must be a function for each of the following mathematical operations: plus, minus, times, dividedBy
+Each calculation consist of exactly one operation and two numbers
+The most outer function represents the left operand, the most inner function represents the right operand
+Division should be integer division. For example, this should return 2, not 2.666666...:
+eight(dividedBy(three()));
+*/
+
+let zero = op => !op ? 0 : op(0)
+let one = op => !op ? 1 : op(1)
+let two = op => !op ? 2 : op(2)
+let three = op => !op ? 3 : op(3)
+let four = op => !op ? 4 : op(4)
+let five = op => !op ? 5 : op(5)
+let six = op => !op ? 6 : op(6)
+let seven = op => !op ? 7 : op(7)
+let eight = op => !op ? 8 : op(8)
+let nine = op => !op ? 9 : op(9)
+
+let plus = num => (sec_operand) => sec_operand + num
+let minus = num => (sec_operand) => sec_operand - num
+let times = num => (sec_operand) => sec_operand * num
+let dividedBy = num => (sec_operand) => Math.floor(sec_operand / num)
