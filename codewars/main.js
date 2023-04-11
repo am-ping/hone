@@ -8146,3 +8146,12 @@ function stantonMeasure(arr) {
   let count = n => arr.filter(item => item === n).length
   return count(count(1))
 }
+
+
+/*
+The string given to your function has had an "egg" inserted directly after each consonant. You need to return the string before it became eggcoded.
+unscrambleEggs("Beggegeggineggneggeregg"); => "Beginner"
+//             "B---eg---in---n---er---"
+*/
+
+let unscrambleEggs = str => str.replace(/egg/g, '')
