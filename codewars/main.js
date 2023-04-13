@@ -8164,3 +8164,10 @@ P.S. You have to create a new list and add a new item to that.
 */
 
 let addExtra = numArr => [...numArr, 1]
+
+
+/*
+Your task is to finish the isUndefined method which returns true if the value is undefined
+*/
+
+let isUndefined = value => value == undefined
