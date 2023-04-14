@@ -8171,3 +8171,17 @@ Your task is to finish the isUndefined method which returns true if the value is
 */
 
 let isUndefined = value => value == undefined
+
+
+/*
+Find the anonymous function in the given array and use the function to filter the array
+Input
+Your input. First Parameter will be an array with an anonymous function somewhere in the lot, The second Parameter will be an array which you will filter using the anonymous function you find.
+Output
+Your output. Output a filtered version of the second parameter using the function found in the first parameter.
+*/
+
+function FindFunction(func, arr) {
+  let f = func.find(item => item instanceof Object === true)
+  return arr.filter(f)
+}
