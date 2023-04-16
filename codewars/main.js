@@ -8201,3 +8201,15 @@ function sum(a,b) {
   }
   return a + b
 }
+
+
+/*
+Your job is to take PEP8 compatible function names and convert them to camelCase. For example:
+zebulansNightmare('camel_case') == 'camelCase'
+zebulansNightmare('zebulans_nightmare') == 'zebulansNightmare'
+zebulansNightmare('get_string') == 'getString'
+zebulansNightmare('convert_to_uppercase') == 'convertToUppercase'
+zebulansNightmare('main') == 'main'
+*/
+
+let zebulansNightmare = funcName => funcName.replace(/_./g, c => c[1].toUpperCase())
