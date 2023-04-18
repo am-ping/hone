@@ -8223,3 +8223,17 @@ You will be given the subtotal, the tax as a percentage and the tip as a percent
 function calculate_total(subtotal, tax, tip) {
   return +(subtotal * (1 + tip / 100 + tax / 100)).toFixed(2)
 }
+
+
+/*
+Every month, a random number of students take the driving test at Fast & Furious (F&F) Driving School. To pass the test, a student cannot accumulate more than 18 demerit points.
+At the end of the month, F&F wants to calculate the average demerit points accumulated by ONLY the students who have passed, rounded to the nearest integer.
+Write a function which would allow them to do so. If no students passed the test that month, return 'No pass scores registered.'
+[10,10,10,18,20,20] --> 12
+*/
+
+function passed(list) { 
+  let passed = list.filter(item => item <= 18)
+  return passed.length ? Math.round(passed.reduce((a,b) => a + b, 0) / passed.length )
+  : 'No pass scores registered.'
+}
