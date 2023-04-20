@@ -8251,3 +8251,17 @@ function michaelPays(c) {
   : (c <= 30) ? +( c - c/3 ).toFixed(2)
   : +( c - 10 ).toFixed(2)
 }
+
+
+/*
+Write your function so that in the case a string or a number is passed in as the data , you will return the data in reverse order. If the data is any other type, return it as it is.
+"Hello" -> "olleH"
+"314159" -> "951413"
+[1,2,3] -> [1,2,3]
+*/
+
+function reverseIt(data){
+  return typeof data === 'string' ? [...data].reverse().join('')
+  : typeof data === 'number' ? +[...data.toString()].reverse().join('')
+  : data
+}
