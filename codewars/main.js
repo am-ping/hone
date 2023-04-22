@@ -8273,3 +8273,19 @@ sumNested([1, [2, [3, [4]]]]) => 10
 */
 
 let sumNested = arr => arr.flat(Infinity).reduce((a,b) => a + b, 0)
+
+
+/*
+emember, your function needs to return the number of unique consonants - disregarding duplicates. For example, if the string passed into the function reads "add", the function should return 1 rather than 2, since "d" is a duplicate.
+Similarly, the function should also disregard duplicate consonants of differing cases. For example, "Dad" passed into the function should return 1 as "d" and "D" are duplicates.
+"add" ==> 1
+"Dad" ==> 1
+"aeiou" ==> 0
+"sillystring" ==> 7
+"abcdefghijklmnopqrstuvwxyz" ==> 21
+"Count my unique consonants!!" ==> 7
+*/
+
+function countConsonants(str) {
+  return new Set(str.toLowerCase().replace(/[^a-z]|[aeiou]/g, '')).size
+}
