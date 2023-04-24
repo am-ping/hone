@@ -8297,3 +8297,23 @@ They find that capitals and punctuation of any sort lead them to raise their voi
 */
 
 let borrow = s => s.toLowerCase().replace(/\W/g, '')
+
+
+/* HARD
+Given Two integers a and b, find the sum of them BUT you are not allowed to use the operators + and -
+The numbers (a,b) may be positive , negative values or zeros
+Returning value will be an integer
+Javascript: the Array reduce methods are disabled, along with eval, require, and module
+
+alternative solution
+const add = (x,y) => y ? add(x ^ y, (x & y) << 1) : x
+*/
+
+function add(a, b) {
+  const Sum = a^b
+  const carry = (a & b) << 1
+  if (!carry) {
+      return Sum
+  }
+  return add(Sum,carry)
+}
