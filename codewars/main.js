@@ -8345,3 +8345,19 @@ tea42('2u2u') //should return 'tutu'
 */
 
 let tea42 = input => input.toString().replace(/2/g, 't')
+
+
+/*
+Create a function called addArrays() that combines two arrays of equal length, summing each element of the first with the corresponding element in the second, returning the "combined" summed array.
+Raise an error if input arguments are not of equal length.
+addArrays([1,2],[4,5]); // => [5,7]
+addArrays([1,2,3],[4,5]); // => Error
+Expect array input to either contain numbers or strings only
+The function should also allow for concatenating string
+addArrays(["a"],["b"]) // => ["ab"]
+*/
+
+function addArrays(arr1, arr2) {
+  if (arr1.length != arr2.length) throw new Error()
+  return arr1.map((a,i) => arr1[i] + arr2[i])
+}
