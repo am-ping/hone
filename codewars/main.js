@@ -8361,3 +8361,29 @@ function addArrays(arr1, arr2) {
   if (arr1.length != arr2.length) throw new Error()
   return arr1.map((a,i) => arr1[i] + arr2[i])
 }
+
+
+/*
+Given a sequence of items and a specific item in that sequence, return the item immediately following the item specified. If the item occurs more than once in a sequence, return the item after the first occurence. This should work for a sequence of any type.
+When the item isn't present or nothing follows it, the function should return nil in Clojure and Elixir, Nothing in Haskell, undefined in JavaScript, None in Python.
+nextItem([1, 2, 3, 4, 5, 6, 7], 3) # 4
+nextItem("testing", "t") # "e"
+
+Hard alternative solution
+function nextItem(xs, item) {
+  let arr = xs[Symbol.iterator]()
+  for (let element of arr) {
+    if (element == item)
+      return arr.next().value
+  }
+}
+*/
+
+function nextItem(xs, item) {
+  let found = false
+  for (let x of xs) {
+    if (found) return x
+    if (x == item) found = true
+  }
+  return undefined
+}
