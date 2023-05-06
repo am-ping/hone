@@ -8480,3 +8480,25 @@ Your task is to write an update for a lottery machine. Its current version produ
 function lottery(str){
   return (/[0-9]/.test(str)) ? [...new Set( str.replace(/[^0-9]/g, '') )].join('') : "One more run!"
 }
+
+
+/*
+Your task is to complete the function which takes a string, and returns an array with all possible rotations of the given string, in uppercase.
+scrollingText("codewars") should return:
+[ "CODEWARS",
+  "ODEWARSC",
+  "DEWARSCO",
+  "EWARSCOD",
+  "WARSCODE",
+  "ARSCODEW"
+  "RSCODEWA",
+  "SCODEWAR" ]
+*/
+
+function scrollingText(str){
+  let list = []
+  for( let i = 0; i < str.length; i++) {
+    list.push( (str.slice(i) + str.slice(0,i)).toUpperCase() )
+  }
+  return list
+}
