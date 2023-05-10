@@ -8554,3 +8554,16 @@ Number.prototype.mul = function(num) {return this * num}
 Number.prototype.div = function(num) {return this / num}
 Number.prototype.pow = function(num) {return this ** num}
 Number.prototype.sqr = function() {return Math.sqrt(this)}
+
+
+/*
+Create change_count() to return a dollar amount of how much change you have!
+Valid types of change include:
+penny: 0.01
+nickel: 0.05
+dime: 0.10
+quarter: 0.25
+dollar: 1.00
+*/
+
+let changeCount = c => `$${c.split(' ').reduce((a,b)=> a + CHANGE[b], 0).toFixed(2)}`
