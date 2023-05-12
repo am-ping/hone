@@ -8581,3 +8581,16 @@ By default, it has to be a case-insensitive check. But you also have to provide 
 String.prototype.contains = function(sub, sens) {
   return sens ? this.includes(sub) : this.toLowerCase().includes(sub.toLowerCase())
 }
+
+
+/*
+Unfortunately, there's no a .reverse() method for the JavaScript String object.
+Your task is to extend JavaScript String object, so you can reverse strings just like this:
+'Hello, World!'.reverse();
+The method should return:
+'!dlroW ,olleH'
+*/
+
+String.prototype.reverse = function() {
+  return [...this].reverse().join('')
+}
