@@ -8671,3 +8671,52 @@ function createDict(keys, values) {
     return o[v] = i in values ? values[i] : null, o
   }, {})
 }
+
+
+/*
+You are given a string of n lines, each substring being n characters long. For example:
+
+s = "abcd\nefgh\nijkl\nmnop"
+
+We will study the "horizontal" and the "vertical" scaling of this square of strings.
+
+A k-horizontal scaling of a string consists of replicating k times each character of the string (except '\n').
+
+Example: 2-horizontal scaling of s: => "aabbccdd\neeffgghh\niijjkkll\nmmnnoopp"
+A v-vertical scaling of a string consists of replicating v times each part of the squared string.
+
+Example: 2-vertical scaling of s: => "abcd\nabcd\nefgh\nefgh\nijkl\nijkl\nmnop\nmnop"
+Function scale(strng, k, v) will perform a k-horizontal scaling and a v-vertical scaling.
+
+Example: a = "abcd\nefgh\nijkl\nmnop"
+scale(a, 2, 3) --> "aabbccdd\naabbccdd\naabbccdd\neeffgghh\neeffgghh\neeffgghh\niijjkkll\niijjkkll\niijjkkll\nmmnnoopp\nmmnnoopp\nmmnnoopp"
+Printed:
+
+abcd   ----->   aabbccdd
+efgh            aabbccdd
+ijkl            aabbccdd
+mnop            eeffgghh
+                eeffgghh
+                eeffgghh
+                iijjkkll
+                iijjkkll
+                iijjkkll
+                mmnnoopp
+                mmnnoopp
+                mmnnoopp
+
+alternative solution
+let scale = (str, k, n) =>
+    str
+      .replace(/[^\n]/g,  c => c.repeat(k))
+      .replace(/[^\n]+/g, c => Array(n + 1).join("\n" + c).slice(1))
+*/
+
+function scale(str, k, v) {
+  if (str == '') return ''
+  let res = ''
+  let arr = str
+              .split('\n')
+              .forEach(item => res += `${item.replace(/[a-z]/gi, '$&'.repeat(k))}\n`.repeat(v))
+  return res.slice(0,-1)
+}
