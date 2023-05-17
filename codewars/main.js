@@ -8720,3 +8720,49 @@ function scale(str, k, v) {
               .forEach(item => res += `${item.replace(/[a-z]/gi, '$&'.repeat(k))}\n`.repeat(v))
   return res.slice(0,-1)
 }
+
+
+/*
+There are two groups of hostile letters. The tension between left side letters and right side letters was too high and the war began. The letters called airstrike to help them in war - dashes and dots are spread throughout the battlefield. Who will win?
+
+Write a function that accepts a fight string which consists of only small letters and * which represents a bomb drop place. Return who wins the fight after bombs are exploded. When the left side wins return Left side wins!, and when the right side wins return Right side wins!. In other cases, return Let's fight again!.
+
+The left side letters and their power:
+
+ w - 4
+ p - 3 
+ b - 2
+ s - 1
+The right side letters and their power:
+
+ m - 4
+ q - 3 
+ d - 2
+ z - 1
+The other letters don't have power and are only victims.
+The * bombs kill the adjacent letters ( i.e. aa*aa => a___a, **aa** => ______ );
+
+alphabetWar("s*zz");           //=> Right side wins!
+alphabetWar("*zd*qm*wp*bs*"); //=> Let's fight again!
+alphabetWar("zzzz*s*");       //=> Right side wins!
+alphabetWar("www*www****z");  //=> Left side wins!
+*/
+
+/*
+function alphabetWar(fight) {
+  fight = fight.replace(/[a-z]\*[a-z]|[a-z]\*|\*[a-z]/g,"")
+  let l = 0
+  let r = 0
+  fight.split("").forEach(item => "1sbpw".indexOf(item) > 0 ? l += "1sbpw".indexOf(item) : l)
+  fight.split("").forEach(item => "1zdqm".indexOf(item) > 0 ? r += "1zdqm".indexOf(item) : r)
+  if (l == r) {return "Let's fight again!"}
+  return l > r ? "Left side wins!" : "Right side wins!"
+}
+*/
+
+function alphabetWar([...fight]) {
+  let arr = fight.filter((item,i) => fight[i + 1] !== '*' && fight[i - 1] !== '*' && item !== '*')
+  let l = arr.filter(item => /[wpbs]/.test(item)).reduce((a,b) => a + (b == 'w' ? 4 : b == 'p' ? 3 : b == 'b' ? 2 : 1), 0)
+  let r = arr.filter(item => /[mqdz]/.test(item)).reduce((a,b) => a + (b == 'm' ? 4 : b == 'q' ? 3 : b == 'd' ? 2 : 1), 0)
+  return l > r ? "Left side wins!" : r > l ? "Right side wins!" : "Let's fight again!"
+}
