@@ -8766,3 +8766,20 @@ function alphabetWar([...fight]) {
   let r = arr.filter(item => /[mqdz]/.test(item)).reduce((a,b) => a + (b == 'm' ? 4 : b == 'q' ? 3 : b == 'd' ? 2 : 1), 0)
   return l > r ? "Left side wins!" : r > l ? "Right side wins!" : "Let's fight again!"
 }
+
+
+/*
+In this problem, we are going to be implementing our own enqueue, dequeue, and size methods for the queue constructor we are creating, so we should be able to create new instances of the Queue.
+The enqueue method takes in the item as a parameter, while the dequeue method does not.
+The size method simply returns the number of items in the queue.
+To enqueue an item into the queue means to insert an item into the back, or tail, of the queue.
+To dequeue an item means means to remove the item at the front, or head, of the queue.
+In a queue, we remove the item the least recently added.
+*/
+
+class Queue {
+  constructor() { this.q = [] }
+  enqueue(item) { this.q.unshift(item) }
+  dequeue() { return this.q.pop() }
+  size() { return this.q.length }
+}
