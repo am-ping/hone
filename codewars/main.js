@@ -8895,3 +8895,17 @@ function consecutive(arr){
   let l = arr.length;
   return l ? Math.max(...arr) - Math.min(...arr) - l + 1 : 0;
 }
+
+
+/*
+Given a string, remove any characters that are unique from the string.
+input: "abccdefee"
+output: "cceee"
+*/
+
+function onlyDuplicates(str) {
+  return str
+    .split('')
+    .filter((item,i,arr) => arr.filter(a => item == a).length !== 1)
+    .join('')
+}
