@@ -8909,3 +8909,10 @@ function onlyDuplicates(str) {
     .filter((item,i,arr) => arr.filter(a => item == a).length !== 1)
     .join('')
 }
+
+
+/*
+Write reverseList function that simply reverses lists.
+*/
+
+let reverseList = arr => arr.reverse()
