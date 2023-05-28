@@ -8927,3 +8927,15 @@ Write a function that returns a sequence (index begins with 1) of all the even c
 function evenChars(str) {
   return str.length < 2 || str.length > 100 ? "invalid string" : str.split('').filter((item,i) => i % 2)
 }
+
+
+/*
+Given a varying number of integer arguments, return the digits that are not present in any of them.
+[12, 34, 56, 78]  =>  "09"
+[2015, 8, 26]     =>  "3479"
+Note: the digits in the resulting string should be sorted.
+*/
+
+function unusedDigits(...arr) {
+  return '0123456789'.replace(/\d/g, (item) => arr.join('').includes(item) ? '' : item)
+}
