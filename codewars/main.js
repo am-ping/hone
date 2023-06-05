@@ -9069,3 +9069,19 @@ Sort the given array of strings in alphabetical order, case insensitive. For exa
 function sortme(names) {
   return names.sort( (a,b) => a.localeCompare(b, 'en', {'sensitivity': 'base'}) )
 }
+
+
+/*
+Print all numbers up to 3rd parameter which are multiple of both 1st and 2nd parameter.
+Return results in a list/array
+Do NOT worry about checking zeros or negative values.
+To find out if 3rd parameter (the upper limit) is inclusive or not, check the tests, it differs in each translation
+*/
+
+function multiples(s1,s2,s3){
+  let arr = []
+  for (let i = s2; i < s3; i+=s2) {
+    if (i % s1 == 0 && i % s2 == 0) arr.push(i)
+  }
+  return arr
+}
