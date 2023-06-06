@@ -9085,3 +9085,12 @@ function multiples(s1,s2,s3){
   }
   return arr
 }
+
+
+/*
+Complete the function that takes a string of English-language text and returns the number of consonants in the string.
+*/
+
+function consonantCount(str) {
+  return str.replace(/[aeiou\d\W_]/gi, "").length
+}
