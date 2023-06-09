@@ -9158,3 +9158,15 @@ String.prototype.toBase64 = function() {
 String.prototype.fromBase64 = function() {
   return Buffer.from(this, "base64").toString("utf8")
 }
+
+
+/*
+You need to create a function that converts the input into this format, with the output being the same string expect there is a pattern of uppercase and lowercase letters.
+
+input:  "stop Making spongebob Memes!"
+output: "StOp mAkInG SpOnGeBoB MeMeS!"
+*/
+
+function spongeMeme(str) {
+  return str.replace(/\w/g, (a,i) => i % 2 ? a.toLowerCase() : a.toUpperCase())
+}
