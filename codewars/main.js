@@ -9232,3 +9232,13 @@ function isValid(arr){
   let d = arr.includes(7) || arr.includes(8)
   return a && b && c && d
 }
+
+
+/*
+You must concatenate the nth letter from each word to construct a new word which should be returned as a string, where n is the position of the word in the list.
+["yoda", "best", "has"]  -->  "yes"
+  ^        ^        ^
+  n=0     n=1     n=2
+*/
+
+let nthChar = arr => arr.map((item,i) => item[i]).join('')
