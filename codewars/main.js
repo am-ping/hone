@@ -9242,3 +9242,13 @@ You must concatenate the nth letter from each word to construct a new word which
 */
 
 let nthChar = arr => arr.map((item,i) => item[i]).join('')
+
+
+/*
+create a method that can determine how many letters (both uppercase and lowercase ASCII letters) and digits are in a given string.
+"hel2!lo" --> 6
+"wicked .. !" --> 6
+"!?..A" --> 1
+*/
+
+let countLettersAndDigits = str => str.replace(/[^a-z\d]/gi,"").length
