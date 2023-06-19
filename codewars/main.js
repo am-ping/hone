@@ -9303,3 +9303,19 @@ All inputs will be arrays of numbers. All character codes are valid lower case l
 function numObj(s){
   return s.map(item => item = {[item]: String.fromCharCode(item)})
 }
+
+
+/*
+Remove words from the sentence if they contain exactly one exclamation mark. Words are separated by a single space, without leading/trailing spaces.
+remove("Hi!") === ""
+remove("Hi! Hi!") === ""
+remove("Hi! Hi! Hi!") === ""
+remove("Hi Hi! Hi!") === "Hi"
+remove("Hi! !Hi Hi!") === ""
+remove("Hi! Hi!! Hi!") === "Hi!!"
+remove("Hi! !Hi! Hi!") === "!Hi!"
+*/
+
+function remove(str) {
+  return str.split(' ').filter(item => item.replace(/[^!]/g, '').length !== 1).join(' ')
+}
