@@ -9319,3 +9319,29 @@ remove("Hi! !Hi! Hi!") === "!Hi!"
 function remove(str) {
   return str.split(' ').filter(item => item.replace(/[^!]/g, '').length !== 1).join(' ')
 }
+
+
+/*
+Write a function that returns true if the number is a "Very Even" number.
+If a number is a single digit, then it is simply "Very Even" if it itself is even.
+If it has 2 or more digits, it is "Very Even" if the sum of its digits is "Very Even".
+number = 88 => returns false -> 8 + 8 = 16 -> 1 + 6 = 7 => 7 is odd 
+number = 222 => returns true -> 2 + 2 + 2 = 6 => 6 is even
+number = 5 => returns false
+number = 841 => returns true -> 8 + 4 + 1 = 13 -> 1 + 3 => 4 is even
+*/
+
+/* alternative solution
+let isVeryEvenNumber = n => !n-- || n % 9 % 2 === 1
+*/
+
+function isVeryEvenNumber(n) {
+  if (n < 10) {
+    return n % 2 == 0 
+  } else {
+    do {
+      n = n.toString().split('').reduce((a,b) => a + +b, 0) 
+    } while (n > 9)
+    return n % 2 == 0
+  }
+}
