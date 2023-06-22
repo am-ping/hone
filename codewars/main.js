@@ -9362,3 +9362,15 @@ function caffeineBuzz(n){
   let i = n % 3 == 0 && n % 4 == 0 ? 'Coffee' : n % 3 == 0 ? 'Java' : 'mocha_missing!'
   return (n % 3 == 0 || n % 3 == 0) && n % 2 == 0 ? i + 'Script' : i
 }
+
+
+/*
+Complete the function in the editor below by returning a RegExp object, , that matches any string  that begins and ends with the same vowel. Recall that the English vowels are a, e, i, o, and u.
+Constraints
+The length of string  is  .
+String  consists of lowercase letters only (i.e., [a-z]).
+*/
+
+function regexVar() {
+  return new RegExp(/^([aeiou]).*\1$/)
+}
