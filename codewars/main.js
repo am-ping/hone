@@ -9374,3 +9374,12 @@ String  consists of lowercase letters only (i.e., [a-z]).
 function regexVar() {
   return new RegExp(/^([aeiou]).*\1$/)
 }
+
+
+/*
+Return the second largest number in the array.
+*/
+
+function getSecondLargest(nums) {
+  return [...new Set(nums)].sort((a,b) => b - a)[1]
+}
