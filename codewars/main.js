@@ -9400,3 +9400,20 @@ function reverseString(s) {
       console.log(s)
   }
 }
+
+
+/*
+Complete the isPositive function below. It has one integer parameter, . If the value of  is positive, it must return the string YES. Otherwise, it must throw an Error according to the following rules:
+If  is , throw an Error with  Zero Error.
+If  is negative, throw an Error with  Negative Error.
+*/
+
+function isPositive(a) {
+  if (a > 0) {
+      return 'YES'
+  } else if (a == 0) {
+      throw Error('Zero Error')
+  } else {
+      throw Error('Negative Error')
+  }
+}
