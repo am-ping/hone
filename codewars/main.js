@@ -9430,3 +9430,15 @@ area: This value is equal to a * b
 function Rectangle(a, b) {
   return {length: a, width: b, perimeter: 2 * (a + b), area: a * b}
 }
+
+
+/*
+Complete the function in the editor. It has one parameter: an array, a, of objects. Each object in the array has two integer properties denoted by x and y. The function must return a count of all such objects o in array a that satisfy o.x == o.y.
+Input Format
+The first line contains an integer denoting n.
+Each of the n subsequent lines contains two space-separated integers describing the values of x and y
+*/
+
+function getCount(arr) {
+  return arr.filter(item => item.x === item.y).length
+}
