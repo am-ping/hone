@@ -9486,3 +9486,27 @@ class Square extends Rectangle {
       super(s,s)
   }
 }
+
+
+/*
+The code in the editor has a tagged template literal that passes the area and perimeter of a rectangle to a tag function named sides. Recall that the first argument of a tag function is an array of string literals from the template, and the subsequent values are the template's respective expression values.
+
+Complete the function in the editor so that it does the following:
+Finds the initial values of s1 and s2 by plugging the area and perimeter values into the formula:
+s = (p +- √p^2 - 16 * a) / 4
+where a is the rectangle's area and p is its perimeter.
+Creates an array consisting of s1 and s2 and sorts it in ascending order.
+Returns the sorted array.
+
+Parameters:
+The value of literals is [ 'The area is: ', '.\nThe perimeter is: ', '.' ].
+The value of expressions is [ 140, 48 ], where the first value denotes the rectangle's area, a, and the second value denotes its perimeter, p.
+*/
+
+function sides(literals, ...expressions) {
+  let a = expressions[0]
+  let p = expressions[1]
+  let s1 = (p + Math.sqrt(p ** 2 - 16 * a))/ 4
+  let s2 = (p - Math.sqrt(p ** 2 - 16 * a))/ 4
+  return [s1,s2].sort((a,b) => a - b)
+}
