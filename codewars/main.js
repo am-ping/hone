@@ -9510,3 +9510,22 @@ function sides(literals, ...expressions) {
   let s2 = (p - Math.sqrt(p ** 2 - 16 * a))/ 4
   return [s1,s2].sort((a,b) => a - b)
 }
+
+
+/*
+We define S to be a sequence of distinct sequential integers from 1 to n; in other words, S = {1,2,3,…,n}. We want to know the maximum bitwise AND value of any two integers, a and b (where (a < b)), in sequence S that is also less than a given integer, k.
+Complete the function getMaxLessThank in the editor so that given n and k, it returns the maximum a & b < k.
+Note: The & symbol represents the bitwise AND operator.
+*/
+
+function getMaxLessThanK(n,k) {
+  let max = 0
+  for (let a = 1; a <= n; a++) {
+      for (let b = a + 1; b <= n; b++) {
+          let bw = a & b
+          
+          if (bw < k && bw > max) max = bw
+      }
+  }
+  return max
+}
