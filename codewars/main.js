@@ -9599,3 +9599,17 @@ If the sum of the three parameters (as described above) is > 22, return 'Sabbati
 function sabb(x, val, happ) {
   return (x.match(/[sabbatical]/gi) || []).length + val + happ > 22 ? 'Sabbatical! Boom!' : 'Back to your desk, boy.'
 }
+
+
+/*
+Create a function that takes in the sum and age difference of two people, calculates their individual ages, and returns a pair of values (oldest age first) if those exist or null/None if:
+sum < 0
+difference < 0
+Either of the calculated ages come out to be negative
+*/
+
+function getAges(sum,difference) {
+  let c = (sum - difference) / 2
+  let arr = [c, sum - c].sort((a,b) => b - a)
+  return (sum < 0 || difference < 0 || arr.some(item => item < 0)) ? null : arr
+}
