@@ -9682,3 +9682,15 @@ function toArray(str) {
   })
   return res.filter(item => /[0-9]/.test(item))
 }
+
+
+/*
+Rule of making acronym in this kata:
+split string to words by space char
+take every first letter from word in given string
+uppercase it
+join them toghether
+Code wars -> C, w -> C W -> CW
+*/
+
+let toAcronym = inp => inp.split(' ').map(item => item[0].toUpperCase()).join('')
