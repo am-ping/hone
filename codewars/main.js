@@ -9705,3 +9705,31 @@ function min(a, b){
 */
 
 let min = (a, b) => (isNaN(a) || isNaN(b)) ? NaN : ((a < b) ? +a : +b)
+
+
+/*
+Count how often sign changes in array.
+
+result
+number from 0 to ... . Empty array returns 0
+
+example
+const arr = [1, -3, -4, 0, 5];
+
+| elem | count |
+|------|-------|
+|  1   |  0    |
+| -3   |  1    |
+| -4   |  1    |
+|  0   |  2    |
+|  5   |  2    |
+
+catchSignChange(arr) == 2;
+*/
+
+const catchSignChange = arr => {
+  let count = 0
+  arr = arr.map(item => item == 0 ? 1 : item)
+  arr.forEach((item,i) => i && Math.sign(arr[i-1]) !== Math.sign(arr[i]) ? count++ : count)
+  return count
+}
