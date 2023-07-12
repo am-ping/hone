@@ -9733,3 +9733,16 @@ const catchSignChange = arr => {
   arr.forEach((item,i) => i && Math.sign(arr[i-1]) !== Math.sign(arr[i]) ? count++ : count)
   return count
 }
+
+
+/*
+You'll be given a list of two strings, and each will contain exactly one colon (":") in the middle (but not at beginning or end). The length of the strings, before and after the colon, are random.
+Your job is to return a list of two strings (in the same order as the original list), but with the characters after each colon swapped.
+["abc:123", "cde:456"]  -->  ["abc:456", "cde:123"]
+["a:12345", "777:xyz"]  -->  ["a:xyz", "777:12345"]
+*/
+
+function tailSwap(arr) {
+  let nArr = arr.map(string => string.split(':'))
+  return [nArr[0][0] + ':' + nArr[1][1], nArr[1][0] + ':' + nArr[0][1]]
+}
