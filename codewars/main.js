@@ -9764,3 +9764,30 @@ Object.defineProperty(Array.prototype, 'insert', {
     return this
   }
 })
+
+
+/* CodeStepByStep
+Write a function named validPasswords that examines a list of passwords and password policies and returns how many of the passwords are acceptable by those policies. Your function accepts a string parameter representing a file name as a parameter. Each line of the file contains a policy followed by a password. A policy is of the form MIN-MAX LETTER indicating that the given letter must occur MIN to MAX number of times in the password, inclusive. For example, if the file named passwords.txt contains the following values:
+
+1-3 a: abcde
+1-3 b: cdefg
+2-9 c: ccccccccc
+For example, 1-3 a means that the password must contain a at least 1 time and at most 3 times. In the above example, 2 passwords are valid. The middle password, cdefg, is not; it contains no instances of b, but needs at least 1. The first and third passwords are valid: they contain one a or nine c, both within the limits of their respective policies. So the call of validPasswords("passwords.txt") should return 2.
+
+You may assume that the file exists and is readable and that it follows the format described above.
+*/
+
+function validPasswords(filename) {
+  const data = fs.readFileSync(filename, 'utf8')
+  const lines = data.trim().split('\n')
+
+  let count = 0
+  lines.forEach(item => {
+      let m = item.split(' ')[0].split('-').map(item => +item)
+      let l = item.split(' ')[1][0]
+      let pw = item.split(' ')[2].split('').filter(item => item == l).length
+      
+      if (pw >= m[0] && pw <= m[1]) count++
+  })
+  return count
+}
