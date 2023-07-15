@@ -9791,3 +9791,29 @@ function validPasswords(filename) {
   })
   return count
 }
+
+
+/* CodeStepByStep
+Write a function named validPasswords2 (similar to the previous exercise validPasswords) that examines a list of passwords and password policies and returns how many of the passwords are acceptable by those policies. Your function accepts a string parameter representing a file name as a parameter. Each line of the file contains a policy followed by a password. A policy is of the form INDEX1-INDEX2 LETTER indicating that the given letter must occur at exactly one of the two given 1-based indexes in the password. For example, if the file named passwords.txt contains the following values:
+
+1-3 a: abcde
+1-3 b: cdefg
+2-9 c: ccccccccc
+The first line, abcde is valid: position 1 contains a and position 3 does not. The second line, cdefg is invalid: neither position 1 nor position 3 contains b. The third line, ccccccccc is invalid: both position 2 and position 9 contain c. So the call of validPasswords2("passwords.txt") should return 1. Note again that the indexes given are 1-based, not 0-based.
+*/
+
+function validPasswords2(filename) {
+  const data = fs.readFileSync(filename, 'utf8')
+  const lines = data.trim().split('\n')
+  let count = 0
+  
+  lines.forEach(item => {
+      let i = item.split(' ')[0].split('-').map(item => +item)
+      let a = item.split(' ')[1][0]
+      let pw = item.split(' ')[2].split('')
+      
+      if (pw[ i[0]-1 ] == a || pw[ i[1]-1 ] == a) count++
+      if (pw[ i[0]-1 ] == a && pw[ i[1]-1 ] == a) count--
+  })
+  return count
+}
