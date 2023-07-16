@@ -9817,3 +9817,19 @@ function validPasswords2(filename) {
   })
   return count
 }
+
+
+/* CodeStepByStep
+Write a function named largestNumber that accepts an array of positive integers as a parameter and returns a string representing the largest integer value that could be formed by concatenating together those integers. (We use a string since the result might be larger than the domain of type int or long.) For example, if the array passed is [11, 3], you should return "311". If the array passed is [2, 20, 7, 8, 25], you should return "8725220". You may assume that the array contains at least one element and that all values in the array are greater than 0.
+*/
+
+function largestNumber(arr) {
+  arr.sort((a,b) => {
+      if ("" + a + b > "" + b + a) {
+          return 1
+      } else {
+          return -1
+      }
+  })
+  return arr.reverse().join('')
+}
