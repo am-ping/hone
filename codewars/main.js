@@ -9833,3 +9833,51 @@ function largestNumber(arr) {
   })
   return arr.reverse().join('')
 }
+
+
+/* CodeStepByStep
+Write a function named passports that examines an input file full of passport data and returns the number of passports that are valid. Your function accepts a string parameter representing a file name as a parameter. A valid passport is one that contains all of the following required fields:
+
+byr (Birth Year)
+iyr (Issue Year)
+eyr (Expiration Year)
+hgt (Height)
+hcl (Hair Color)
+ecl (Eye Color)
+pid (Passport ID)
+A passport can also contain the following optional field:
+
+cid (Country ID)
+Each passport in the input file is represented as a sequence of key:value pairs separated by spaces or newlines. Passports are separated by blank lines. For example, if the file named passports.txt contains the following text:
+
+ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+byr:1937 iyr:2017 cid:147 hgt:183cm
+
+iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
+hcl:#cfa07d byr:1929
+
+hcl:#ae17e1 iyr:2013
+eyr:2024
+ecl:brn pid:760753108 byr:1931
+hgt:179cm
+
+hcl:#cfa07d eyr:2025 pid:166559648
+iyr:2011 ecl:brn hgt:59in
+The first passport is valid; all eight fields are present. The second passport is invalid; it is missing hgt (the Height field). The third passport is valid; it is missing only the optional cid (country ID) field. The fourth passport is invalid; it is missing two fields, cid and byr. Missing cid is fine, but missing any other field such as byr is not. So the call of passports("passwords.txt") should return 2.
+*/
+
+function passports(filename) {
+  const data = fs.readFileSync(filename, 'utf8')
+  const list = data.trim().split('\n\n')
+  
+  let arr = list.map(p => {
+      return p
+          .trim()
+          .replace(/\n/g, ' ')
+          .split(' ')
+          .map(item => item = item.split(':')[0])
+          .filter(item => item !== 'cid')
+  })
+  
+  return arr.filter(item => item.length >= 7).length
+}
