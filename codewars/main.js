@@ -9941,3 +9941,19 @@ function banish(a1,a2) {
   }
   return a1
 }
+
+
+/* CodeStepByStep
+Write a function named collapse that accepts an array of integers as a parameter and returns a new array where each pair of integers from the original array has been replaced by the sum of that pair. For example, if an array called arr stores [7, 2, 8, 9, 4, 13, 7, 1, 9, 10], then the call of collapse(arr) should return a new array containing [9, 17, 17, 8, 19]. The first pair from the original array is collapsed into 9 (7 + 2), the second pair is collapsed into 17 (8 + 9), and so on.
+
+If the array stores an odd number of elements, the last element is not collapsed. For example, if the array had been [1, 2, 3, 4, 5], then the call would return [3, 7, 5]. Your function should not change the array that is passed as a parameter.
+*/
+
+function collapse(arr) {
+	let newA = []
+    for (let i = 0; i < arr.length; i++) {
+        if (i % 2 === 0 && i === arr.length - 1) newA.push(arr[i])
+        if (i % 2) newA.push( arr[i - 1] + arr[i] )
+    }
+    return newA
+}
