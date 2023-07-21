@@ -9912,3 +9912,32 @@ You may assume that the array passed to your function is non-empty and contains 
 function average(nums) {
 	return nums.reduce((a,b) => a + b, 0) / nums.length
 }
+
+
+/* CodeStepByStep
+Write a function named banish that accepts two arrays of integers a1 and a2 as parameters and removes all occurrences of a2's values from a1. An element is "removed" by shifting all subsequent elements one index to the left to cover it up, placing a 0 into the last index. The original relative ordering of a1's elements should be retained.
+
+For example, suppose the following two arrays are declared and the following call is made:
+
+let a1 = [42, 3, 9, 42, 42, 0, 42, 9, 42, 42, 17, 8, 2222, 4, 9, 0, 1];
+let a2 = [42, 2222, 9];
+banish(a1, a2);
+After the call has finished, the contents of a1 should become:
+
+[3, 0, 17, 8, 4, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+Notice that all occurrences of the values 42, 2222, and 9 have been removed and replaced by 0s at the end of the array, and the remaining values have shifted left to compensate.
+
+Do not make any assumptions about the length of the arrays or the ranges of values each might contain. For example, each array might contain no elements or just one element, or very many elements (if a2 is an empty array that contains no elements, a1 should not be modified by the call to your function.) You may assume that the arrays passed are not null. You may assume that the values stored in a2 are unique and that a2 does not contain the value 0.
+
+You may not use any temporary arrays or Strings to help you solve this problem (but you may declare as many simple variables as you like, such as numbers.).
+*/
+
+function banish(a1,a2) {
+  for (let i = a1.length - 1; i >= 0; i--) {
+      if ( a2.includes(a1[i]) ) {
+          a1.splice( i, 1 )
+          a1.push(0)
+      }
+  }
+  return a1
+}
