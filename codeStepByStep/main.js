@@ -219,3 +219,14 @@ For example, a call of calculateLine(5, 2, 4) would return 14 because 14 = 2 * 5
 */
 
 let calculateLine = (x, m, b) => m * x + b
+
+/*
+Write JavaScript statements that print the following console output:
+\\\\\\\\\\\\\\\\\\\\
+|| FEAR THE TREE! ||
+////////////////////
+*/
+
+console.log("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\")
+console.log("|| FEAR THE TREE! ||")
+console.log("////////////////////")
