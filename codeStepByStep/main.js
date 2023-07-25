@@ -230,3 +230,13 @@ Write JavaScript statements that print the following console output:
 console.log("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\")
 console.log("|| FEAR THE TREE! ||")
 console.log("////////////////////")
+
+
+/*
+What is the output produced by the following statement?
+console.log("flashy\n\" slashes\" and \nplushy \"slushies\"");
+*/
+
+flashy
+" slashes" and 
+plushy "slushies"
