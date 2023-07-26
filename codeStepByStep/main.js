@@ -240,3 +240,28 @@ console.log("flashy\n\" slashes\" and \nplushy \"slushies\"");
 flashy
 " slashes" and 
 plushy "slushies"
+
+
+/*
+Assume the following functions are defined:
+function main() {
+    function1();
+    function2();
+    console.log("Done with main.");
+}​
+function function1() {
+    console.log("Inside function 1!");
+}
+function function2() {
+    console.log("Inside function 2!");
+    function1();
+    console.log("Done with function 2!");
+}
+What console output would result from calling main?
+*/
+
+Inside function 1!
+Inside function 2!
+Inside function 1!
+Done with function 2!
+Done with main.
