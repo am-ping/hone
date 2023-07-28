@@ -265,3 +265,53 @@ Inside function 2!
 Inside function 1!
 Done with function 2!
 Done with main.
+
+
+/*
+Assume the following functions are defined:
+
+function main() {
+    first();
+    second();
+    third();
+    second();
+    console.log("Done with main.");
+}
+​
+function first() {
+    console.log("Inside first function.");
+}
+​
+function second() {
+    console.log("Inside second function.");
+    third();
+    console.log("Done with second function.");
+}
+    
+function third() {
+    console.log("Inside third function.");
+    first();
+    console.log("Called first function.");
+    console.log("Done with third function.");
+}
+What console output would result from calling main?
+*/
+
+Inside first function.
+Inside second function.
+Inside third function.
+Inside first function.
+Called first function.
+Done with third function.
+Done with second function.
+Inside third function.
+Inside first function.
+Called first function.
+Done with third function.
+Inside second function.
+Inside third function.
+Inside first function.
+Called first function.
+Done with third function.
+Done with second function.
+Done with main.
