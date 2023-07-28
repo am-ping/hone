@@ -315,3 +315,27 @@ Called first function.
 Done with third function.
 Done with second function.
 Done with main.
+
+
+/*
+Write a function containsSumSequence that accepts as parameters an array of Numbers nums and a targetSum and returns true if there is a non-empty sequence of adjacent values in nums that adds to the targetSum. A sequence of adjacent values is one that does not skip any values in the running total.
+
+For example, if a variable called nums stores the following values:
+
+[1, 4, 2, -3, 1, -8]
+the call containsSumSequence(nums, 3) would return true since the sequence (4, 2, -3) has a sum of 3 and these are adjacent in the array. The call containsSumSequence(1) would also return true since the first element in the array adds to 1 (it is a sequence of length 1).
+
+The call containsSumSequence(nums, 8) would return false since there is no sequence of adjacent values that sums to 8.
+
+You may assume the given array contains only Number types and is not null.
+*/
+
+function containsSumSequence(arr, targetSum) {
+    let b = false
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 1; j <= arr.length; j++) {
+            if ( arr.slice(i,j).reduce((a,b) => a + b, 0) === targetSum ) b = true
+        }
+    }
+    return b
+}
