@@ -354,3 +354,13 @@ Constraints: The array could be empty or could contain only a single element; in
 function countDuplicates(arr) {
     return arr.length - [...new Set(arr)].length
 }
+
+/*
+Write a function named countInRange that accepts three parameters: an array of integers, a minimum and maximum integer, and returns the number of elements in the array within that range inclusive. For example, if the array v contains [28, 1, 17, 4, 41, 9, 59, 8, 31, 30, 25], the call of countInRange(v, 10, 30) should return 4.
+
+You may assume that the array passed is non-null and contains only integers. If the array is empty, return 0. Do not modify the array that is passed in.
+*/
+  
+function countInRange(v, min, max) {
+    return v.filter(item => item >= min && item <= max).length
+}
