@@ -339,3 +339,18 @@ function containsSumSequence(arr, targetSum) {
     }
     return b
 }
+  
+  
+/*
+Write a function named countDuplicates that accepts an array as a parameter and that returns the number of duplicate values in the array. A duplicate value is a value that also occurs earlier in the array.
+
+For example, if an array named a contains [1, 4, 2.5, 4, "7", 1, 1, 9, 2, "7", 7, false, 3, 4, 1], then the call of countDuplicates(a) should return 6 because there are three duplicates of the value 1, one duplicate of the string value "7", and two duplicates of the value 4.
+
+You may assume that the array passed is non-null and that non of the elements in the array are null or undefined.
+
+Constraints: The array could be empty or could contain only a single element; in such cases, your function should return 0. Do not modify the contents of the array.
+*/
+  
+function countDuplicates(arr) {
+    return arr.length - [...new Set(arr)].length
+}
