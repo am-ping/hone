@@ -364,3 +364,18 @@ You may assume that the array passed is non-null and contains only integers. If 
 function countInRange(v, min, max) {
     return v.filter(item => item >= min && item <= max).length
 }
+
+  
+/*
+Write a function named countUnique that accepts an array of values as a parameter and returns a count of the number of unique values that occur in the array. If the array contains multiple occurrences of the same element value, only one of those occurrences should count toward your total.
+
+For example, if an array named numbers stores [7, 7, 2, 2, 1, 2, 2, "foo", true, true, 7], the call of countUnique(numbers) should return 4 because there are 4 unique values: 7, 2, 1, and "foo".
+
+Constraints:
+In solving this problem, do not create any other arrays, strings, etc., though you may create as many simple variables (e.g. number, boolean) as you like.
+Do not modify the array passed to your function as the argument, such as by sorting or rearranging its element values.
+*/
+
+function countUnique(a) {
+    return [...new Set(a)].length
+}
