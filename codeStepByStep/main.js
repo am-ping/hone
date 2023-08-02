@@ -379,3 +379,54 @@ Do not modify the array passed to your function as the argument, such as by sort
 function countUnique(a) {
     return [...new Set(a)].length
 }
+
+
+/*
+Write a "class" (a constructor function and methods, etc.) of objects named Date that remembers information about a month and day. Ignore leap years and don't store the year in your object. You must include the following public methods:
+
+new Date(m, d)	constructs a new date representing the given month and day
+daysInMonth()	returns the number of days in the month stored by your date object
+getDay()	returns the day
+getMonth()	returns the month
+nextDay()	advances the Date to the next day, wrapping to the next month and/or year if necessary
+toString()	returns a string representation such as "07/04"
+
+You should define the entire class including the class heading, the private fields, and the declarations and definitions of all the public methods and constructor.
+*/
+
+class Date {
+    constructor(m, d) {
+        this.m = m;
+        this.d = d;
+    }
+    daysInMonth() {
+        let arr = [1,3,5,7,8,10,12]
+        if (this.m == 2) return 28
+        if (arr.includes(this.m)) return 31
+        if (!arr.includes(this.m)) return 30
+    }
+    getDay() {
+        return this.d
+    }
+    getMonth() {
+        return this.m
+    }
+    nextDay() {
+        const totalDays = this.daysInMonth()
+        if (this.d < totalDays) {
+          this.d++
+        } else {
+          this.d = 1
+          if (this.m < 12) {
+            this.m++
+          } else {
+            this.m = 1
+          }
+        }
+    }
+    toString() {
+        if (this.m < 10) this.m = "0" + this.m
+        if (this.d < 10) this.d = "0" + this.d
+        return `${this.m}/${this.d}`
+    }
+}
