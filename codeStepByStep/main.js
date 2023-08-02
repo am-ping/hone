@@ -430,3 +430,47 @@ class Date {
         return `${this.m}/${this.d}`
     }
 }
+
+
+/*
+Define a "class" (a constructor function and methods, etc.) of objects named Student. A Student object represents a university student that, for simplicity, just has a name, ID number, and number of units earned towards graduation. Each Student object should have the following public behavior:
+
+new Student(name, id)
+Constructor that initializes a new Student object storing the given name and ID number, with 0 units.
+s.getName()
+s.getID()
+s.getUnits()
+Returns the name, ID, or unit count of the student, respectively.
+s.incrementUnits(units)
+Adds the given number of units to this student's unit count.
+s.hasEnoughUnits()
+Returns whether the student has enough units (180) to graduate.
+s.toString()
+Returns the student's string representation, e.g. "Nick (#42342)".
+*/
+
+class Student {
+    constructor(studentName, studentID) {
+        this.name = studentName
+        this.id = studentID
+        this.units = 0
+    }
+	getName() {
+        return this.name
+    }
+    getID() {
+        return this.id
+    }
+    getUnits() {
+        return this.units
+    }
+    incrementUnits(units) {
+        return this.units += units
+    }
+    hasEnoughUnits() {
+        return this.units >= 180
+    }
+    toString() {
+        return `${this.name} (#${this.id})`
+    }
+}
