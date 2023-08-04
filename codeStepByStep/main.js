@@ -474,3 +474,17 @@ class Student {
         return `${this.name} (#${this.id})`
     }
 }
+
+
+/*
+Write a function named addCommas that accepts a string representing a number and returns a new string with a comma at every third position, starting from the right. For example, the call of addCommas("12345678") returns "12,345,678".
+*/
+
+function addCommas(digits) {
+	return digits
+            .split('')
+            .reverse()
+            .map((item,i) => i !== 0 && i % 3 == 0 ? item + ',' : item)
+            .reverse()
+            .join('')
+}
