@@ -488,3 +488,16 @@ function addCommas(digits) {
             .reverse()
             .join('')
 }
+
+
+/*
+Write a function named anagrams that accepts two string paramters and returns true if the second string is an anagram of the first. A string is an anagram of another string if both strings contain the same characters (ignoring case and non-alphabetic characters).
+
+For example, the call of anagrams("A decimal point", "I'm a dot in place!") should return true since both strings contain the same letters. However, the call anagrams("Decimal point", "I'm a dot in place!") should return false because even though both strings contain the same letters, the second string has one more "a" than the first string.
+*/
+
+function anagrams(phrase1, phrase2) {
+	let str1 = phrase1.replace(/[\W]/g,'').toLowerCase().split('').sort()
+    let str2 = phrase2.replace(/[\W]/g,'').toLowerCase().split('').sort()
+    return str1.every((item,i) => item == str2[i])
+}
