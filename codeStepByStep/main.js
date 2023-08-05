@@ -501,3 +501,17 @@ function anagrams(phrase1, phrase2) {
     let str2 = phrase2.replace(/[\W]/g,'').toLowerCase().split('').sort()
     return str1.every((item,i) => item == str2[i])
 }
+
+
+/*
+Write a function named compressString that accepts a string as a parameter and returns a new string that replaces repeated characters with a single occurrence of that character followed by the number of its occurrences. For example, the call of compressString("AABAAABBBCCCCDEEEEEE") should return "A2B1A3B3C4D1E6".
+*/
+
+function compressString(s) {
+    if (s == '') return ''
+	let arr = s
+            .split('')
+            .map((item,i,a) => i !== 0 && a[i - 1] !== item ? ' ' + item : item)
+            .join('')
+    return arr.split(' ').map(item => item[0] + item.length).join('')
+}
