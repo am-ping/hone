@@ -497,7 +497,7 @@ For example, the call of anagrams("A decimal point", "I'm a dot in place!") shou
 */
 
 function anagrams(phrase1, phrase2) {
-	let str1 = phrase1.replace(/[\W]/g,'').toLowerCase().split('').sort()
+    let str1 = phrase1.replace(/[\W]/g,'').toLowerCase().split('').sort()
     let str2 = phrase2.replace(/[\W]/g,'').toLowerCase().split('').sort()
     return str1.every((item,i) => item == str2[i])
 }
@@ -514,4 +514,13 @@ function compressString(s) {
             .map((item,i,a) => i !== 0 && a[i - 1] !== item ? ' ' + item : item)
             .join('')
     return arr.split(' ').map(item => item[0] + item.length).join('')
+}
+
+
+/*
+Write a function named containsTwice that accepts a string and a character as parameters and returns true if that character occurs two or more times in the string. For example, the call of containsTwice("hello", 'l') should return true because there are two 'l' characters in that string.
+*/
+
+function containsTwice(str, ch) {
+	return str.split('').filter(item => item === ch).length > 1
 }
