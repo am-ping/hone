@@ -524,3 +524,17 @@ Write a function named containsTwice that accepts a string and a character as pa
 function containsTwice(str, ch) {
 	return str.split('').filter(item => item === ch).length > 1
 }
+
+
+/*
+Write a function named convertToAltCaps that accepts a string as a parameter and returns a version of the string where alternating letters are uppercase and lowercase, starting with the first letter in lowercase. For example, the call of convertToAltCaps("Pikachu") should return "pIkAcHu".
+*/
+
+function convertToAltCaps(str) {
+    let s = str.replace(/ /g, '  ')
+	return s
+            .split('')
+            .map((item,i) => i % 2 ? item.toUpperCase() : item.toLowerCase())
+            .join('')
+            .replace(/  /g, ' ')
+}
