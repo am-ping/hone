@@ -538,3 +538,14 @@ function convertToAltCaps(str) {
             .join('')
             .replace(/  /g, ' ')
 }
+
+
+/*
+Write a function named countWords that accepts a string as its parameter and returns the number of words in it. A word is a sequence of one or more non-space characters. For example, the call of countWords("What is your name?") should return 4.
+*/
+
+function countWords(s) {
+    let str = s.trim().replace(/ +/g, ' ')
+    if (str == '') return 0
+	return str.split(' ').length
+}
