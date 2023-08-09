@@ -549,3 +549,15 @@ function countWords(s) {
     if (str == '') return 0
 	return str.split(' ').length
 }
+
+
+/*
+Write a function named crazyCaps that accepts a string as a parameter and returns a new string with its capitalization altered such that the characters at even indexes are all in lowercase and odd indexes are all in uppercase. For example, if a variable s stores "Hey!! THERE!", the call of crazyCaps(s) should return "hEy!! tHeRe!".
+*/
+
+function crazyCaps(s) {
+	return s
+        .split('')
+        .map((item,i) => i % 2 ? item.toUpperCase() : item.toLowerCase())
+        .join('')
+}
