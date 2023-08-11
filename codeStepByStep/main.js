@@ -561,3 +561,16 @@ function crazyCaps(s) {
         .map((item,i) => i % 2 ? item.toUpperCase() : item.toLowerCase())
         .join('')
 }
+
+
+/*
+Write a function named removeDuplicates that accepts a string parameter and returns a new string with all consecutive occurrences of the same character in the string replaced by a single occurrence of that character. For example, the call of removeDuplicates("bookkeeeeeper") should return "bokeper" .
+*/
+
+function removeDuplicates(s) {
+	if (s == '') return ''
+	return s
+        .split('')
+        .map((item,i,a) => i !== 0 && a[i - 1] == item ? '' : item)
+        .join('')
+}
