@@ -584,3 +584,12 @@ function repeat(phrase, n) {
 	if (n <= 0) return ''
     return phrase.repeat(n)
 }
+
+
+/*
+Write a function named reverse that accepts a string parameter returns a new string with the characters in the opposite order. For example, A call of reverse("Pikachu") would return "uchakiP".
+*/
+
+function reverse(s) {
+	return s.split('').reverse().join('')
+}
