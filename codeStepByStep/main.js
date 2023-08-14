@@ -616,3 +616,36 @@ function enoughTimeForLunch(h1, m1, h2, m2) {
     let mins2 = (h2 > 0) ? (h2 * 60) + m2 : 0
     return mins2 - mins1 >= 45
 }
+
+
+/*
+Write a function named rockPaperScissors that takes two parameters: a string representing a first player's move in a game of Rock-Paper-Scissors and a string representing a second player's move. Depending on each player's move, the function should output to the console the winner of the round if there was a winner, a tie if both players had the same move, or whether a player gave an invalid move. When comparing moves, letter-casing does not matter ("rock" should be considered the same move as "rOcK").
+
+The two-player game of Rock-Paper-Scissors works as following:
+
+Each player chooses one of three moves: "rock", "paper", or "scissors"
+A move of "rock" wins over another player's move of "scissors"
+A move of "scissors" wins over another player's move of "paper"
+A move of "paper" wins over another player's move of "rock"
+If two players use the same move, the result is a tie
+For example, a call of rockPaperScissors("rock", "scissors") would result in console output of "Player 1 wins!". A call of rockPaperScissors("ROCK", "Paper") would result in console output of "Player 2 wins!". A call of rockPaperScissors("SCISSORS", "Scissors") would result in console output of "TIE!". If one player gives a move other than "rock", "paper", or "scissors", the console output should be "Invalid move of [player's invalid move]!", where you should replace [player's invalid move] with the exact value passed by that player. If both players pass invalid moves, the console output should be "Invalid moves of [player 1's invalid move] and [player 2's invalid move]!".
+*/
+
+function rockPaperScissors(p1, p2) {
+    p1 = p1.toLowerCase()
+    p2 = p2.toLowerCase()
+    let moves = ['rock','paper','scissors']
+    if (moves.includes(p1) && moves.includes(p2) && p1 === p2) {
+        console.log( "TIE!" )
+    } else if ( !moves.includes(p1) && moves.includes(p2) ) {
+        console.log( `Invalid move of ${p1}!` )
+    } else if ( !moves.includes(p2) && moves.includes(p1) ) {
+        console.log( `Invalid move of ${p2}!` )
+    } else if ( !moves.includes(p1) && !moves.includes(p2) ) {
+        console.log( `Invalid moves of ${p1} and ${p2}!` )
+    } else if ((p1 === 'rock' && p2 === 'scissors') || (p1 === 'scissors' && p2 === 'paper') || (p1 === 'paper' && p2 === 'rock')) {
+        console.log( 'Player 1 wins!' )
+    } else {
+        console.log( 'Player 2 wins!' )
+    }
+}
