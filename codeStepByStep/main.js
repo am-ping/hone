@@ -649,3 +649,17 @@ function rockPaperScissors(p1, p2) {
         console.log( 'Player 2 wins!' )
     }
 }
+
+
+/*
+Write a function named sumOfRange function that accepts two integer parameters min and max and returns the sum of the integers from min through max inclusive. For example, the call of sumOfRange(3, 7) returns 3 + 4 + 5 + 6 + 7 or 25. If min is greater than max, return 0.
+*/
+
+function sumOfRange(min, max) {
+    if (min > max) return 0
+	let s = 0
+    for (let i = min; i <= max; i++) {
+        s += i
+    }
+    return s
+}
