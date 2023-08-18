@@ -676,3 +676,14 @@ function sumUpTo(n) {
     }
     return r
 }
+
+
+/*
+Write a function named threeConsecutive that accepts three integers as parameters and returns true if they are three consecutive numbers; that is, if the numbers can be arranged into an order such that their values differ by exactly 1.
+For example, the call of threeConsecutive(3, 2, 4) would return true.
+*/
+
+function threeConsecutive(num1, num2, num3) {
+    const sorted = [num1, num2, num3].sort((a, b) => a - b)
+    return sorted[1] - sorted[0] === 1 && sorted[2] - sorted[1] === 1
+}
