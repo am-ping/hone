@@ -687,3 +687,21 @@ function threeConsecutive(num1, num2, num3) {
     const sorted = [num1, num2, num3].sort((a, b) => a - b)
     return sorted[1] - sorted[0] === 1 && sorted[2] - sorted[1] === 1
 }
+
+
+/*
+Write a function named triangle that accepts an integer parameter representing a size in characters, and prints to the console a right-aligned right triangle figure whose non-hypotenuse sides are that length. For example, the call of triangle(5) should print the following output:
+
+    *
+   **
+  ***
+ ****
+*****
+You may assume that the value passed for the size is at least 1.
+*/
+
+function triangle(size) {
+	for (let i = 1; i <= size; i++) {
+        console.log( ' '.repeat(size - i) + '*'.repeat(i) )
+    }
+}
