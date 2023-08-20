@@ -705,3 +705,12 @@ function triangle(size) {
         console.log( ' '.repeat(size - i) + '*'.repeat(i) )
     }
 }
+
+
+/*
+Write a function named sumOfDigits that accepts an integer parameter and computes and returns the sum of all the digits of that number. For example, sumOfDigits(38015) returns 3+8+1+0+5 or 17. For negative numbers, return the same value as if the number were positive. For example, sumOfDigits(-72) returns 7+2 or 9.
+*/
+
+function sumOfDigits(n) {
+	return Math.abs(n).toString().split('').reduce((a,b) => a + +b, 0)
+}
