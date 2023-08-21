@@ -723,3 +723,14 @@ Write a function named averageOf3 that accepts three integers as parameters and 
 function averageOf3(n1, n2, n3) {
 	return (n1 + n2 + n3)/3
 }
+
+
+/*
+Write a function named binaryToDecimal that accepts an integer parameter whose digits are meant to represent binary (base-2) digits, and returns an integer of that number's representation in decimal (base-10). For example, the call of binaryToDecimal(101011) should return 43.
+
+If you find your solution returning unexpected double values, remember that JavaScript will convert integer (whole number) values to double values when divided by a number that is not a factor. You can avoid this conversion by using JavaScript's parseInt function which converts any number to an integer value. For example, the call of parseInt(2.13333) would return 2.
+*/
+
+function binaryToDecimal(n) {
+	return Number.parseInt(n, 2)
+}
