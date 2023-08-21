@@ -714,3 +714,12 @@ Write a function named sumOfDigits that accepts an integer parameter and compute
 function sumOfDigits(n) {
 	return Math.abs(n).toString().split('').reduce((a,b) => a + +b, 0)
 }
+
+
+/*
+Write a function named averageOf3 that accepts three integers as parameters and returns the average of the three integers as a real number. For example, the call of averageOf3(4, 7, 13) should return 8.
+*/
+
+function averageOf3(n1, n2, n3) {
+	return (n1 + n2 + n3)/3
+}
