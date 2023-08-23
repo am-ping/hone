@@ -734,3 +734,30 @@ If you find your solution returning unexpected double values, remember that Java
 function binaryToDecimal(n) {
 	return Number.parseInt(n, 2)
 }
+
+
+/*
+Write a function named bmi that takes two Number values representing the weight and height of an individual. The function should calculate the body mass index (BMI), using the following formula:
+
+BMI = weight / height2 * 703
+The BMI rating groups each person into one of the following four categories:
+
+BMI	Category
+below 18.5	class 1
+18.5 - 24.9	class 2
+25.0 - 29.9	class 3
+30.0 and up	class 4
+After calculating the bmi and class for the given weight and height, your function should output the results, matching the following example output for the call to bmi(70.0, 194.25):
+
+BMI = 27.9
+class 3
+Use the console.log() function to print each line of output and n.toFixed(1) to get a string of a number n to the precision of one decimal point. For example, if n is 1.2345, n.toFixed(1) would return "1.2".
+*/
+
+function bmi(h, w) {
+	let r = ( w / h ** 2 * 703 ).toFixed(1)
+    let c = r <= 18.5 ? 1 : r <= 24.9 ? 2 : r <= 29.9 ? 3 : 4
+    
+    console.log(`BMI = ${r}`)
+    console.log(`class ${c}`)
+}
