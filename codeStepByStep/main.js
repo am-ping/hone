@@ -761,3 +761,25 @@ function bmi(h, w) {
     console.log(`BMI = ${r}`)
     console.log(`class ${c}`)
 }
+
+
+/*
+Write a function named boxOfStars that accepts two integer parameters representing a width and height in characters, and prints to the console a 'box' figure whose border is * stars and whose center is made of spaces.
+For example, the call of boxOfStars(8, 5) should print the following output:
+********
+*      *
+*      *
+*      *
+********
+You may assume that the values passed for the width and height are integer values of at least 2.
+*/
+
+function boxOfStars(w, h) {
+	for (let i = 1; i <= h; i++) {
+        if (i == 1 || i == h) {
+            console.log('*'.repeat(w))
+        } else {
+            console.log('*' + ' '.repeat(w - 2) + '*')
+        }
+    }
+}
