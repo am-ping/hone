@@ -792,3 +792,13 @@ Write a function named circleArea that accepts the radius of a circle as a param
 function circleArea(r) {
 	return Math.PI * r ** 2
 }
+
+
+/*
+Write a function named countDigits that accepts an integer parameter and returns the number of digits in that integer. For example, countDigits(38015) returns 5. For negative numbers, return the same value as if the number were positive. For example, countDigits(-72) returns 2.
+Note: Because JavaScript integers are number types, dividing two integers which do not divide evenly returns the decimal value of the result instead of an integer (for example, 1 / 2 results in 0.5, not 0). Use parseInt(a / b) to parse the result into an integer if needed to solve this problem.
+*/
+
+function countDigits(n) {
+	return Math.abs(n).toString().length
+}
