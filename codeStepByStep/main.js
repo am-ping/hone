@@ -802,3 +802,12 @@ Note: Because JavaScript integers are number types, dividing two integers which 
 function countDigits(n) {
 	return Math.abs(n).toString().length
 }
+
+
+/*
+Write a function named countUnique that takes three integers as parameters and that returns the number of unique integers among the three. For example, the call countUnique(18, 3, 4) should return 3 because the parameters have 3 different values. By contrast, the call countUnique(6, 7, 6) should return 2 because there are only 2 unique numbers among the three parameters: 6 and 7.
+*/
+
+function countUnique(a, b, c) {
+	return [...new Set([a,b,c])].length
+}
