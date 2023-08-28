@@ -811,3 +811,13 @@ Write a function named countUnique that takes three integers as parameters and t
 function countUnique(a, b, c) {
 	return [...new Set([a,b,c])].length
 }
+
+
+/*
+Write a function named daysInMonth that accepts a month (an integer between 1 and 12) as a parameter and returns the number of days in that month. For example, the call of daysInMonth(9) returns 30 because September has 30 days. You may assume that the month value passed is between 1 and 12 inclusive. Ignore leap years; assume that February always has 28 days.
+*/
+
+function daysInMonth(m) {
+	let arr = [1,3,5,7,8,10,12]
+    return (m == 2) ? 28 : (arr.includes(m)) ? 31 : 30
+}
