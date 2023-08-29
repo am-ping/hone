@@ -821,3 +821,16 @@ function daysInMonth(m) {
 	let arr = [1,3,5,7,8,10,12]
     return (m == 2) ? 28 : (arr.includes(m)) ? 31 : 30
 }
+
+
+/*
+Write a function named factorCount that accepts an integer (assumed to be positive) as its parameter and returns a count of its positive factors. For example, the eight factors of 24 are 1, 2, 3, 4, 6, 8, 12, and 24, so the call of factorCount(24) should return 8.
+*/
+
+function factorCount(n) {
+    let arr = []
+	for (let i = 1; i <= n; i++) {
+        if ( Number.isSafeInteger(n / i) ) arr.push(i)
+    }
+    return arr.length
+}
