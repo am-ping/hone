@@ -862,3 +862,14 @@ Write a function getDisplacement that takes in parameters s0, t, and v0 and retu
 function getDisplacement(s0, v0, t) {
 	return s0 + v0 * t + 1/2 * 9.8 * t ** 2
 }
+
+
+/*
+Write a function named getFirstDigit that returns the first digit of an integer. For example, getFirstDigit(3572) should return 3.
+
+Note: Because JavaScript integers are number types, dividing two integers which do not divide evenly returns the decimal value of the result instead of an integer (for example, 1 / 2 results in 0.5, not 0). Use parseInt(a / b) to parse the result into an integer if needed to solve this problem.
+*/
+
+function getFirstDigit(n) {
+	return +Math.abs(n).toPrecision(2)[0]
+}
