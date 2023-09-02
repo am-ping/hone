@@ -873,3 +873,13 @@ Note: Because JavaScript integers are number types, dividing two integers which 
 function getFirstDigit(n) {
 	return +Math.abs(n).toPrecision(2)[0]
 }
+
+
+/*
+Write a function named getLastDigit that returns the last digit of an integer. For example, the call of getLastDigit(3572) should return 2.
+*/
+
+function getLastDigit(n) {
+    let l = Math.abs(n).toPrecision().length
+	return +Math.abs(n).toPrecision()[l -1]
+}
