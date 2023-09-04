@@ -892,3 +892,17 @@ Write a function isMultiple that accepts two non-negative number parameters a an
 function isMultiple(a, b) {
 	return Number.isSafeInteger(a / b)
 }
+
+
+/*
+Write a function named isPrimeNumber that accepts an integer as a parameter and returns true if that integer is a prime number. A prime number is an integer that has no factors other than 1 and itself. The number 2 is defined as the smallest prime number.
+*/
+
+function isPrimeNumber(n) {
+    if (n < 2) return false
+	let arr = []
+    for (let i = 2; i <= n; i++) {
+        if (n % i === 0) arr.push(i)
+    }
+    return arr.length < 2
+}
