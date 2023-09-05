@@ -906,3 +906,57 @@ function isPrimeNumber(n) {
     }
     return arr.length < 2
 }
+
+
+/*
+The following console program uses parameters and produces four lines of output. What are they?
+
+function main() {
+    let x = 5;
+    let y = 1;
+    let z = 9;
+    let w = y + 2;
+    surprise(x, y);
+    x = surprise(z, w);
+    w++;
+    z = surprise(w, x);
+    surprise(y, z);
+}
+​
+function surprise(y, x) {
+    x++;
+    console.log(x + " " + y);
+    y--;
+    return x;
+}
+*/
+
+line 1: 2 5
+line 2: 4 9
+line 3: 5 4
+line 4: 6 1
+
+
+/*
+Write a function named printPay that computes and prints the amount of money an employee should earn. Your function accepts two parameters: anumber for the employee's hourly salary, and an integer for the number of hours the employee worked. Every hour over 8 is paid at 1.5x the normal salary. For example, the call of printPay(10.00, 11) should print the following output:
+
+Hours worked: 11
+Pay earned: $125.00
+You may assume that the value passed for the salary and hours are non-negative.
+
+Use the console.log() function to print each line of output and n.toFixed(2) to get a string of a number n to the precision of one decimal point. For example, if n is 1.2345, n.toFixed(2) would return "1.23".
+*/
+
+function printPay(salary, hours) {
+    if (hours == 0) {
+        console.log(`Hours worked: 0`)
+        console.log(`Pay earned: $0.00`)
+    } else if (hours <= 8) {
+        console.log(`Hours worked: ${hours}`)
+        console.log(`Pay earned: $${(salary * hours).toFixed(2)}`)
+    } else {
+        let s = hours > 8 ? (hours - 8) * salary * 1.5 : 0
+        console.log(`Hours worked: ${hours}`)
+        console.log(`Pay earned: $${(salary * 8 + s).toFixed(2)}`)
+    }
+}
