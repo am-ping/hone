@@ -960,3 +960,32 @@ function printPay(salary, hours) {
         console.log(`Pay earned: $${(salary * 8 + s).toFixed(2)}`)
     }
 }
+
+
+/*
+Consider the following JSON-formatted object:
+
+let miniJSON = {
+    a : "b",
+    b : "a",
+    c : ["a", "b", "c"]
+};
+Write the JavaScript value that would be returned for each of the following statements. Include "" around any string values. If any expression would result in an error, write error as your answer.
+*/
+
+miniJSON["a"]	
+"b"
+miniJSON[a]	
+error
+miniJSON.a	
+"b"
+miniJSON["c"]	
+["a", "b", "c"]
+miniJSON["c"][0]	
+"a"
+miniJSON["c"].length	
+3
+miniJSON["c"][0].length	
+1
+miniJSON["c"]["a"]	
+undefined
