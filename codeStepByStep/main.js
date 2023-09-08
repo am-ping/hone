@@ -989,3 +989,19 @@ miniJSON["c"][0].length
 1
 miniJSON["c"]["a"]	
 undefined
+
+
+/*
+Write a JavaScript function named printProgram whose output is the text that would be the source code of a JavaScript function named hello that prints "Hello, world!" as its output:
+
+function hello() {
+    console.log("Hello, world!");
+}
+Your program must produce exactly the output shown in order to pass (using exactly four spaces for each increment of indentation in the output).
+*/
+
+function printProgram() {
+	console.log('function hello() {')
+    console.log('\tconsole.log("Hello, world!");')
+    console.log('}')
+}
