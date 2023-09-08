@@ -1005,3 +1005,48 @@ function printProgram() {
     console.log('\tconsole.log("Hello, world!");')
     console.log('}')
 }
+
+
+/*
+Write a function named printRockets which prints the following output to the console. Use helper functions to show structure and eliminate redundancy in your solution.
+
+Note that there are two rocket ships next to each other. What redundancy can you eliminate using functions? What redundancy cannot be eliminated?
+
+   /\       /\
+  /  \     /  \
+ /    \   /    \
++------+ +------+
+|      | |      |
++------+ +------+
+|Rocket| |Rocket|
+|  #1  | |  #2  |
++------+ +------+
+|      | |      |
++------+ +------+
+   /\       /\
+  /  \     /  \
+ /    \   /    \
+*/
+
+function drawTriangle() {
+    console.log("   /\\       /\\");
+    console.log("  /  \\     /  \\");
+    console.log(" /    \\   /    \\");
+}
+  
+function drawBox() {
+    console.log("+------+ +------+");
+    console.log("|      | |      |");
+    console.log("+------+ +------+");
+    console.log("|Rocket| |Rocket|");
+    console.log("|  #1  | |  #2  |");
+    console.log("+------+ +------+");
+    console.log("|      | |      |");
+    console.log("+------+ +------+");
+}
+  
+function printRockets() {
+    drawTriangle();
+    drawBox();
+    drawTriangle();
+}
