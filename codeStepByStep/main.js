@@ -1070,3 +1070,26 @@ function printTriangle() {
         }
     }
 }
+
+
+/*
+Write a function named numberSquare that accepts two integer parameters, a min and a max, and outputs the numbers in the range from min to max inclusive in a square pattern. Each line of the square consists of a wrapping sequence of integers increasing from min and max. The first line begins with min, the second line begins with min + 1, and so on. When the sequence in any line reaches max, it wraps around back to min. You may assume that min is less than or equal to max. For example, the call of numberSquare(1, 5) should print:
+
+12345
+23451
+34512
+45123
+51234
+Use console.log() to print each sequence to the console.
+*/
+
+function numberSquare(min, max) {
+	let str = ''
+    for (let i = min; i <= max; i++) {
+        str += i
+    }
+    console.log(str)
+    for (let i = 1; i <= max - min; i++) {
+        console.log( str.slice(i) + str.slice(0,i))
+    }
+}
