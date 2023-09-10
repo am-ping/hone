@@ -1050,3 +1050,23 @@ function printRockets() {
     drawBox();
     drawTriangle();
 }
+
+
+/*
+Write a function named printTriangle that uses for loops to produce the following output:
+#
+##
+###
+####
+#####
+######
+Use nested for loops
+*/
+
+function printTriangle() {
+	for (let i = 1; i < 7; i++) {
+        for (let j = 1; j < 2; j++) {
+            console.log( '#'.repeat(i) )
+        }
+    }
+}
