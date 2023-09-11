@@ -1093,3 +1093,15 @@ function numberSquare(min, max) {
         console.log( str.slice(i) + str.slice(0,i))
     }
 }
+
+
+/*
+Write a function named indexOf that returns the index of a particular value in an array of integers. The function should return the index of the first occurrence of the target value in the array. If the value is not in the array, it should return -1. For example, if an array called arr stores the following values:
+
+let arr = [42, 7, -9, 14, "eight", 39, 42, "eight", 19, 0];
+Then the call indexOf(arr, "eight") should return 4 because the index of the first occurrence of the string value "eight" in the array is at index 4. The call indexOf(arr, 2) should return -1 because value 2 is not in the array.
+*/
+
+function indexOf(arr, target) {
+	return arr.indexOf(target)
+}
