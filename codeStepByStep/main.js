@@ -1105,3 +1105,18 @@ Then the call indexOf(arr, "eight") should return 4 because the index of the fir
 function indexOf(arr, target) {
 	return arr.indexOf(target)
 }
+
+
+/*
+Write a function named intersect that accepts references to two sorted arrays of numbers as parameters and returns a new array that contains only the elements that are found in both arrays. For example, if the following arrays are declared:
+
+a1 = [1, 4, 8, 9, 11, 15, 17, 28, 41, 59]
+a2 = [4, 7, 11, 17, 19, 20, 23, 28, 37, 59, 81]
+Then the call of intersect(a1, a2) should return the array: [4, 11, 17, 28, 59].
+
+You can assume that both array passed store their elements in sorted order. You may assume that the arrays passed both contain only number elements and are non-null. Do not modify the two arrays passed in as parameters.
+*/
+
+function intersect(arr1, arr2) {
+	return arr1.filter(item => arr2.includes(item))
+}
