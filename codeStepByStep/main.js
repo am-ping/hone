@@ -1120,3 +1120,23 @@ You can assume that both array passed store their elements in sorted order. You 
 function intersect(arr1, arr2) {
 	return arr1.filter(item => arr2.includes(item))
 }
+
+
+/*
+Write a function named isKeithNumber that accepts an integer as a paramater and returns true if that number is a "Keith number".
+
+A "Keith number" is defined as any n-digit integer that appears in the sequence that starts off with the number's n digits and then continues such that each subsequent number is the sum of the preceding n. (This is not unlike the classic Fibonacci sequence.) All one-digit numbers are trivially Keith numbers. The number 7385 is also a Keith number, because the following sequence ends up back at 7385:
+
+7, 3, 8, 5, 23, 39, 75, 142, 279, 535, 1031, 1987, 3832, 7385
+The sequence starts out 7, 3, 8, 5, because those are the digits making up 7385. Each number after that is the sum of the four numbers that precede it (four, because 7385 has four digits). So the fifth number is the sum of 7+3+8+5, or 23. The sixth number is 3+8+5+23, or 39. And so on, until we eventually get back to 7385, which makes 7385 a Keith number.
+
+You may use a single array as auxiliary storage. Your function should not loop infinitely; if you become sure that the number is not a Keith number, stop searching and immediately return false.
+*/
+
+function isKeithNumber(n) {
+    let arr = (''+n).split('').map(item => +item)
+	for (let i = 0; arr[arr.length - 1] < n; i++) {
+        arr.push( arr.slice(i).reduce((a,b) => a + b, 0) )
+    }
+    return arr[arr.length - 1] === n
+}
