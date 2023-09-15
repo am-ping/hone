@@ -1151,3 +1151,36 @@ function isMagicSquare(a) {
     let s = a[0].reduce((a,b) => a + b, 0)
 	return a.every(item => item.reduce((a,b) => a + b, 0) == s && item.length === a.length)    
 }
+
+
+/*
+Write a function named longestSortedSequence that accepts an array of numbers as a parameter and that returns the length of the longest sorted (non-decreasing) sequence of numbers in the array.
+
+For example, if a variable named arr stores the following values:
+
+let arr = [3, 8, 10, 1, 9, 14, -3, 0, 12.5, 207, 56, 98, 12];
+then the call of longestSortedSequence(arr) should return 4 because the longest sorted sequence in the array has four values in it (the sequence -3, 0, 14.5, 207). Notice that sorted means non-decreasing, which means that the sequence could contain duplicates. For example, if the array stores the following values:
+
+let arr2 = [17, 42, 3, 5, 5, 5, 8, 2, 4, 6, 1, 19];
+Then the function would return 5 for the length of the longest sequence (the sequence 3, 5, 5, 5, 8). Your function should return 0 if passed an empty array. Your function should return 1 if passed an array that is entirely in decreasing order or contains only one element. You may assume that the array passed is non-null and contains only numbers.
+
+Constraints:
+
+You may not use any auxiliary data structures (arrays, strings, etc.) to solve this problem.
+Your function should not modify the array that is passed in.
+*/
+
+function longestSortedSequence(a) {
+    if (a.length === 0) return 0
+	let c = 1
+    let t = 1
+    for (let i = 1; i <= a.length; i++) {
+        if (a[i-1] <= a[i]) {
+            t++
+        } else {
+            t = 1
+        }
+        if (t > c) c = t
+    }
+    return c
+}
