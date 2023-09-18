@@ -1200,3 +1200,14 @@ function longestWord(words) {
     let f = s.filter((item,i,a) => item.length == a[0].length)
     return f[f.length - 1]
 }
+
+
+/*
+Write a function named maxValue that accepts an array of numbers as a parameter and returns the maximum value in the array.
+
+For example, if an array named a passed stores [17, 7, -1, 26.5, 26, 3, 9], the call of maxValue(a) should return 26.5. You may assume that the array contains at least one element and that it contains only numbers. Your function should not modify the elements of the array.
+*/
+
+function maxValue(data) {
+	return Math.max(...data)
+}
