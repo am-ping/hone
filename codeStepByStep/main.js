@@ -1184,3 +1184,19 @@ function longestSortedSequence(a) {
     }
     return c
 }
+
+
+/*
+Write a function named longestWord that accepts an array of Strings and returns the String that has the longest length. If more than one String in the array has the longest length, the function should return the String that occurs last in the array. If the passed array is empty, the function should return an empty String.
+
+For example, if an array named pokemon stores the following Strings:
+
+["Pikachu", "Entei", "Mew", "Suicune", "Lugia", "Arcanine"] 
+The call of longestWord(pokemon) should return Arcanine.
+*/
+
+function longestWord(words) {
+	let s = words.sort((a,b) => b.length - a.length)
+    let f = s.filter((item,i,a) => item.length == a[0].length)
+    return f[f.length - 1]
+}
