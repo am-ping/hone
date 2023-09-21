@@ -1211,3 +1211,23 @@ For example, if an array named a passed stores [17, 7, -1, 26.5, 26, 3, 9], the 
 function maxValue(data) {
 	return Math.max(...data)
 }
+
+
+/*
+Write a function named print that accepts an array as a parameter and prints them, one per line, in the format shown. Your code should work for an array of any size. For example, if an array named a contains the elements [32, "foo", 27.5, "bar", true, -3, 2598], then the call of print(a) should produce the following output:
+
+element [0] is 32
+element [1] is foo
+element [2] is 27.5
+element [3] is bar
+element [4] is true
+element [5] is -3
+element [6] is 2598
+Use console.log() to output each line to the console.
+*/
+
+function print(data) {
+	for (let i = 0; i < data.length; i++) {
+        console.log(`element [${i}] is ${data[i]}`)
+    }
+}
