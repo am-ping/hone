@@ -1240,3 +1240,16 @@ Write a function named removeAll that accepts an array of Strings and a single S
 function removeAll(words, word) {
 	return words.filter(item => item.toLowerCase() !== word.toLowerCase())
 }
+
+
+/*
+Write a function named stutter which takes a string and uses a for loop to return a new string replacing each letter of the parameter with consecutive duplicates of the same letter. For example, a call of stutter("Pikachu") would return "PPiikkaacchhuu".
+*/
+
+function stutter(word) {
+    let a = word.split('')
+    for (let i = 0; i < word.length; i++) {
+        a[i] = `${a[i]}${a[i]}`
+    }
+    return a.join('')
+}
