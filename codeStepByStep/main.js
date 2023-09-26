@@ -1278,3 +1278,12 @@ For example, the call of vowelCount("kookaburra") should return 5 (two o's, 2 a'
 function vowelCount(phrase) {
 	return phrase.replace(/[^aeiou]/gi, "").length
 }
+
+
+/*
+Write a function named removeAll that accepts a string and a character as parameters, and removes all occurrences of the character. For example, the call of removeAll("Summer is here!", 'e') should return "Summr is hr!". Do not use the string replace function in your solution.
+*/
+
+function removeAll(str, ch) {
+	return str.split("").filter(item => item !== ch).join("")
+}
