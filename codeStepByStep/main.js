@@ -1268,3 +1268,13 @@ function swapPairs(s) {
         .map(item => item.split('').reverse().join(''))
         .join('')
 }
+
+
+/*
+Write a function named vowelCount that accepts a string and returns the number of vowels (a, e, i, o, or u) that the string contains.
+For example, the call of vowelCount("kookaburra") should return 5 (two o's, 2 a's, and one u). When passed a string without any vowels (such as an empty string, "01234", or "sky"), 0 should be returned.
+*/
+
+function vowelCount(phrase) {
+	return phrase.replace(/[^aeiou]/gi, "").length
+}
