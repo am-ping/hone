@@ -1253,3 +1253,18 @@ function stutter(word) {
     }
     return a.join('')
 }
+
+
+/*
+Write a function named swapPairs that accepts a string as a parameter and returns a new string such that each pair of adjacent letters will be reversed. If the string has an odd number of letters, the last letter is unchanged. For example, if a string variable s stores "example", the call of swapPairs(s) should return "xemalpe". If s had been "hello there", the call would produce "ehll ohtree".
+*/
+
+function swapPairs(s) {
+	return s
+        .split('')
+        .map((item,i) => i % 2 ? item + '093' : item)
+        .join('')
+        .split('093')
+        .map(item => item.split('').reverse().join(''))
+        .join('')
+}
