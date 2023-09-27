@@ -1287,3 +1287,18 @@ Write a function named removeAll that accepts a string and a character as parame
 function removeAll(str, ch) {
 	return str.split("").filter(item => item !== ch).join("")
 }
+
+
+/*
+Write a function named printBackward that accepts a String as its parameter and prints the characters in the opposite order. For example, a call of printBackward("hello there!") should output the following output:
+!ereht olleh
+If the empty string is passed, no output should be produced.
+*/
+
+function printBackward(str) {
+    if (str === "") {
+        return ''
+    } else {
+        console.log(str.split("").reverse().join(""))
+    }
+}
