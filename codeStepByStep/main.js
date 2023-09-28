@@ -1324,3 +1324,17 @@ You may assume that the array passed to your function is non-empty and contains 
 */
 
 let findMin = nums => Math.min(...nums)
+
+
+/*
+Write a function named findRange that accepts an array of integers as a parameter and returns the range of values contained in the array, which is equal to one more than the difference between its largest and smallest element.
+For example, if the largest element is 17 and the smallest is 6, the range is 12. If the largest and smallest values are the same, the range is 1.
+Constraints:
+You may assume that the array contains at least one element and contains only integers.
+You may not modify the contents of the passed array.
+*/
+
+function findRange(a) {
+	let s = a.sort((a,b) => a - b);
+    return a.length === 1 ? 1 : s[s.length - 1] - s[0] + 1
+}
