@@ -1338,3 +1338,14 @@ function findRange(a) {
 	let s = a.sort((a,b) => a - b);
     return a.length === 1 ? 1 : s[s.length - 1] - s[0] + 1
 }
+
+
+/*
+Write a function named getPercentEven that accepts an array of integers as a parameter and returns the percentage of the integers in the array that are even numbers. For example, if an array a stores [6, 4, 9, 11, 5], then your function should return 40.0 representing 40% even numbers. If the array contains no even elements or is empty, return 0.0. Do not modify the array passed in.
+*/
+
+function getPercentEven(a) {
+    if (a.length === 0) return 0
+	let f = a.filter(item => item % 2 !== 1).length
+    return f / a.length * 100
+}
