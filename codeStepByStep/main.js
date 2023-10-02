@@ -1349,3 +1349,14 @@ function getPercentEven(a) {
 	let f = a.filter(item => item % 2 !== 1).length
     return f / a.length * 100
 }
+
+
+/*
+Write a variable declaration and for loop necessary to create and initialize an integer array named squares that contains the following values:
+0 1 4 9 16 25 36 49 64 81 100
+*/
+
+let squares = []
+for (let i = 0; i < 11; i++) {
+    squares.push(i * i)
+}
