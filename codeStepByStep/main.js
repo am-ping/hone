@@ -1381,3 +1381,14 @@ function switchPairs(list) {
         }
     }
 }
+
+
+/*
+Write a function stutter that takes an array of Strings as a parameter and that replaces every String with two of that String. For example, if an array stores the values ["how", "are", "you?"] before the function is called, it should store the values ["how", "how", "are", "are", "you?", "you?"] after the function finishes executing.
+*/
+
+function stutter(arr) {
+	for (let i = arr.length - 1; i >= 0; i--) {
+        arr.splice(i, 0, arr[i])
+    }
+}
