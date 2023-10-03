@@ -1407,3 +1407,14 @@ function removeConsecutiveDuplicates(arr) {
         }
     }
 }
+
+
+/*
+Write a function named sortThree that accepts an array of integers, all elements of which are guaranteed to be either 0, 1, or 2, and rearranges the values to be in sorted order. For example, if an array a contains {2, 0, 2, 1, 1, 0, 0, 2}, the call of sortThree should change its contents to {0, 0, 0, 1, 1, 2, 2, 2}.
+This problem could be solved easily by calling an existing library sorting function, but the challenge comes from doing it as efficiently as possible. Can you do it in a single pass over the array?
+You may assume that the array does not contain any element values other than 0, 1, or 2.
+*/
+
+function sortThree(a) {
+	return a.sort((a,b) => a - b);
+}
