@@ -1392,3 +1392,18 @@ function stutter(arr) {
         arr.splice(i, 0, arr[i])
     }
 }
+
+
+/*
+Write a function named removeConsecutiveDuplicates that accepts as a parameter an array of numbers, and modifies it by removing any consecutive duplicates.
+For example, if an array named arr stores [1, 2, 2, 3, 2, 2, 3], the call of removeConsecutiveDuplicates(arr) should modify it to store [1, 2, 3, 2, 3].
+You may assume that the array passed is non-null, but it may be empty (in which case it would trivially contain no duplicates and should be left unchanged).
+*/
+
+function removeConsecutiveDuplicates(arr) {
+	for (let i = 1; i < arr.length; i++) {
+        while (arr[i-1] === arr[i]) {
+            arr.splice(i,1);
+        }
+    }
+}
