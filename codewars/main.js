@@ -9764,3 +9764,21 @@ Object.defineProperty(Array.prototype, 'insert', {
     return this
   }
 })
+
+
+/*
+Vowel Harmony Rules (simplified)
+When the last vowel in the word is
+a front vowel (e, é, i, í, ö, ő, ü, ű) the suffix is -nek
+a back vowel (a, á, o, ó, u, ú) the suffix is -nak
+dative("ablak") == "ablaknak"
+dative("szék") == "széknek"
+dative("otthon") == "otthonnak"
+*/
+
+function dative(word) {
+  let f = ["e", "é", "i", "í", "ö", "ő", "ü", "ű"];
+  let b = ["a", "á", "o", "ó", "u", "ú"]
+  let temp = word.split("").filter(item => f.includes(item) || b.includes(item));
+  return word + (f.includes( temp.slice(temp.length - 1)[0] ) ? "nek" : "nak");
+}
