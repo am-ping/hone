@@ -9800,10 +9800,7 @@ Given an integer n and two other values, build an array of size n filled with th
 function alternate(n, firstValue, secondValue){
   let arr = [];
   for (let i = 0; i < n; i++) {
-    if (i % 2)
-      arr.push(secondValue);
-    else
-      arr.push(firstValue);
+    arr.push(i % 2 === 0 ? firstValue : secondValue)
   }
   return arr
 }

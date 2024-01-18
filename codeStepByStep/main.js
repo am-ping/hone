@@ -1418,3 +1418,12 @@ You may assume that the array does not contain any element values other than 0, 
 function sortThree(a) {
 	return a.sort((a,b) => a - b);
 }
+
+
+/*
+Write a function named isVowel that returns whether a string is a vowel (a single-letter string containing a, e, i, o, or u, case-insensitively).
+*/
+
+function isVowel(s) {
+    return ['a','e','i','o','u'].includes(s.toLowerCase());
+}
