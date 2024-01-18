@@ -9776,9 +9776,34 @@ dative("szék") == "széknek"
 dative("otthon") == "otthonnak"
 */
 
+/*
+function dative(word) {
+  return /[aáoóuú]/.test(word) ? word + "nak" : word + "nek";
+}
+*/
+
 function dative(word) {
   let f = ["e", "é", "i", "í", "ö", "ő", "ü", "ű"];
   let b = ["a", "á", "o", "ó", "u", "ú"]
   let temp = word.split("").filter(item => f.includes(item) || b.includes(item));
   return word + (f.includes( temp.slice(temp.length - 1)[0] ) ? "nek" : "nak");
+}
+
+
+/*
+Given an integer n and two other values, build an array of size n filled with these two values alternating.
+5, true, false     -->  [true, false, true, false, true]
+10, "blue", "red"  -->  ["blue", "red", "blue", "red", "blue", "red", "blue", "red", "blue", "red"]
+0, "one", "two"    -->  []
+*/
+
+function alternate(n, firstValue, secondValue){
+  let arr = [];
+  for (let i = 0; i < n; i++) {
+    if (i % 2)
+      arr.push(secondValue);
+    else
+      arr.push(firstValue);
+  }
+  return arr
 }
