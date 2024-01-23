@@ -1452,3 +1452,27 @@ function fizzBuzz(max) {
     if (str.length > 0)
         console.log(str)
 }
+
+
+/*
+Write a function named flipCoinThreeHeads that repeatedly flips a coin until three heads in a row are seen. You should use Math.random to give an equal chance to a head or a tail appearing. Each time the coin is flipped, what is seen is displayed (H for heads, T for tails). When 3 heads in a row are flipped a congratulatory message is printed. Here is a possible output of a call to your function:
+T T T H T H H H
+Three heads in a row!
+(Because this problem uses random numbers, our test cases check only the general format of your output. You must still examine the output yourself to make sure the answer is correct.)
+*/
+
+function flipCoinThreeHeads() {
+	let c = 0;
+    let str = "";
+    do {
+        if (Math.random() < 0.5) {
+            str += "H ";
+            c++;
+        } else {
+            str += "T ";
+            c = 0;
+        }
+    } while (c != 3)
+    console.log(str);
+    console.log("Three heads in a row!");
+}
