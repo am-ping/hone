@@ -1427,3 +1427,28 @@ Write a function named isVowel that returns whether a string is a vowel (a singl
 function isVowel(s) {
     return ['a','e','i','o','u'].includes(s.toLowerCase());
 }
+
+
+/*
+Write a function named fizzBuzz that takes an integer as a parameter, then prints all of the numbers from one to that integer, separated by spaces. Use a loop to build your result, but for multiples of three, add "Fizz" to the string instead of the number. For the multiples of five add "Buzz". For numbers which are multiples of both three and five add "FizzBuzz". Use console.log() to print 20 numbers at a time
+*/
+
+function fizzBuzz(max) {
+    let str = ""
+	for (let i = 1; i <= max; i++) {
+        if (i % 3 == 0 && i % 5 == 0)
+            str += "FizzBuzz "
+        else if (i % 3 == 0)
+            str += "Fizz "
+        else if (i % 5 == 0)
+           str += "Buzz "
+        else
+            str += i + " "
+        if (i % 20 == 0) {
+            console.log(str)
+            str = ""
+        }
+    }
+    if (str.length > 0)
+        console.log(str)
+}
