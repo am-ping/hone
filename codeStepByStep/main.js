@@ -1476,3 +1476,18 @@ function flipCoinThreeHeads() {
     console.log(str);
     console.log("Three heads in a row!");
 }
+
+
+/*
+Complete the following for loop to produce the following output:
+-4
+14
+32
+50
+68
+86
+*/
+
+for (let i = 1; i <= 6; i++) {
+    console.log(-22 + i * 8 + 10 * i)
+}
